@@ -12,9 +12,10 @@
   --color-current: currentColor;
   --color-black: #000;
   --color-white: #fff;
-  --color-light: #7ba0c4;
-  --color-primary: blue;
-  --color-dark: #00263e;
+  --color-light-pink: #FBE2F1;
+  --color-primary: #103A85;
+  --color-light-blue: #B7D3EE;
+  --collor-light-teal: #BCDEED;
   
   --transition-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
   --transition-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
@@ -39,7 +40,8 @@
 
 
 body{
-    font-family: "helvetica", sans-serif;
+    font-family: "citrine-variable", sans-serif;
+    font-variation-settings: "wght" 300;
     transition-property: all;
     transition-timing-function: cubic-bezier(.5,0,0,1);
     transition-duration: 500ms;
@@ -114,42 +116,78 @@ a, button{
 
 
 h1{
-
-font-family: 'museo-sans', sans-serif;
-font-size: 36px;
+font-size: 80px;
 font-style: normal;
-font-weight: 250;
-line-height: 150%; /* 54px */
-letter-spacing: 2.88px;
-text-transform: uppercase;
+font-weight: 400;
+line-height: normal;
 }
 
 h2{
-    
+    font-size: 40px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
 }
 
 h3{
-    
+    font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+text-transform: uppercase;
 }
 
 h4{
-    
+font-size: 24px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
 }
 
 h5{
-   
+   font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 125%; /* 17.5px */
+    text-transform: uppercase;
 }
 
 h6{
-    
+font-size: 10px;
+font-style: normal;
+font-weight: 400;
+line-height: 145%; /* 14.5px */
+letter-spacing: 1px;
+text-transform: uppercase;
 }
 
 p{
-    
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 145%; /* 21.75px */
 }
 
-.label{
-    
+p.body-2{
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 145%; /* 17.4px */
+}
+
+p.body-3{
+    font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: 145%; /* 23.2px */
+}
+
+.label, button{
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 145%; /* 17.4px */
+    text-transform: uppercase;
 }
 
 .copyright{
