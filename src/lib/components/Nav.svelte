@@ -8,7 +8,7 @@
 
 {#if isNavModalOpen}
   <div class="fixed w-screen h-screen top-0 left-0" transition:fade>
-    <div class="w-full h-full absolute -z-10 menu-background"></div>
+    <div class="w-full h-full absolute -z-10 menu-background will-change-transform"></div>
     <ContentWidth class="my-48 px-24">
       <div class="h-0.5 bg-white w-full"></div>
       <div class="flex flex-col md:flex-row gap-6 md:gap-10 mt-10 text-white">
