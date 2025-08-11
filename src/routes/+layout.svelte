@@ -224,7 +224,7 @@
 	}
 </style>
 
-<div class='text-black h-screen w-screen fixed '>
+<div class='text-black h-screen w-screen fixed -z-10'>
 	<div class="absolute w-full h-full transition-colors duration-500
 		{
 			option===0?'bg-light-blue':

@@ -60,15 +60,15 @@ body::-webkit-scrollbar {
 }
 
 .bump, .negative-bump{
-    transition: transform 300ms ease-out;
+    transition: transform 200ms ease-out;
 }
 
 .bump:active{
-    transform: translateY(-8px);
+    transform: translateY(-4px);
 }
 
 .negative-bump:active{
-    transform: translateY(8px);
+    transform: translateY(4px);
 }
 
 @keyframes pos-y-wiggle {
