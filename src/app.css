@@ -15,7 +15,7 @@
   --color-light-pink: #FBE2F1;
   --color-primary: #103A85;
   --color-light-blue: #B7D3EE;
-  --collor-light-teal: #BCDEED;
+  --color-light-teal: #BCDEED;
   
   --transition-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
   --transition-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
@@ -56,7 +56,7 @@ body::-webkit-scrollbar {
     display: none !important;  /* Safari and Chrome */
 }
 body::-webkit-scrollbar {
-    width: 0 !important;  /* Remove scrollbar space */  /* Optional: just make scrollbar invisible */
+    width: 0 !important;  /* Remove scrollbar space */
 }
 
 .bump, .negative-bump{
