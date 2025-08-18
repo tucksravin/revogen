@@ -190,7 +190,10 @@ line-height: 145%; /* 23.2px */
     text-transform: uppercase;
 }
 
-.copyright{
+.copyright, .footer{
+
+font-size: 15px;
+font-weight: 400;
 
 }
 

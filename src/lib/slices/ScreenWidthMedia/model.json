@@ -1,0 +1,73 @@
+{
+  "id": "screen_width_video",
+  "type": "SharedSlice",
+  "name": "ScreenWidthMedia",
+  "description": "ScreenWidthVideo",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "vimeo_id": {
+          "type": "Text",
+          "config": {
+            "label": "vimeo Id",
+            "placeholder": ""
+          }
+        },
+        "placeholder_image": {
+          "type": "Image",
+          "config": {
+            "label": "placeholder Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "centered_text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "centered text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "button_one": {
+          "type": "Link",
+          "config": {
+            "label": "button one",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false,
+            "variants": ["Primary", "Secondary"]
+          }
+        },
+        "text_float": {
+          "type": "Select",
+          "config": {
+            "label": "text float",
+            "placeholder": "",
+            "options": ["center", "bottom"],
+            "default_value": "center"
+          }
+        },
+        "height": {
+          "type": "Select",
+          "config": {
+            "label": "height",
+            "placeholder": "",
+            "options": ["screen", "half screen"],
+            "default_value": "screen"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
