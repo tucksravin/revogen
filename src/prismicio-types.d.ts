@@ -69,7 +69,12 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type PageDocumentDataSlicesSlice = RichTextSlice;
+type PageDocumentDataSlicesSlice =
+  | ScreenWidthVideoSlice
+  | TwoColSlice
+  | ImageRowSlice
+  | HomePageAnimSlice
+  | RichTextSlice;
 
 /**
  * Content for Page documents
@@ -141,7 +146,77 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-export type AllDocumentTypes = PageDocument;
+type SurgicalGraftsDocumentDataSlicesSlice =
+  | TwoColSlice
+  | HomePageAnimSlice
+  | ImageRowSlice
+  | ScreenWidthVideoSlice
+  | RichTextSlice;
+
+/**
+ * Content for surgical grafts documents
+ */
+interface SurgicalGraftsDocumentData {
+  /**
+   * Slice Zone field in *surgical grafts*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: surgical_grafts.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<SurgicalGraftsDocumentDataSlicesSlice> /**
+   * Meta Title field in *surgical grafts*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: surgical_grafts.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *surgical grafts*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: surgical_grafts.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *surgical grafts*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: surgical_grafts.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * surgical grafts document from Prismic
+ *
+ * - **API ID**: `surgical_grafts`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SurgicalGraftsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<SurgicalGraftsDocumentData>,
+    "surgical_grafts",
+    Lang
+  >;
+
+export type AllDocumentTypes = PageDocument | SurgicalGraftsDocument;
 
 /**
  * Default variation for HomePageAnim Slice
@@ -552,6 +627,9 @@ declare module "@prismicio/client" {
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      SurgicalGraftsDocument,
+      SurgicalGraftsDocumentData,
+      SurgicalGraftsDocumentDataSlicesSlice,
       AllDocumentTypes,
       HomePageAnimSlice,
       HomePageAnimSliceVariation,

@@ -1,43 +1,33 @@
-<script>
-  /* @typedef {import("@prismicio/client").Content} Content */
-  /* @typedef {import("@prismicio/svelte").SliceComponentProps} SliceComponentProps */
+<script lang="ts">
+  import DefaultButton from "$lib/components/Buttons/DefaultButton.svelte";
+  import ContentWidth from "$lib/components/ContentWidth/ContentWidth.svelte";
+  import ScreenWidthMedia from "$lib/components/ScreenWidth/ScreenWidthMedia.svelte";
+  import { isFilled, type Content } from "@prismicio/client";
+  import { PrismicRichText, type SliceComponentProps } from "@prismicio/svelte";
 
-  /* @type {SliceComponentProps<Content.ScreenWidthVideoSlice>} */
-  const { slice } = $props();
+  type Props = SliceComponentProps<Content.ScreenWidthVideoSlice>;
+
+  const { slice }: Props = $props();
 </script>
 
 <section
   data-slice-type={slice.slice_type}
   data-slice-variation={slice.variation}
 >
-  Placeholder component for {slice.slice_type} (variation: {slice.variation})
-  slices.
-  <br />
-  <strong>You can edit this slice directly in your code editor.</strong>
-  <!--
-	💡 Use Prismic MCP with your code editor
-	
-	Get AI-powered help to build your slice components — based on your actual model.
-	
-	▶️ Setup:
-	1. Add a new MCP Server in your code editor:
-	
-	{
-	  "mcpServers": {
-	    "Prismic MCP": {
-	      "command": "npx",
-	      "args": ["-y", "@prismicio/mcp-server@latest"]
-	    }
-	  }
-	}
-	
-	2. Select a model optimized for coding (e.g. Claude 3.7 Sonnet or similar)
-	
-	✅ Then open your slice file and ask your code editor:
-		"Code this slice"
-	
-	Your code editor reads your slice model and helps you code faster ⚡
-	🎙️ Give your feedback: https://community.prismic.io/t/help-us-shape-the-future-of-slice-creation/19505
-	📚 Documentation: https://prismic.io/docs/ai#code-with-prismics-mcp-server
-	-->
+  <ScreenWidthMedia 
+  	field={slice.primary.placeholder_image} 
+	vimeoId={slice.primary.vimeo_id as string} 
+	percentHeight={slice.primary.height==='screen' ? 100 : 50}>
+	<div class='absolute w-full h-full top-0 left-0'>
+		<ContentWidth>
+			<div class='rich-text'>
+				<PrismicRichText field={slice.primary.centered_text} />
+			</div>
+			{#if isFilled.link(slice.primary.button_one)}
+				<DefaultButton href={slice.primary.button_one.url}>{slice.primary.button_one.text}</DefaultButton>
+			{/if}
+		</ContentWidth>
+	</div>
+
+  </ScreenWidthMedia>
 </section>

@@ -9,7 +9,7 @@
  }
     let { href = "", onclick = () => {}, class:passedClasses = '', children = undefined, ...others  } : ButtonProps = $props();
 
-    const baseClasses = "rounded border-2 border-solid border-dark px-10 pt-4 pb-3 h-fit hover:bg-dark hover:text-white transition"
+    const baseClasses = "rounded-sm border-2 border-solid border-white text-white px-10 pt-4 pb-3 h-fit hover:bg-dark hover:text-white transition"
 
 </script>
 
