@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { MouseEventHandler } from "svelte/elements";
+  import DelayedLink from "../DelayedLink.svelte";
     interface ButtonProps {
    href?: string;
    onclick?: (event: MouseEvent ) => any;
@@ -15,12 +16,12 @@
 
 <div class="bump w-fit my-2 default-button">
     {#if href}
-        <a 
+        <DelayedLink 
             {href} 
             {onclick} 
             class="{baseClasses} {passedClasses}">
                 {@render children?.()}
-        </a>
+        </DelayedLink>
     {:else}
     <button {onclick}
             class="{baseClasses} {passedClasses}">

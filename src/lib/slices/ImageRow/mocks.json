@@ -46,6 +46,11 @@
 						]
 					}
 				]
+			},
+			"vertical_padding": {
+				"__TYPE__": "FieldContent",
+				"value": "0",
+				"type": "Select"
 			}
 		},
 		"items": []

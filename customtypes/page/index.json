@@ -13,15 +13,6 @@
           "placeholder": ""
         }
       },
-      "title": {
-        "type": "StructuredText",
-        "config": {
-          "label": "Title",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "single": "heading1"
-        }
-      },
       "default_background": {
         "type": "Select",
         "config": {
@@ -36,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "distributor_login": {
+              "type": "SharedSlice"
+            },
             "screen_width_video": {
               "type": "SharedSlice"
             },

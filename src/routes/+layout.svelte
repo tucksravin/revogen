@@ -8,6 +8,8 @@
 	import Footer from '$lib/components/Footer.svelte'
 	import { gradientTheme } from '$lib/stores/gradientTheme';
   import { fade } from 'svelte/transition';
+  import TransitionOverlay from '$lib/components/TransitionOverlay.svelte';
+
 
 	let { children } = $props();
 	
@@ -279,4 +281,5 @@
 	<Footer />
 </main>
 <LandscapeModal />
+<TransitionOverlay />
 <PrismicPreview {repositoryName} />

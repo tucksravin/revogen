@@ -70,6 +70,7 @@ type ContentRelationshipFieldWithData<
 }[Exclude<TCustomType[number], string>["id"]];
 
 type PageDocumentDataSlicesSlice =
+  | DistributorLoginSlice
   | ScreenWidthVideoSlice
   | TwoColSlice
   | ImageRowSlice
@@ -80,17 +81,6 @@ type PageDocumentDataSlicesSlice =
  * Content for Page documents
  */
 interface PageDocumentData {
-  /**
-   * Title field in *Page*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: page.title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  title: prismic.RichTextField;
-
   /**
    * default background field in *Page*
    *
@@ -249,6 +239,22 @@ export type SurgicalGraftsDocument<Lang extends string = string> =
 export type AllDocumentTypes = PageDocument | SurgicalGraftsDocument;
 
 /**
+ * Primary content in *DistributorLogin → Default → Primary*
+ */
+export interface DistributorLoginSliceDefaultPrimary {
+  /**
+   * vertical padding field in *DistributorLogin → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: 0
+   * - **API ID Path**: distributor_login.default.primary.vertical_padding
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  vertical_padding: prismic.SelectField<"0" | "5" | "10" | "20", "filled">;
+}
+
+/**
  * Default variation for DistributorLogin Slice
  *
  * - **API ID**: `default`
@@ -257,7 +263,7 @@ export type AllDocumentTypes = PageDocument | SurgicalGraftsDocument;
  */
 export type DistributorLoginSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<DistributorLoginSliceDefaultPrimary>,
   never
 >;
 
@@ -346,6 +352,17 @@ export interface ImageRowSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
   images: prismic.GroupField<Simplify<ImageRowSliceDefaultPrimaryImagesItem>>;
+
+  /**
+   * vertical padding field in *ImageRow → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: 0
+   * - **API ID Path**: image_row.default.primary.vertical_padding
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  vertical_padding: prismic.SelectField<"0" | "5" | "10" | "20", "filled">;
 }
 
 /**
@@ -815,6 +832,7 @@ declare module "@prismicio/client" {
       SurgicalGraftsDocumentDataSlicesSlice,
       AllDocumentTypes,
       DistributorLoginSlice,
+      DistributorLoginSliceDefaultPrimary,
       DistributorLoginSliceVariation,
       DistributorLoginSliceDefault,
       HomePageAnimSlice,

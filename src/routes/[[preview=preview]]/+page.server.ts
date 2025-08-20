@@ -9,7 +9,7 @@ export async function load({ fetch, cookies }) {
 
 	return {
 		page,
-		title: asText(page.data.title),
+		title: page.data.meta_title||"Revogen Biologics",
 		meta_description: page.data.meta_description,
 		meta_title: page.data.meta_title,
 		meta_image: page.data.meta_image.url
