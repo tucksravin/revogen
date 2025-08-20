@@ -22,6 +22,15 @@
           "single": "heading1"
         }
       },
+      "default_background": {
+        "type": "Select",
+        "config": {
+          "label": "default background",
+          "placeholder": "",
+          "options": ["light_blue", "pink", "dark_blue", "teal"],
+          "default_value": "light_blue"
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

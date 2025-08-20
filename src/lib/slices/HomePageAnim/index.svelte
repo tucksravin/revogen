@@ -1,43 +1,74 @@
-<script>
-  /* @typedef {import("@prismicio/client").Content} Content */
-  /* @typedef {import("@prismicio/svelte").SliceComponentProps} SliceComponentProps */
+<script lang="ts">
+  import ContentWidth from "$lib/components/ContentWidth/ContentWidth.svelte";
+import type { Content } from "@prismicio/client";
+import type { SliceComponentProps } from "@prismicio/svelte";
+import { gradientTheme, defaultGradientTheme } from "$lib/stores/gradientTheme";
 
-  /* @type {SliceComponentProps<Content.HomePageAnimSlice>} */
-  const { slice } = $props();
+type Props = SliceComponentProps<Content.HomePageAnimSlice>
+
+const { slice }: Props = $props();
 </script>
 
-<section
-  data-slice-type={slice.slice_type}
-  data-slice-variation={slice.variation}
->
-  Placeholder component for {slice.slice_type} (variation: {slice.variation})
-  slices.
-  <br />
-  <strong>You can edit this slice directly in your code editor.</strong>
-  <!--
-	💡 Use Prismic MCP with your code editor
-	
-	Get AI-powered help to build your slice components — based on your actual model.
-	
-	▶️ Setup:
-	1. Add a new MCP Server in your code editor:
-	
-	{
-	  "mcpServers": {
-	    "Prismic MCP": {
-	      "command": "npx",
-	      "args": ["-y", "@prismicio/mcp-server@latest"]
-	    }
-	  }
+<style>
+
+	.interactive-button {
+		width: 10rem;
+		height: 10rem;
+		border: 2px solid;
+		border-color: white;
+		background-color: rgba(255, 255, 255, 0.3);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: background-color 0.3s ease, transform 0.2s ease;
+		will-change: background-color, transform;
+		user-select: none;
+		-webkit-tap-highlight-color: transparent;
 	}
-	
-	2. Select a model optimized for coding (e.g. Claude 3.7 Sonnet or similar)
-	
-	✅ Then open your slice file and ask your code editor:
-		"Code this slice"
-	
-	Your code editor reads your slice model and helps you code faster ⚡
-	🎙️ Give your feedback: https://community.prismic.io/t/help-us-shape-the-future-of-slice-creation/19505
-	📚 Documentation: https://prismic.io/docs/ai#code-with-prismics-mcp-server
-	-->
+
+	.interactive-button:hover {
+		background-color: rgba(255, 255, 255, 0.6);
+	}
+
+
+
+</style>
+
+<section
+	data-slice-type={slice.slice_type}
+	data-slice-variation={slice.variation}
+	class="h-screen w-screen"
+>
+
+<ContentWidth class="h-full flex flex-col md:flex-row items-center justify-evenly">
+		<div 
+			class='interactive-button' 
+			onmouseenter={()=>gradientTheme.set(1)} 
+			onmouseleave={()=>gradientTheme.set($defaultGradientTheme)}
+			role="button"
+			tabindex="0"
+		>
+			surgical
+		</div>
+		<div 
+			class='interactive-button' 
+			onmouseenter={()=>gradientTheme.set(2)} 
+			onmouseleave={()=>gradientTheme.set($defaultGradientTheme)}
+			role="button"
+			tabindex="0"
+		>
+			wound care
+		</div>
+		<div 
+			class='interactive-button' 
+			onmouseenter={()=>gradientTheme.set(3)} 
+			onmouseleave={()=>gradientTheme.set($defaultGradientTheme)}
+			role="button"
+			tabindex="0"
+		>
+			ocular
+		</div>
+</ContentWidth>
+
 </section>

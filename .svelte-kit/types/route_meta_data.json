@@ -8,6 +8,10 @@
 	"/slice-simulator": [
 		"src/routes/+layout.server.ts"
 	],
+	"/[[preview=preview]]/surgical-grafts/[uid]": [
+		"src/routes/[[preview=preview]]/surgical-grafts/[uid]/+page.server.ts",
+		"src/routes/+layout.server.ts"
+	],
 	"/[[preview=preview]]": [
 		"src/routes/[[preview=preview]]/+page.server.ts",
 		"src/routes/+layout.server.ts"

@@ -6,9 +6,11 @@
 	import LandscapeModal from '$lib/components/LandscapeModal.svelte';
 	import Nav from '$lib/components/Nav.svelte'
 	import Footer from '$lib/components/Footer.svelte'
+	import { gradientTheme } from '$lib/stores/gradientTheme';
+  import { fade } from 'svelte/transition';
 
 	let { children } = $props();
-	let option = $state(0);
+	
 </script>
 
 <svelte:head>
@@ -229,111 +231,51 @@
 		will-change: opacity;
 	}
 
-	/* Interactive area optimization */
-	.interactive-area {
-		position: relative;
-		z-index: 20;
-		display: flex;
-		gap: 0;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-		will-change: transform;
-	}
-
-	.interactive-button {
-		width: 10rem;
-		height: 10rem;
-		border: 2px solid;
-		background-color: rgba(255, 255, 255, 0.3);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		cursor: pointer;
-		transition: background-color 0.3s ease, transform 0.2s ease;
-		will-change: background-color, transform;
-		user-select: none;
-		-webkit-tap-highlight-color: transparent;
-	}
-
-	.interactive-button:hover {
-		background-color: rgba(255, 255, 255, 0.6);
-	}
 
 
-	.interactive-button:nth-child(2) {
-		border-left: none;
-		border-right: none;
-	}
 </style>
 
 <div class='gradient-container'>
 	<!-- Base background color -->
-	<div class="bg-base option-{option}"></div>
+	<div class="bg-base option-{$gradientTheme}"></div>
 	
 	<!-- Option 0 - Blue -->
-	<div class='gradient-layer-container add-noise {option===0?"opacity-100":"opacity-0"}'>
+	<div class='gradient-layer-container add-noise {$gradientTheme===0?"opacity-100":"opacity-0"}'>
 		<div class='gradient-layer option-0-layer1'></div>
 		<div class='gradient-layer option-0-layer2'></div>
 		<div class='gradient-layer option-0-layer3'></div>
 	</div>
 	
 	<!-- Option 1 - Pink -->
-	<div class='gradient-layer-container add-noise {option===1?"opacity-100":"opacity-0"}'>
+	<div class='gradient-layer-container add-noise {$gradientTheme===1?"opacity-100":"opacity-0"}'>
 		<div class='gradient-layer option-1-layer1'></div>
 		<div class='gradient-layer option-1-layer2'></div>
 		<div class='gradient-layer option-1-layer3'></div>
 	</div>
 	
 	<!-- Option 2 - Deep Blue -->
-	<div class='gradient-layer-container add-noise {option===2?"opacity-100":"opacity-0"}'>
+	<div class='gradient-layer-container add-noise {$gradientTheme===2?"opacity-100":"opacity-0"}'>
 		<div class='gradient-layer option-2-layer1'></div>
 		<div class='gradient-layer option-2-layer2'></div>
 		<div class='gradient-layer option-2-layer3'></div>
 	</div>
 	
 	<!-- Option 3 - Teal -->
-	<div class='gradient-layer-container add-noise {option===3?"opacity-100":"opacity-0"}'>
+	<div class='gradient-layer-container add-noise {$gradientTheme===3?"opacity-100":"opacity-0"}'>
 		<div class='gradient-layer option-3-layer1'></div>
 		<div class='gradient-layer option-3-layer2'></div>
 		<div class='gradient-layer option-3-layer3'></div>
 	</div>
 	
-	<div class="interactive-area">
-		<div 
-			class='interactive-button' 
-			onmouseenter={()=>option=1} 
-			onmouseleave={()=>option=0}
-			role="button"
-			tabindex="0"
-		>
-			surgical
-		</div>
-		<div 
-			class='interactive-button' 
-			onmouseenter={()=>option=2} 
-			onmouseleave={()=>option=0}
-			role="button"
-			tabindex="0"
-		>
-			wound care
-		</div>
-		<div 
-			class='interactive-button' 
-			onmouseenter={()=>option=3} 
-			onmouseleave={()=>option=0}
-			role="button"
-			tabindex="0"
-		>
-			ocular
-		</div>
-	</div>
 </div>
 
-<main>
+<main class="-translate-y-[1px]">
 	<Nav />
-	{@render children?.()}
+	{#key children}
+	<div transition:fade>
+		{@render children?.()}
+	</div>
+	{/key}
 	<Footer />
 </main>
 <LandscapeModal />

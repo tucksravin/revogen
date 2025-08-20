@@ -27,25 +27,28 @@
             "thumbnails": []
           }
         },
-        "centered_text": {
+        "text": {
           "type": "StructuredText",
           "config": {
-            "label": "centered text",
+            "label": "text",
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         },
-        "button_one": {
+        "button": {
           "type": "Link",
           "config": {
-            "label": "button one",
+            "label": "button",
             "placeholder": "",
             "select": null,
             "allowTargetBlank": true,
             "allowText": true,
             "repeat": false,
-            "variants": ["Primary", "Secondary"]
+            "variants": [
+              "Primary",
+              "Secondary"
+            ]
           }
         },
         "text_float": {
@@ -53,7 +56,10 @@
           "config": {
             "label": "text float",
             "placeholder": "",
-            "options": ["center", "bottom"],
+            "options": [
+              "center",
+              "bottom"
+            ],
             "default_value": "center"
           }
         },
@@ -62,8 +68,41 @@
           "config": {
             "label": "height",
             "placeholder": "",
-            "options": ["screen", "half screen"],
+            "options": [
+              "screen",
+              "half screen"
+            ],
             "default_value": "screen"
+          }
+        },
+        "darken": {
+          "type": "Boolean",
+          "config": {
+            "label": "darken image",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
+        "max_width": {
+          "type": "Select",
+          "config": {
+            "label": "max width",
+            "placeholder": "",
+            "options": [
+              "full",
+              "limited"
+            ],
+            "default_value": "full"
+          }
+        },
+        "show_scroll_arrow": {
+          "type": "Boolean",
+          "config": {
+            "label": "show scroll arrow",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
           }
         }
       },

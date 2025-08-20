@@ -31,27 +31,6 @@
 				"value": "load",
 				"type": "Text"
 			},
-			"centered_text": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Sint ex do do ea nisi anim anim reprehenderit. Do officia officia eu nostrud ea deserunt sit Lorem. Ullamco ad velit excepteur voluptate."
-						}
-					}
-				]
-			},
-			"button_one": {
-				"key": "aec81134-d9b4-4ce6-956c-fb932dfb1e03",
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "ExternalLink",
-					"url": "https://prismic.io",
-					"text": "once",
-					"variant": "Secondary"
-				}
-			},
 			"text_float": {
 				"__TYPE__": "FieldContent",
 				"value": "center",
@@ -61,6 +40,40 @@
 				"__TYPE__": "FieldContent",
 				"value": "half screen",
 				"type": "Select"
+			},
+			"darken": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"max_width": {
+				"__TYPE__": "FieldContent",
+				"value": "limited",
+				"type": "Select"
+			},
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Amet quis quis consectetur cillum ad amet id ullamco veniam ipsum deserunt est duis cupidatat. Non aliquip non quis laboris aliqua est ad exercitation ex aliqua nisi. Tempor proident velit anim sint aute sit eiusmod tempor et."
+						}
+					}
+				]
+			},
+			"button": {
+				"key": "a2d8eba1-29a8-480a-94cb-76bf491ccbca",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "dog",
+					"variant": "Secondary"
+				}
+			},
+			"show_scroll_arrow": {
+				"__TYPE__": "BooleanContent",
+				"value": false
 			}
 		},
 		"items": []

@@ -1,43 +1,42 @@
-<script>
-  /* @typedef {import("@prismicio/client").Content} Content */
-  /* @typedef {import("@prismicio/svelte").SliceComponentProps} SliceComponentProps */
-
-  /* @type {SliceComponentProps<Content.RichTextSlice>} */
-  const { slice } = $props();
+<script lang="ts">
+  import ContentWidth from "$lib/components/ContentWidth/ContentWidth.svelte";
+  import DefaultButton from "$lib/components/Buttons/DefaultButton.svelte";
+  import downArrow from "$lib/assets/icons/downArrow.svg"
+  import { isFilled } from "@prismicio/client";
+	import type { Content } from "@prismicio/client";
+	import { PrismicRichText, type SliceComponentProps } from "@prismicio/svelte";
+	
+	type Props = SliceComponentProps<Content.RichTextSlice>;
+	const { slice }: Props = $props();
 </script>
 
 <section
-  data-slice-type={slice.slice_type}
-  data-slice-variation={slice.variation}
+	data-slice-type={slice.slice_type}
+	data-slice-variation={slice.variation}
+	style="padding-top:{parseInt(slice.primary.vertical_padding)*4}px;padding-bottom:{parseInt(slice.primary.vertical_padding)*4}px;"
+	class="text-white"
 >
-  Placeholder component for {slice.slice_type} (variation: {slice.variation})
-  slices.
-  <br />
-  <strong>You can edit this slice directly in your code editor.</strong>
-  <!--
-	💡 Use Prismic MCP with your code editor
-	
-	Get AI-powered help to build your slice components — based on your actual model.
-	
-	▶️ Setup:
-	1. Add a new MCP Server in your code editor:
-	
-	{
-	  "mcpServers": {
-	    "Prismic MCP": {
-	      "command": "npx",
-	      "args": ["-y", "@prismicio/mcp-server@latest"]
-	    }
-	  }
-	}
-	
-	2. Select a model optimized for coding (e.g. Claude 3.7 Sonnet or similar)
-	
-	✅ Then open your slice file and ask your code editor:
-		"Code this slice"
-	
-	Your code editor reads your slice model and helps you code faster ⚡
-	🎙️ Give your feedback: https://community.prismic.io/t/help-us-shape-the-future-of-slice-creation/19505
-	📚 Documentation: https://prismic.io/docs/ai#code-with-prismics-mcp-server
-	-->
+{#if slice.primary.max_width!=="limited"}
+	<ContentWidth class="flex flex-col gap-6 {slice.primary.floatCenter?"text-center justify-center":""} ">
+		<PrismicRichText field={slice.primary.text}/>
+		{#if isFilled.link(slice.primary.button)}
+				<DefaultButton href={slice.primary.button.url}>{slice.primary.button.text}</DefaultButton>
+		{/if}
+		{#if slice.primary.show_scroll_arrow}
+			<img src={downArrow} alt="down" class="mt-10 h-20"/>
+		{/if}
+	</ContentWidth>
+{:else}
+<ContentWidth class='h-full'>
+	<div class="w-full max-w-[600px] mx-auto flex flex-col gap-6  justify-center {slice.primary.floatCenter?"text-center items-center":""}">
+		<PrismicRichText field={slice.primary.text}/>
+		{#if isFilled.link(slice.primary.button)}
+				<DefaultButton href={slice.primary.button.url}>{slice.primary.button.text}</DefaultButton>
+		{/if}
+		{#if slice.primary.show_scroll_arrow}
+			<img src={downArrow} alt="down" class="mt-10 h-20"/>
+		{/if}
+	</div>
+</ContentWidth>
+{/if}
 </section>

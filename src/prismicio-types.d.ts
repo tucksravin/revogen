@@ -92,6 +92,21 @@ interface PageDocumentData {
   title: prismic.RichTextField;
 
   /**
+   * default background field in *Page*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: light_blue
+   * - **API ID Path**: page.default_background
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  default_background: prismic.SelectField<
+    "light_blue" | "pink" | "dark_blue" | "teal",
+    "filled"
+  >;
+
+  /**
    * Slice Zone field in *Page*
    *
    * - **Field Type**: Slice Zone
@@ -158,6 +173,21 @@ type SurgicalGraftsDocumentDataSlicesSlice =
  */
 interface SurgicalGraftsDocumentData {
   /**
+   * default background field in *surgical grafts*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: light_blue
+   * - **API ID Path**: surgical_grafts.default_background
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  default_background: prismic.SelectField<
+    "light_blue" | "pink" | "dark_blue" | "teal",
+    "filled"
+  >;
+
+  /**
    * Slice Zone field in *surgical grafts*
    *
    * - **Field Type**: Slice Zone
@@ -217,6 +247,36 @@ export type SurgicalGraftsDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes = PageDocument | SurgicalGraftsDocument;
+
+/**
+ * Default variation for DistributorLogin Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type DistributorLoginSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *DistributorLogin*
+ */
+type DistributorLoginSliceVariation = DistributorLoginSliceDefault;
+
+/**
+ * DistributorLogin Shared Slice
+ *
+ * - **API ID**: `distributor_login`
+ * - **Description**: DistributorLogin
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type DistributorLoginSlice = prismic.SharedSlice<
+  "distributor_login",
+  DistributorLoginSliceVariation
+>;
 
 /**
  * Default variation for HomePageAnim Slice
@@ -358,6 +418,42 @@ export interface RichTextSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   show_scroll_arrow: prismic.BooleanField;
+
+  /**
+   * vertical padding field in *RichText → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: 0
+   * - **API ID Path**: rich_text.default.primary.vertical_padding
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  vertical_padding: prismic.SelectField<
+    "0" | "5" | "10" | "20" | "40",
+    "filled"
+  >;
+
+  /**
+   * max width field in *RichText → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: full
+   * - **API ID Path**: rich_text.default.primary.max_width
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  max_width: prismic.SelectField<"full" | "limited", "filled">;
+
+  /**
+   * float field in *RichText → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: rich_text.default.primary.floatCenter
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  floatCenter: prismic.BooleanField;
 }
 
 /**
@@ -415,24 +511,24 @@ export interface ScreenWidthVideoSliceDefaultPrimary {
   placeholder_image: prismic.ImageField<never>;
 
   /**
-   * centered text field in *ScreenWidthMedia → Default → Primary*
+   * text field in *ScreenWidthMedia → Default → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: screen_width_video.default.primary.centered_text
+   * - **API ID Path**: screen_width_video.default.primary.text
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
-  centered_text: prismic.RichTextField;
+  text: prismic.RichTextField;
 
   /**
-   * button one field in *ScreenWidthMedia → Default → Primary*
+   * button field in *ScreenWidthMedia → Default → Primary*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: screen_width_video.default.primary.button_one
+   * - **API ID Path**: screen_width_video.default.primary.button
    * - **Documentation**: https://prismic.io/docs/fields/link
    */
-  button_one: prismic.LinkField<
+  button: prismic.LinkField<
     string,
     string,
     unknown,
@@ -461,6 +557,39 @@ export interface ScreenWidthVideoSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
   height: prismic.SelectField<"screen" | "half screen", "filled">;
+
+  /**
+   * darken image field in *ScreenWidthMedia → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: screen_width_video.default.primary.darken
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  darken: prismic.BooleanField;
+
+  /**
+   * max width field in *ScreenWidthMedia → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: full
+   * - **API ID Path**: screen_width_video.default.primary.max_width
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  max_width: prismic.SelectField<"full" | "limited", "filled">;
+
+  /**
+   * show scroll arrow field in *ScreenWidthMedia → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: screen_width_video.default.primary.show_scroll_arrow
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  show_scroll_arrow: prismic.BooleanField;
 }
 
 /**
@@ -494,11 +623,11 @@ export type ScreenWidthVideoSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *TwoCol → image text → Primary*
+ * Primary content in *TwoCol → media text → Primary*
  */
 export interface TwoColSliceDefaultPrimary {
   /**
-   * image field in *TwoCol → image text → Primary*
+   * image field in *TwoCol → media text → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -508,7 +637,7 @@ export interface TwoColSliceDefaultPrimary {
   image: prismic.ImageField<never>;
 
   /**
-   * image aspect field in *TwoCol → image text → Primary*
+   * image aspect field in *TwoCol → media text → Primary*
    *
    * - **Field Type**: Select
    * - **Placeholder**: *None*
@@ -522,7 +651,7 @@ export interface TwoColSliceDefaultPrimary {
   >;
 
   /**
-   * text field in *TwoCol → image text → Primary*
+   * text field in *TwoCol → media text → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -532,7 +661,7 @@ export interface TwoColSliceDefaultPrimary {
   text: prismic.RichTextField;
 
   /**
-   * button field in *TwoCol → image text → Primary*
+   * button field in *TwoCol → media text → Primary*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
@@ -546,10 +675,53 @@ export interface TwoColSliceDefaultPrimary {
     prismic.FieldState,
     "Primary" | "Secondary"
   >;
+
+  /**
+   * order field in *TwoCol → media text → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: two_col.default.primary.isMediaFirst
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  isMediaFirst: prismic.BooleanField;
+
+  /**
+   * border top field in *TwoCol → media text → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: two_col.default.primary.showTopBorder
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  showTopBorder: prismic.BooleanField;
+
+  /**
+   * vimeo Id field in *TwoCol → media text → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.default.primary.vimeo_id
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  vimeo_id: prismic.KeyTextField;
+
+  /**
+   * vertical padding field in *TwoCol → media text → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: 0
+   * - **API ID Path**: two_col.default.primary.vertical_padding
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  vertical_padding: prismic.SelectField<"0" | "5" | "10" | "20", "filled">;
 }
 
 /**
- * image text variation for TwoCol Slice
+ * media text variation for TwoCol Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -574,6 +746,17 @@ export interface TwoColSliceContactFormPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   text: prismic.RichTextField;
+
+  /**
+   * vertical padding field in *TwoCol → Contact Form → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: 0
+   * - **API ID Path**: two_col.contactForm.primary.vertical_padding
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  vertical_padding: prismic.SelectField<"0" | "5" | "10" | "20", "filled">;
 }
 
 /**
@@ -631,6 +814,9 @@ declare module "@prismicio/client" {
       SurgicalGraftsDocumentData,
       SurgicalGraftsDocumentDataSlicesSlice,
       AllDocumentTypes,
+      DistributorLoginSlice,
+      DistributorLoginSliceVariation,
+      DistributorLoginSliceDefault,
       HomePageAnimSlice,
       HomePageAnimSliceVariation,
       HomePageAnimSliceDefault,

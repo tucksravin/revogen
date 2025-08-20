@@ -9,11 +9,11 @@
  }
     let { href = "", onclick = () => {}, class:passedClasses = '', children = undefined, ...others  } : ButtonProps = $props();
 
-    const baseClasses = "rounded-sm border-2 border-solid border-white text-white px-10 pt-4 pb-3 h-fit hover:bg-dark hover:text-white transition"
+    const baseClasses = "rounded-sm border-[1px] border-solid border-white text-white px-[10px] py-2 uppercase transition"
 
 </script>
 
-<div class="bump">
+<div class="bump w-fit my-2 default-button">
     {#if href}
         <a 
             {href} 

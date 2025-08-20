@@ -51,6 +51,24 @@
 					"text": "brown",
 					"variant": "Primary"
 				}
+			},
+			"isMediaFirst": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"showTopBorder": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"vimeo_id": {
+				"__TYPE__": "FieldContent",
+				"value": "swung",
+				"type": "Text"
+			},
+			"vertical_padding": {
+				"__TYPE__": "FieldContent",
+				"value": "0",
+				"type": "Select"
 			}
 		},
 		"items": []
@@ -69,6 +87,11 @@
 						}
 					}
 				]
+			},
+			"vertical_padding": {
+				"__TYPE__": "FieldContent",
+				"value": "0",
+				"type": "Select"
 			}
 		},
 		"items": [

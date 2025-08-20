@@ -44,6 +44,42 @@
             "placeholder_true": "true",
             "default_value": false
           }
+        },
+        "vertical_padding": {
+          "type": "Select",
+          "config": {
+            "label": "vertical padding",
+            "placeholder": "",
+            "options": [
+              "0",
+              "5",
+              "10",
+              "20",
+              "40"
+            ],
+            "default_value": "0"
+          }
+        },
+        "max_width": {
+          "type": "Select",
+          "config": {
+            "label": "max width",
+            "placeholder": "",
+            "options": [
+              "full",
+              "limited"
+            ],
+            "default_value": "full"
+          }
+        },
+        "floatCenter": {
+          "type": "Boolean",
+          "config": {
+            "label": "float",
+            "placeholder_false": "float left",
+            "placeholder_true": "float center",
+            "default_value": true
+          }
         }
       },
       "items": {}

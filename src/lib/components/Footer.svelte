@@ -3,8 +3,8 @@
 
 </script>
 
-<ContentWidth class="flex flex-col md:flex-row justify-between text-white footer relative">
-    <div class="flex flex-col justify-stretch">
+<ContentWidth class="flex flex-col md:flex-row justify-between text-white footer relative border-t-[2px] border-white mt-20">
+    <div class="flex flex-col justify-stretch mt-4 pb-4">
         <h4 class='drop-shadow-sm'>Revolutionizing Bioregeneration</h4>
         <div class="hidden md:block copywright drop-shadow-sm mt-auto">{"© "+ new Date().getFullYear() +" RevoGen Biologics®. All Rights Reserved."}</div>
     </div>

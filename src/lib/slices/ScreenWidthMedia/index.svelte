@@ -4,6 +4,7 @@
   import ScreenWidthMedia from "$lib/components/ScreenWidth/ScreenWidthMedia.svelte";
   import { isFilled, type Content } from "@prismicio/client";
   import { PrismicRichText, type SliceComponentProps } from "@prismicio/svelte";
+  import downArrow from "$lib/assets/icons/downArrow.svg"
 
   type Props = SliceComponentProps<Content.ScreenWidthVideoSlice>;
 
@@ -13,21 +14,40 @@
 <section
   data-slice-type={slice.slice_type}
   data-slice-variation={slice.variation}
+  class='text-white'
 >
   <ScreenWidthMedia 
-  	field={slice.primary.placeholder_image} 
-	vimeoId={slice.primary.vimeo_id as string} 
+  	field={isFilled.image(slice.primary.placeholder_image)?slice.primary.placeholder_image:null} 
+	vimeoId={slice.primary.vimeo_id as string || ''}
+	darken={slice.primary.darken} 
 	percentHeight={slice.primary.height==='screen' ? 100 : 50}>
 	<div class='absolute w-full h-full top-0 left-0'>
-		<ContentWidth>
-			<div class='rich-text'>
-				<PrismicRichText field={slice.primary.centered_text} />
-			</div>
-			{#if isFilled.link(slice.primary.button_one)}
-				<DefaultButton href={slice.primary.button_one.url}>{slice.primary.button_one.text}</DefaultButton>
-			{/if}
-		</ContentWidth>
+		{#if slice.primary.max_width!=="limited"}
+	<ContentWidth class="h-full flex flex-col gap-6  justify-center text-center items-center">
+		<PrismicRichText field={slice.primary.text}/>
+		{#if isFilled.link(slice.primary.button)}
+				<DefaultButton href={slice.primary.button.url}>{slice.primary.button.text}</DefaultButton>
+		{/if}
+
+
+	</ContentWidth>
+{:else}
+<ContentWidth class='h-full'>
+	<div class="h-full w-full max-w-[600px] mx-auto flex flex-col gap-6 justify-center text-center items-center">
+		<PrismicRichText field={slice.primary.text}/>
+		{#if isFilled.link(slice.primary.button)}
+				<DefaultButton href={slice.primary.button.url}>{slice.primary.button.text}</DefaultButton>
+		{/if}
+
+
 	</div>
+</ContentWidth>
+{/if}
+	</div>
+
+		{#if slice.primary.show_scroll_arrow}
+			<img src={downArrow} alt="down" class="absolute bottom-4 h-16 left-1/2 -translate-x-1/2"/>
+		{/if}
 
   </ScreenWidthMedia>
 </section>

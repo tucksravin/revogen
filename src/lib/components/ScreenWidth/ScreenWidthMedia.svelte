@@ -1,5 +1,6 @@
 <script lang="ts">
  import type { ImageField } from "@prismicio/client";
+ import { isFilled } from "@prismicio/client";
 import placeholder from "../../assets/images/background_placeholder.svg";
 import { PrismicImage } from "@prismicio/svelte";
 import Img from "@zerodevx/svelte-img";
@@ -17,6 +18,8 @@ class:passedClasses = '',
  } = $props();
 let viewportHeight: number = $state(1024);
 let viewportWidth: number = $state(768);
+
+
 </script>
 
 <svelte:window
@@ -34,7 +37,12 @@ style="{viewportHeight * percentHeight/100 * 16 > viewportWidth * 9
   ? `height: ${percentHeight}lvh; min-width: 100%` 
   : `width: 100vw; min-height: ${percentHeight}lvh`}"
 >
- {#if !field && typeof src === 'string'}
+ {#if isFilled.image(field)}
+ <PrismicImage
+{field}
+class="absolute h-full w-full object-cover -z-10 {passedClasses}"
+/>
+{:else if typeof src==='string'}
 <img
 {src}
 alt={altText}
@@ -47,11 +55,6 @@ class="absolute bottom-0 {placeholderSide}-0 h-full w-full object-cover {passedC
 alt={altText}
 class="absolute bottom-0 {placeholderSide}-0 h-full w-full object-cover {passedClasses} -z-10
 {src === placeholder ? 'lg:w-[45%] md:h-auto' : ''}"
-/>
- {:else}
-<PrismicImage
-{field}
-class="absolute h-full w-full object-cover -z-10 {passedClasses}"
 />
  {/if}
  {#if vimeoId}

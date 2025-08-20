@@ -1,0 +1,18 @@
+{
+  "id": "distributor_login",
+  "type": "SharedSlice",
+  "name": "DistributorLogin",
+  "description": "DistributorLogin",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {}
+    }
+  ]
+}
