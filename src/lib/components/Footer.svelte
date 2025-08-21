@@ -15,7 +15,7 @@
 <DelayedLink href='/wound-care' class="hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-sm">wound care grafts</DelayedLink>
 <DelayedLink href='/surgical-grafts/' class="hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-sm">surgical grafts</DelayedLink>
 <DelayedLink href='/surgical-grafts/allografts' class="ml-5 hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-sm">allografts</DelayedLink>
-<DelayedLink href='/surgical-grafts/sports-medicine-grafts' class="ml-5 hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-sm">sports medicine grafts</DelayedLink>
+<DelayedLink href='/surgical-grafts/sports-medicine' class="ml-5 hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-sm">sports medicine grafts</DelayedLink>
 <DelayedLink href='/surgical-grafts/amnion-patches' class="ml-5 hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-sm">amnion patches</DelayedLink>
 <DelayedLink href='/surgical-grafts/synthetics' class="ml-5 hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-sm">synthetics</DelayedLink>
 <div class="h-0.5 w-full bg-white rounded-full"></div>
