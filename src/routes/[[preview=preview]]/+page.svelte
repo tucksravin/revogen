@@ -2,6 +2,7 @@
  import { SliceZone } from '@prismicio/svelte';
 import { components } from '$lib/slices/index.js';
 import { defaultGradientColor } from '$lib/stores/gradientTheme.js';
+  import IntroAnimation from '$lib/components/IntroAnimation.svelte';
 
 let { data } = $props();
 let viewportWidth = $state(1024);
@@ -16,7 +17,8 @@ $effect(() => {
 </script>
 
 <svelte:window bind:innerWidth={viewportWidth} />
+<IntroAnimation />
 
 {#key data}
-<SliceZone slices={content.slices} {components}/>
+  <SliceZone slices={content.slices} {components}/>
 {/key}
