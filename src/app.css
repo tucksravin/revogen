@@ -41,7 +41,7 @@
 
 body, main{
     font-family: "citrine-variable", sans-serif;
-    font-variation-settings: "wght" 300;
+    font-variation-settings: "wght" 400;
     transition-property: all;
     transition-timing-function: cubic-bezier(.5,0,0,1);
     transition-duration: 500ms;
@@ -179,6 +179,7 @@ p.body-3{
 font-style: normal;
 font-weight: 600;
 line-height: 145%; /* 23.2px */
+   font-variation-settings: "wght" 600;
 }
 
 .label, button, p em, .default-button a{

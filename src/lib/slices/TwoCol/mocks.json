@@ -69,6 +69,16 @@
 				"__TYPE__": "FieldContent",
 				"value": "0",
 				"type": "Select"
+			},
+			"button_two": {
+				"key": "92d16466-d71d-4abd-8ed9-59a71ca226e5",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "treated",
+					"variant": "Secondary"
+				}
 			}
 		},
 		"items": []
@@ -92,6 +102,142 @@
 				"__TYPE__": "FieldContent",
 				"value": "0",
 				"type": "Select"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "imageTableText",
+		"primary": {
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef",
+					"width": 4000,
+					"height": 6000
+				},
+				"url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef",
+				"width": 4000,
+				"height": 6000,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "disappear",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"image_aspect": {
+				"__TYPE__": "FieldContent",
+				"value": "3:4",
+				"type": "Select"
+			},
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Mollit mollit qui ea exercitation sit."
+						}
+					}
+				]
+			},
+			"button": {
+				"key": "3e75b0f2-dd0c-443a-95d0-90af0ac24e6c",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io",
+					"text": "identity",
+					"variant": "Secondary"
+				}
+			},
+			"isMediaFirst": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"showTopBorder": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"vimeo_id": {
+				"__TYPE__": "FieldContent",
+				"value": "herd",
+				"type": "Text"
+			},
+			"vertical_padding": {
+				"__TYPE__": "FieldContent",
+				"value": "10",
+				"type": "Select"
+			},
+			"button_two": {
+				"key": "ba9116bc-7e41-4abc-bb84-878bfd8998f4",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com",
+					"text": "running",
+					"variant": "Primary"
+				}
+			},
+			"table_column": {
+				"__TYPE__": "FieldContent",
+				"value": "desc and two sizes and #",
+				"type": "Select"
+			},
+			"products": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"description",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "ants",
+									"type": "Text"
+								}
+							],
+							[
+								"size_one",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "century",
+									"type": "Text"
+								}
+							],
+							[
+								"size_two",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "expression",
+									"type": "Text"
+								}
+							],
+							[
+								"product_number",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "decide",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
 			}
 		},
 		"items": [
