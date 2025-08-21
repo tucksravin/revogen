@@ -10,7 +10,7 @@
  }
     let { href = "", onclick = () => {}, class:passedClasses = '', children = undefined, ...others  } : ButtonProps = $props();
 
-    const baseClasses = "rounded-sm border-[1px] border-solid border-white text-white px-[10px] py-2 uppercase transition"
+    const baseClasses = "rounded-sm border-[1px] border-solid border-white text-white px-[10px] py-2 uppercase transition hover:text-black hover:bg-white active:bg-white/50"
 
 </script>
 

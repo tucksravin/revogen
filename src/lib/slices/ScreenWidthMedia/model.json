@@ -104,6 +104,21 @@
             "placeholder_true": "true",
             "default_value": false
           }
+        },
+        "button_two": {
+          "type": "Link",
+          "config": {
+            "label": "button two",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false,
+            "variants": [
+              "Primary",
+              "Secondary"
+            ]
+          }
         }
       },
       "items": {}

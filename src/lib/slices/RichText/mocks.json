@@ -41,6 +41,16 @@
 			"floatCenter": {
 				"__TYPE__": "BooleanContent",
 				"value": true
+			},
+			"button_two": {
+				"__TYPE__": "LinkContent",
+				"key": "05eb5de1-f6f9-4a88-b67b-a543ab1ecb38",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "forth",
+					"variant": "Secondary"
+				}
 			}
 		},
 		"items": []

@@ -74,6 +74,16 @@
 			"show_scroll_arrow": {
 				"__TYPE__": "BooleanContent",
 				"value": false
+			},
+			"button_two": {
+				"__TYPE__": "LinkContent",
+				"key": "d15b438d-de85-435e-97e6-da524d94e264",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com",
+					"text": "moving",
+					"variant": "Secondary"
+				}
 			}
 		},
 		"items": []

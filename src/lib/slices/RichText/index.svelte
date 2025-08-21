@@ -17,11 +17,16 @@
 	class="text-white"
 >
 {#if slice.primary.max_width!=="limited"}
-	<ContentWidth class="flex flex-col gap-6 {slice.primary.floatCenter?"text-center justify-center":""} ">
+	<ContentWidth class="flex flex-col gap-6 {slice.primary.floatCenter?"text-center items-center justify-center":""} ">
 		<PrismicRichText field={slice.primary.text}/>
-		{#if isFilled.link(slice.primary.button)}
-				<DefaultButton href={slice.primary.button.url}>{slice.primary.button.text}</DefaultButton>
-		{/if}
+		<div class="flex gap-5">
+				{#if isFilled.link(slice.primary.button)}
+					<DefaultButton href={slice.primary.button.url}>{slice.primary.button.text}</DefaultButton>
+				{/if}
+				{#if isFilled.link(slice.primary.button_two)}
+					<DefaultButton href={slice.primary.button_two.url}>{slice.primary.button_two.text}</DefaultButton>
+				{/if}
+			</div>
 		{#if slice.primary.show_scroll_arrow}
 			<img src={downArrow} alt="down" class="mt-10 h-20"/>
 		{/if}
@@ -30,9 +35,14 @@
 <ContentWidth class='h-full'>
 	<div class="w-full max-w-[600px] mx-auto flex flex-col gap-6  justify-center {slice.primary.floatCenter?"text-center items-center":""}">
 		<PrismicRichText field={slice.primary.text}/>
-		{#if isFilled.link(slice.primary.button)}
-				<DefaultButton href={slice.primary.button.url}>{slice.primary.button.text}</DefaultButton>
-		{/if}
+		<div class="flex gap-5">
+				{#if isFilled.link(slice.primary.button)}
+					<DefaultButton href={slice.primary.button.url}>{slice.primary.button.text}</DefaultButton>
+				{/if}
+				{#if isFilled.link(slice.primary.button_two)}
+					<DefaultButton href={slice.primary.button_two.url}>{slice.primary.button_two.text}</DefaultButton>
+				{/if}
+			</div>
 		{#if slice.primary.show_scroll_arrow}
 			<img src={downArrow} alt="down" class="mt-10 h-20"/>
 		{/if}

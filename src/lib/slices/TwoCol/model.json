@@ -311,6 +311,145 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "tableText",
+      "name": "tableText",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "button": {
+          "type": "Link",
+          "config": {
+            "label": "button",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false,
+            "variants": [
+              "Primary",
+              "Secondary"
+            ]
+          }
+        },
+        "button_two": {
+          "type": "Link",
+          "config": {
+            "label": "button two",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false,
+            "variants": [
+              "Primary",
+              "Secondary"
+            ]
+          }
+        },
+        "isTableFirst": {
+          "type": "Boolean",
+          "config": {
+            "label": "order",
+            "placeholder_false": "text first",
+            "placeholder_true": "table first",
+            "default_value": false
+          }
+        },
+        "showTopBorder": {
+          "type": "Boolean",
+          "config": {
+            "label": "border top",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
+        "vimeo_id": {
+          "type": "Text",
+          "config": {
+            "label": "vimeo Id",
+            "placeholder": ""
+          }
+        },
+        "vertical_padding": {
+          "type": "Select",
+          "config": {
+            "label": "vertical padding",
+            "placeholder": "",
+            "options": [
+              "0",
+              "5",
+              "10",
+              "20"
+            ],
+            "default_value": "0"
+          }
+        },
+        "table_column": {
+          "type": "Select",
+          "config": {
+            "label": "table column",
+            "placeholder": "",
+            "options": [
+              "desc & #, no sizes",
+              "desc and one size and #",
+              "desc and two sizes and #"
+            ],
+            "default_value": "desc & #, no sizes"
+          }
+        },
+        "products": {
+          "type": "Group",
+          "config": {
+            "label": "products",
+            "repeat": true,
+            "fields": {
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "description",
+                  "placeholder": ""
+                }
+              },
+              "size_one": {
+                "type": "Text",
+                "config": {
+                  "label": "size one",
+                  "placeholder": ""
+                }
+              },
+              "size_two": {
+                "type": "Text",
+                "config": {
+                  "label": "size_two",
+                  "placeholder": ""
+                }
+              },
+              "product_number": {
+                "type": "Text",
+                "config": {
+                  "label": "product number",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

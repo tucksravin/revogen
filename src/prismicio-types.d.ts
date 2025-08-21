@@ -471,6 +471,22 @@ export interface RichTextSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   floatCenter: prismic.BooleanField;
+
+  /**
+   * button two field in *RichText → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rich_text.default.primary.button_two
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button_two: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    "Primary" | "Secondary"
+  >;
 }
 
 /**
@@ -607,6 +623,22 @@ export interface ScreenWidthVideoSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
   show_scroll_arrow: prismic.BooleanField;
+
+  /**
+   * button two field in *ScreenWidthMedia → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: screen_width_video.default.primary.button_two
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button_two: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    "Primary" | "Secondary"
+  >;
 }
 
 /**
@@ -679,6 +711,51 @@ export interface TwoColSliceImageTableTextPrimaryProductsItem {
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: two_col.imageTableText.primary.products[].product_number
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  product_number: prismic.KeyTextField;
+}
+
+/**
+ * Item in *TwoCol → tableText → Primary → products*
+ */
+export interface TwoColSliceTableTextPrimaryProductsItem {
+  /**
+   * description field in *TwoCol → tableText → Primary → products*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.tableText.primary.products[].description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * size one field in *TwoCol → tableText → Primary → products*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.tableText.primary.products[].size_one
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  size_one: prismic.KeyTextField;
+
+  /**
+   * size_two field in *TwoCol → tableText → Primary → products*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.tableText.primary.products[].size_two
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  size_two: prismic.KeyTextField;
+
+  /**
+   * product number field in *TwoCol → tableText → Primary → products*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.tableText.primary.products[].product_number
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   product_number: prismic.KeyTextField;
@@ -1006,12 +1083,144 @@ export type TwoColSliceImageTableText = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *TwoCol → tableText → Primary*
+ */
+export interface TwoColSliceTableTextPrimary {
+  /**
+   * text field in *TwoCol → tableText → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.tableText.primary.text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  text: prismic.RichTextField;
+
+  /**
+   * button field in *TwoCol → tableText → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.tableText.primary.button
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    "Primary" | "Secondary"
+  >;
+
+  /**
+   * button two field in *TwoCol → tableText → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.tableText.primary.button_two
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button_two: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    "Primary" | "Secondary"
+  >;
+
+  /**
+   * order field in *TwoCol → tableText → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: two_col.tableText.primary.isTableFirst
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  isTableFirst: prismic.BooleanField;
+
+  /**
+   * border top field in *TwoCol → tableText → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: two_col.tableText.primary.showTopBorder
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  showTopBorder: prismic.BooleanField;
+
+  /**
+   * vimeo Id field in *TwoCol → tableText → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.tableText.primary.vimeo_id
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  vimeo_id: prismic.KeyTextField;
+
+  /**
+   * vertical padding field in *TwoCol → tableText → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: 0
+   * - **API ID Path**: two_col.tableText.primary.vertical_padding
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  vertical_padding: prismic.SelectField<"0" | "5" | "10" | "20", "filled">;
+
+  /**
+   * table column field in *TwoCol → tableText → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: desc & #, no sizes
+   * - **API ID Path**: two_col.tableText.primary.table_column
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  table_column: prismic.SelectField<
+    | "desc & #, no sizes"
+    | "desc and one size and #"
+    | "desc and two sizes and #",
+    "filled"
+  >;
+
+  /**
+   * products field in *TwoCol → tableText → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.tableText.primary.products[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  products: prismic.GroupField<
+    Simplify<TwoColSliceTableTextPrimaryProductsItem>
+  >;
+}
+
+/**
+ * tableText variation for TwoCol Slice
+ *
+ * - **API ID**: `tableText`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TwoColSliceTableText = prismic.SharedSliceVariation<
+  "tableText",
+  Simplify<TwoColSliceTableTextPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *TwoCol*
  */
 type TwoColSliceVariation =
   | TwoColSliceDefault
   | TwoColSliceContactForm
-  | TwoColSliceImageTableText;
+  | TwoColSliceImageTableText
+  | TwoColSliceTableText;
 
 /**
  * TwoCol Shared Slice
@@ -1075,10 +1284,13 @@ declare module "@prismicio/client" {
       TwoColSliceContactFormPrimary,
       TwoColSliceImageTableTextPrimaryProductsItem,
       TwoColSliceImageTableTextPrimary,
+      TwoColSliceTableTextPrimaryProductsItem,
+      TwoColSliceTableTextPrimary,
       TwoColSliceVariation,
       TwoColSliceDefault,
       TwoColSliceContactForm,
       TwoColSliceImageTableText,
+      TwoColSliceTableText,
     };
   }
 }

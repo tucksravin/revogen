@@ -23,11 +23,16 @@
 	percentHeight={slice.primary.height==='screen' ? 100 : 50}>
 	<div class='absolute w-full h-full top-0 left-0'>
 		{#if slice.primary.max_width!=="limited"}
-	<ContentWidth class="h-full flex flex-col gap-6  justify-center text-center items-center">
+	<ContentWidth class="h-full flex flex-col gap-6 py-12 {slice.primary.text_float==='center'?"justify-center":"justify-end"} text-center items-center">
 		<PrismicRichText field={slice.primary.text}/>
-		{#if isFilled.link(slice.primary.button)}
-				<DefaultButton href={slice.primary.button.url}>{slice.primary.button.text}</DefaultButton>
-		{/if}
+		<div class="flex gap-5">
+				{#if isFilled.link(slice.primary.button)}
+					<DefaultButton href={slice.primary.button.url}>{slice.primary.button.text}</DefaultButton>
+				{/if}
+				{#if isFilled.link(slice.primary.button_two)}
+					<DefaultButton href={slice.primary.button_two.url}>{slice.primary.button_two.text}</DefaultButton>
+				{/if}
+			</div>
 
 
 	</ContentWidth>

@@ -246,5 +246,113 @@
 				"value": []
 			}
 		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "tableText",
+		"primary": {
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nulla non sunt occaecat irure cupidatat voluptate cupidatat commodo proident nostrud."
+						}
+					}
+				]
+			},
+			"button": {
+				"key": "76e7ac4c-425e-461d-98a5-86e2eff0c4a5",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com",
+					"text": "forgotten",
+					"variant": "Primary"
+				}
+			},
+			"button_two": {
+				"key": "9565040f-93bd-4412-a7c0-a6c21afbf45a",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com",
+					"text": "receive",
+					"variant": "Primary"
+				}
+			},
+			"showTopBorder": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"vimeo_id": {
+				"__TYPE__": "FieldContent",
+				"value": "shop",
+				"type": "Text"
+			},
+			"vertical_padding": {
+				"__TYPE__": "FieldContent",
+				"value": "0",
+				"type": "Select"
+			},
+			"table_column": {
+				"__TYPE__": "FieldContent",
+				"value": "desc & #, no sizes",
+				"type": "Select"
+			},
+			"products": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"description",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "pure",
+									"type": "Text"
+								}
+							],
+							[
+								"size_one",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "bet",
+									"type": "Text"
+								}
+							],
+							[
+								"size_two",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "central",
+									"type": "Text"
+								}
+							],
+							[
+								"product_number",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "thou",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"isTableFirst": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
 	}
 ]

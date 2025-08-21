@@ -80,6 +80,21 @@
             "placeholder_true": "float center",
             "default_value": true
           }
+        },
+        "button_two": {
+          "type": "Link",
+          "config": {
+            "label": "button two",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false,
+            "variants": [
+              "Primary",
+              "Secondary"
+            ]
+          }
         }
       },
       "items": {}
