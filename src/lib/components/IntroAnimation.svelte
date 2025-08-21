@@ -79,18 +79,18 @@ onMount(() => {
   if (!$hasIntroRun) {
     // Background is already visible
     setTimeout(() => showShape = true, 300);
-    setTimeout(() => showGrid = true, 600);
-    setTimeout(() => showIH = true, 900);
-    setTimeout(() => showIPO = true, 1200);
-    setTimeout(() => showGrid = false, 1500)
-    setTimeout(() => scaleUp = true, 1800)
-    setTimeout(() => showBackground = false, 2100)
-    setTimeout(() => showShape = false, 2100)
+    setTimeout(() => showGrid = true, 800);
+    setTimeout(() => showIH = true, 1300);
+    setTimeout(() => showIPO = true, 1800);
+    setTimeout(() => showGrid = false, 2300)
+    setTimeout(() => scaleUp = true, 2800)
+    setTimeout(() => showBackground = false, 3200)
+    setTimeout(() => showShape = false, 3200)
     
     // Complete the intro after all animations finish
     setTimeout(() => {
       hasIntroRun.set(true);
-    }, 1500); // Allow some time after the last element appears
+    }, 4000); // Allow some time after the last element appears
   }
 });
 
