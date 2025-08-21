@@ -83,9 +83,9 @@ onMount(() => {
     setTimeout(() => showIH = true, 1300);
     setTimeout(() => showIPO = true, 1800);
     setTimeout(() => showGrid = false, 2300)
-    setTimeout(() => scaleUp = true, 2800)
-    setTimeout(() => showBackground = false, 3200)
-    setTimeout(() => showShape = false, 3200)
+    setTimeout(() => scaleUp = true, 2300)
+    setTimeout(() => showBackground = false, 2800)
+    setTimeout(() => showShape = false, 2800)
     
     // Complete the intro after all animations finish
     setTimeout(() => {
