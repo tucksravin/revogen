@@ -78,19 +78,19 @@ onMount(() => {
   // Staggered animation sequence
   if (!$hasIntroRun) {
     // Background is already visible
-    setTimeout(() => showShape = true, 300);
-    setTimeout(() => showGrid = true, 800);
-    setTimeout(() => showIH = true, 1300);
-    setTimeout(() => showIPO = true, 1800);
-    setTimeout(() => showGrid = false, 2300)
-    setTimeout(() => scaleUp = true, 2300)
-    setTimeout(() => showBackground = false, 2800)
-    setTimeout(() => showShape = false, 2800)
+    setTimeout(() => showShape = true, 700);
+    setTimeout(() => showGrid = true, 1300);
+    setTimeout(() => showIH = true, 1900);
+    setTimeout(() => showIPO = true, 2500);
+    setTimeout(() => showGrid = false, 3000)
+    setTimeout(() => scaleUp = true, 3600)
+    setTimeout(() => showBackground = false, 4200)
+    setTimeout(() => showShape = false, 4400)
     
     // Complete the intro after all animations finish
     setTimeout(() => {
       hasIntroRun.set(true);
-    }, 4000); // Allow some time after the last element appears
+    }, 5100); // Allow some time after the last element appears
   }
 });
 
