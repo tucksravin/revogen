@@ -151,6 +151,101 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
+/**
+ * Item in *resourceHubCategory → headers*
+ */
+export interface ResourceHubCategoryDocumentDataHeadersItem {
+  /**
+   * name field in *resourceHubCategory → headers*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: resource_hub_category.headers[].name
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Distributor documents field in *resourceHubCategory → headers*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: resource_hub_category.headers[].distributor_documents
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  distributor_documents: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+
+  /**
+   * white papers & case studies field in *resourceHubCategory → headers*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: resource_hub_category.headers[].white_papers
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  white_papers: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+}
+
+/**
+ * Content for resourceHubCategory documents
+ */
+interface ResourceHubCategoryDocumentData {
+  /**
+   * name field in *resourceHubCategory*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: resource_hub_category.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * image field in *resourceHubCategory*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: resource_hub_category.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * headers field in *resourceHubCategory*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: resource_hub_category.headers[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  headers: prismic.GroupField<
+    Simplify<ResourceHubCategoryDocumentDataHeadersItem>
+  >;
+}
+
+/**
+ * resourceHubCategory document from Prismic
+ *
+ * - **API ID**: `resource_hub_category`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ResourceHubCategoryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ResourceHubCategoryDocumentData>,
+    "resource_hub_category",
+    Lang
+  >;
+
 type SurgicalGraftsDocumentDataSlicesSlice =
   | TwoColSlice
   | HomePageAnimSlice
@@ -236,7 +331,10 @@ export type SurgicalGraftsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = PageDocument | SurgicalGraftsDocument;
+export type AllDocumentTypes =
+  | PageDocument
+  | ResourceHubCategoryDocument
+  | SurgicalGraftsDocument;
 
 /**
  * Primary content in *DistributorLogin → Default → Primary*
@@ -1255,6 +1353,9 @@ declare module "@prismicio/client" {
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      ResourceHubCategoryDocument,
+      ResourceHubCategoryDocumentData,
+      ResourceHubCategoryDocumentDataHeadersItem,
       SurgicalGraftsDocument,
       SurgicalGraftsDocumentData,
       SurgicalGraftsDocumentDataSlicesSlice,

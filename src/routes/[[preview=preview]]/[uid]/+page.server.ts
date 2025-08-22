@@ -1,14 +1,20 @@
 import { asText } from '@prismicio/client';
+import { distributorData } from '$lib/stores/distributorData';
 
 import { createClient } from '$lib/prismicio';
+import { get } from 'svelte/store';
 
 export async function load({ params, fetch, cookies }) {
 	const client = createClient({ fetch, cookies });
 
 	const page = await client.getByUID('page', params.uid);
 
+ const distributorCategories = await client.getAllByType('resource_hub_category');
+
+
 	return {
 		page,
+		distributorCategories,
 		title: page.data.meta_title||"Revogen Biologics",
 		meta_description: page.data.meta_description,
 		meta_title: page.data.meta_title,

@@ -3,6 +3,9 @@
 import type { Content } from "@prismicio/client";
 import type { SliceComponentProps } from "@prismicio/svelte";
   import { fade,fly } from "svelte/transition";
+  import { PrismicImage } from "@prismicio/svelte";
+
+  import { distributorData } from "$lib/stores/distributorData";
 
 interface Props extends SliceComponentProps<Content.DistributorLoginSlice> {}
 const { slice }: Props = $props();
@@ -11,6 +14,7 @@ let isAuthenticated = $state(false);
 let password = $state("");
 let showError = $state(false);
 let shakeButton = $state(false);
+let activeCategory = $state(-1)
 
 // Set your desired password here
 const CORRECT_PASSWORD = "Revogenreps";
@@ -39,6 +43,7 @@ function handleKeyPress(event: KeyboardEvent) {
     handleSubmit();
   }
 }
+
 </script>
 
 <style>
@@ -63,7 +68,7 @@ function handleKeyPress(event: KeyboardEvent) {
     {#if !isAuthenticated}
       <!-- Password Form -->
 	   <div out:fade class="flex flex-col items-center">
-      <p class="max-w-lg">Enter password to access the Distributor Resource Hub:</p>
+      <p class="max-w-lg text-center">Enter password to access the Distributor Resource Hub:</p>
       <div class="flex flex-col mt-16 items-center gap-2">
         <p>PASSWORD</p>
         <input 
@@ -74,9 +79,9 @@ function handleKeyPress(event: KeyboardEvent) {
         />
 		<div class="h-16 w-full">
         {#if showError}
-          <p class="text-red-300 text-sm mt-2 absolute left-1/2 -translate-x-1/2" in:fade={{delay:600}} out:fade>Incorrect password. Please try again.</p>
+          <p class="text-red-300 text-sm text-center mt-2 absolute left-1/2 -translate-x-1/2 w-full" in:fade={{delay:600}} out:fade>Incorrect password. Please try again.</p>
 		  {:else}
-		  <p class="text-xs max-w-sm text-center absolute left-1/2 -translate-x-1/2" in:fade={{delay:600}} out:fade>This portal is password protected, please contact your RevoGen administrator for access.</p>
+		  <p class="text-xs max-w-sm text-center absolute left-1/2 -translate-x-1/2 w-full" in:fade={{delay:600}} out:fade>This portal is password protected, please contact your RevoGen administrator for access.</p>
         {/if}
 		</div>
         
@@ -91,10 +96,25 @@ function handleKeyPress(event: KeyboardEvent) {
 	   </div>
     {:else}
       <!-- Protected Content - Replace this with your actual content -->
-      <div class="max-w-4xl mx-auto" in:fly={{delay:400, y:"-100%"}}>
-        <h1 class="text-4xl font-bold mb-8 text-center">Distributor Resource Hub Hidden Content</h1>
+      <div class="w-full border-t-2 border-white text-white flex flex-col items-center" in:fly={{delay:400, y:"-100%"}}>
+        <p class="mt-32 text-center max-w-lg">At RevoGen Biologics, we are deeply committed to supporting the success of our partners/distributors. Use the links below to access important resources and download collateral designed to help you service your existing clients and win new business!</p>
+        <h5 class="my-16">Select a Topic to View Resources</h5>
         
-        
+        <div class="w-full flex justify-center flex-wrap gap-12">
+          {#if $distributorData}
+            {#each $distributorData as category, i}
+            <div class="flex flex-col gap-2 items-center justify-center">
+            <button class="w-44 h-44 border-[1px] rounded-full border-white drop-shadow-sm hover:grayscale-0 hover:opacity-100 transition {activeCategory===i?"pointer-events-none cursor-regular":"opacity-80 grayscale"}" onclick={()=>activeCategory=i}>
+              <PrismicImage field={category.data.image} class="w-full h-full rounded-full scale-[92%] object-cover" />
+            </button>
+            <button onclick={()=>activeCategory=i} class="{activeCategory===i?"pointer-events-none cursor-regular":""}">
+				      <p class="body-3 text-center drop-shadow-sm">{category.data.name}</p>
+            </button>
+			    </div>
+           
+            {/each}
+          {/if}
+        </div>
         
       </div>
     {/if}

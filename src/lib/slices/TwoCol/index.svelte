@@ -72,8 +72,7 @@
 <section
   data-slice-type={slice.slice_type}
   data-slice-variation={slice.variation}
-  style="padding-top:{parseInt(slice.primary.vertical_padding) *
-    4}px;padding-bottom:{parseInt(slice.primary.vertical_padding) * 4}px;"
+  style="padding-top:{parseInt(slice.primary.vertical_padding) * 4}px;padding-bottom:{parseInt(slice.primary.vertical_padding) * 4}px;"
   class="text-white"
 >
   {#if slice.variation === "default" || slice.variation === "imageTableText"}
@@ -126,10 +125,10 @@
             <div class="w-full flex flex-row">
               <p class="uppercase w-1/3">description</p>
               {#if slice.primary.table_column !== "desc & #, no sizes"}
-                <p class="uppercase w-1/6">size</p>
+                <p class="uppercase w-1/6 ">size</p>
               {/if}
               {#if slice.primary.table_column === "desc and two sizes and #"}
-                <p class="uppercase w-1/6">size</p>
+                <p class="uppercase w-1/6 ">size</p>
               {/if}
               <p class="uppercase w-1/3 ml-auto">part number</p>
             </div>
@@ -138,10 +137,10 @@
               <div class="w-full flex flex-row">
                 <p class="w-1/3 pr-8">{product.description}</p>
                 {#if slice.primary.table_column !== "desc & #, no sizes"}
-                  <p class="w-1/6">{product.size_one}</p>
+                  <p class="w-1/6 ">{product.size_one}</p>
                 {/if}
                 {#if slice.primary.table_column === "desc and two sizes and #"}
-                  <p class="w-1/6">{product.size_two}</p>
+                  <p class="w-1/6 ">{product.size_two}</p>
                 {/if}
                 <p class="w-1/3 ml-auto">{product.product_number}</p>
               </div>
@@ -181,10 +180,10 @@
           <div class="w-full flex flex-row">
             <p class="uppercase w-1/3">description</p>
             {#if slice.primary.table_column !== "desc & #, no sizes"}
-              <p class="uppercase w-1/6">size</p>
+              <p class="uppercase w-1/6 ">size</p>
             {/if}
             {#if slice.primary.table_column === "desc and two sizes and #"}
-              <p class="uppercase w-1/6">size</p>
+              <p class="uppercase w-1/6 ">size</p>
             {/if}
             <p class="uppercase w-1/3 ml-auto">part number</p>
           </div>
@@ -193,10 +192,10 @@
             <div class="w-full flex flex-row">
               <p class="w-1/3 pr-4">{product.description}</p>
               {#if slice.primary.table_column !== "desc & #, no sizes"}
-                <p class="w-1/6">{product.size_one}</p>
+                <p class="w-1/6 ">{product.size_one}</p>
               {/if}
               {#if slice.primary.table_column === "desc and two sizes and #"}
-                <p class="w-1/6">{product.size_two}</p>
+                <p class="w-1/6 ">{product.size_two}</p>
               {/if}
               <p class="w-1/3 ml-auto">{product.product_number}</p>
             </div>
