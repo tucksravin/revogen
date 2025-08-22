@@ -47,7 +47,6 @@ $effect(() => {
   }
 });
 
-// Prevent scroll with keyboard keys
 const preventScrollKeys = (e: KeyboardEvent) => {
   const keys = [32, 33, 34, 35, 36, 37, 38, 39, 40]; // space, page up/down, end, home, arrow keys
   if (keys.includes(e.keyCode)) {
@@ -57,27 +56,11 @@ const preventScrollKeys = (e: KeyboardEvent) => {
 };
 
 onMount(() => {
-  if (browser) {
-    if ($hasIntroRun) {
-      // Re-enable scrolling
-      document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.width = "";
-      document.body.style.height = "";
-      document.documentElement.style.overflow = "";
-    } else {
-      // Disable scrolling completely
-      document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      document.body.style.width = "100%";
-      document.body.style.height = "100%";
-      document.documentElement.style.overflow = "hidden";
-    }
-  }
+
   
-  // Staggered animation sequence
+
   if (!$hasIntroRun) {
-    // Background is already visible
+
     setTimeout(() => showShape = true, 700);
     setTimeout(() => showGrid = true, 1300);
     setTimeout(() => showIH = true, 1900);
@@ -91,6 +74,9 @@ onMount(() => {
     setTimeout(() => {
       hasIntroRun.set(true);
     }, 5100); // Allow some time after the last element appears
+  } else{
+    showIH=true;
+    showIPO=true;
   }
 });
 
@@ -107,9 +93,9 @@ let showIPO = $state(false);
 <svelte:window bind:innerWidth={viewportWidth} bind:innerHeight={viewportHeight} />
 
 
-<div class="h-screen w-screen absolute top-0 left-0 z-30 pointer-events-none"> 
+<div class="h-screen w-screen absolute top-0 left-0 z-10 pointer-events-none"> 
   <!-- Background gradient - always visible, no fade -->
-  <div class='gradient-layer-container add-noise {showBackground?"opacity-100":"opacity-0"}'>
+  <div class='gradient-layer-container add-noise {showBackground&&!$hasIntroRun?"opacity-100":"opacity-0"}'>
     <div class='gradient-layer option-0-layer1'></div>
     <div class='gradient-layer option-0-layer2'></div>
     <div class='gradient-layer option-0-layer3'></div>
@@ -118,14 +104,14 @@ let showIPO = $state(false);
   <!-- Shape with fade-in -->
   <img 
     src={shape} 
-    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-4/5 object-cover transition duration-1200 ease-out {scaleUp ? "scale-[500%]":""} {showShape ? 'opacity-100' : 'opacity-0'}" 
+    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-4/5 object-cover transition duration-1200 ease-out {scaleUp ? "scale-[500%]":""} {showShape&&!$hasIntroRun ? 'opacity-100' : 'opacity-0'}" 
     alt='diamond'
   />
   
   <!-- Grid with fade-in -->
   <img 
     src={grid} 
-    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-full object-cover transition-opacity duration-700 ease-out {showGrid ? 'opacity-100' : 'opacity-0'}" 
+    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-full object-cover transition-opacity duration-700 ease-out {showGrid&&!$hasIntroRun ? 'opacity-100' : 'opacity-0'}" 
     alt='grid'
   />
   

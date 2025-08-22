@@ -16,7 +16,7 @@
 
 {#if isNavModalOpen}
   <div
-    class="fixed w-screen h-screen top-0 left-0 z-10"
+    class="fixed w-screen h-screen top-0 left-0 z-50"
     in:fade
     out:fade={{ delay: 200 }}
   >
@@ -124,7 +124,7 @@
     </ContentWidth>
   </div>
 {/if}
-<div class="absolute top-0 left-0 w-screen z-10">
+<div class="absolute top-0 left-0 w-screen z-50">
   <ContentWidth class="h-24 flex flex-row justify-between items-center">
     <DelayedLink href="/" class="bump" onclick={() => (isNavModalOpen = false)}>
       <img
