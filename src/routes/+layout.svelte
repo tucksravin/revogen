@@ -9,9 +9,26 @@
 	import { gradientTheme } from '$lib/stores/gradientTheme';
   import { fade } from 'svelte/transition';
   import TransitionOverlay from '$lib/components/TransitionOverlay.svelte';
+  import { onNavigate } from '$app/navigation';
 
 
 	let { children } = $props();
+	const scrollAllToTop = () => {
+  // Reset window scroll
+  window.scrollTo(0, 0);
+  
+  // Find and reset all scrollable elements
+  const scrollableElements = document.querySelectorAll('*');
+  
+  scrollableElements.forEach(element => {
+    if (element.scrollTop > 0 || element.scrollLeft > 0) {
+      element.scrollTop = 0;
+      element.scrollLeft = 0;
+    }
+  });
+};
+
+	onNavigate(scrollAllToTop)
 	
 </script>
 
