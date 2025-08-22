@@ -28,7 +28,7 @@
   });
 };
 
-	onNavigate(scrollAllToTop)
+	onNavigate(scrollAllToTop);
 	
 </script>
 
