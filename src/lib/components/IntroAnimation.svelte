@@ -18,7 +18,7 @@ const preventScroll = (e: Event) => {
 $effect(() => {
   if (browser) {
     if ($hasIntroRun) {
-      // Re-enable scrolling
+
       document.body.style.overflow = "";
       document.body.style.position = "";
       document.body.style.width = "";
@@ -104,14 +104,14 @@ let showIPO = $state(false);
   <!-- Shape with fade-in -->
   <img 
     src={shape} 
-    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-4/5 object-cover transition duration-1200 ease-out {scaleUp ? "scale-[500%]":""} {showShape&&!$hasIntroRun ? 'opacity-100' : 'opacity-0'}" 
+    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-4/5 object-cover transition duration-1200 ease-in {scaleUp ? "scale-[500%]":""} {showShape&&!$hasIntroRun ? 'opacity-100' : 'opacity-0'}" 
     alt='diamond'
   />
   
   <!-- Grid with fade-in -->
   <img 
     src={grid} 
-    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-full object-cover transition-opacity duration-700 ease-out {showGrid&&!$hasIntroRun ? 'opacity-100' : 'opacity-0'}" 
+    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-full object-cover transition-opacity duration-700 ease-out  {showGrid&&!$hasIntroRun ? 'opacity-100' : 'opacity-0'}" 
     alt='grid'
   />
   
