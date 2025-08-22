@@ -207,7 +207,7 @@
   {/if}
 
   {#if slice.variation === "contactForm"}
-    <ContentWidth class="flex flex-row">
+    <ContentWidth class="flex flex-col md:flex-row">
       <div class="w-full md:w-1/2 flex flex-col">
         <PrismicRichText field={slice.primary.text} />
       </div>
