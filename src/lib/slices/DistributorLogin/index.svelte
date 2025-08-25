@@ -1,6 +1,6 @@
 <script lang="ts">
  import ContentWidth from "$lib/components/ContentWidth/ContentWidth.svelte";
-import { type Content, isFilled } from "@prismicio/client";
+import { type Content, type Repeatable, type LinkField, type FieldState, isFilled } from "@prismicio/client";
 import type { SliceComponentProps } from "@prismicio/svelte";
   import { fade,fly, slide } from "svelte/transition";
   import { PrismicImage } from "@prismicio/svelte";
@@ -11,7 +11,7 @@ import type { SliceComponentProps } from "@prismicio/svelte";
 interface Props extends SliceComponentProps<Content.DistributorLoginSlice> {}
 const { slice }: Props = $props();
 
-let isAuthenticated = $state(true);
+let isAuthenticated = $state(false);
 let password = $state("");
 let showError = $state(false);
 let shakeButton = $state(false);
@@ -143,7 +143,7 @@ onMount(() => {
 	   </div>
     {:else}
  
-      <div class="w-full border-t-2 border-white text-white flex flex-col items-center" in:fly={{delay:400, y:"-100%"}}>
+      <div class="w-full border-t-2 border-white text-white flex flex-col items-center" in:fly={{delay:400, x:"-100%"}}>
         <p class="mt-32 text-center max-w-lg">At RevoGen Biologics, we are deeply committed to supporting the success of our partners/distributors. Use the links below to access important resources and download collateral designed to help you service your existing clients and win new business!</p>
         <h5 class="my-16">Select a Topic to View Resources</h5>
         
@@ -164,10 +164,27 @@ onMount(() => {
         </div>
         
       </div>
+
+      {#snippet hubDocs(docs:Repeatable<LinkField<string, string, unknown, FieldState, never>>, title:string)}
+         {#if docs.length>0&&isFilled.link(docs[0])}
+                <h5 class="mt-10 uppercase">{title}</h5>
+                <div class="h-0.5 w-full bg-white my-4"></div>
+                {#each docs as doc}
+                  {#if isFilled.link(doc)}
+                  <a class="flex flex-row gap-3 items-center mt-4 hover:opacity-80 active:opacity-100 transition-opacity active:transition-none" href={doc.url} target="_blank">
+                    <svg class="h-3 translate-y-[1px]" viewBox="0 0 11 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0.464777 0.807787H10.5359C10.7223 0.807787 10.8728 0.958372 10.8728 1.1447V14.8556C10.8728 15.0419 10.7223 15.1925 10.5359 15.1925H4.49318C4.39884 15.1925 4.3133 15.1533 4.25177 15.0906L0.226367 11.0652C0.160742 10.9995 0.12793 10.9128 0.12793 10.8267V1.14404C0.12793 0.957714 0.278515 0.807129 0.464845 0.807129L0.464777 0.807787ZM2.54363 6.71929C2.3573 6.71929 2.20671 6.5687 2.20671 6.38237C2.20671 6.19604 2.3573 6.04546 2.54363 6.04546H6.71603C6.90236 6.04546 7.05294 6.19604 7.05294 6.38237C7.05294 6.5687 6.90236 6.71929 6.71603 6.71929H2.54363ZM2.54363 4.25899C2.3573 4.25899 2.20671 4.1084 2.20671 3.92207C2.20671 3.73574 2.3573 3.58516 2.54363 3.58516H8.45693C8.64326 3.58516 8.79384 3.73574 8.79384 3.92207C8.79384 4.1084 8.64326 4.25899 8.45693 4.25899H2.54363ZM0.801677 10.4904H4.49303C4.67936 10.4904 4.82994 10.641 4.82994 10.8274V14.5181H10.1983V1.4816H0.801092V10.4905L0.801677 10.4904ZM4.15613 14.0424V11.1648H1.27853L4.15613 14.0424Z" fill="white"/>
+                    </svg>
+                    <p class="underline">{doc.text}</p>
+                  </a>
+                  {/if}
+                {/each}
+              {/if}
+      {/snippet}
       
       {#if activeCategory>-1}
       <!-- Updated container with dynamic height -->
-      <div class="w-full mt-32 relative transition-all duration-300 ease-in-out" style="height: {containerHeight}px" in:slide>
+      <div class="w-full mt-32 relative transition-all duration-300 ease-in-out mb-32" style="height: {containerHeight}px" in:slide>
         {#key activeCategory}
            <div class="absolute top-0 left-0 w-full flex flex-col gap-16" in:fade={{delay:700}} out:fade>
             {#each $distributorData[activeCategory].data.headers as header }
@@ -175,37 +192,15 @@ onMount(() => {
               <h2>
                 {header.name}
               </h2>
-              {#if header.distributor_documents.length!==0}
-                <h5 class="mt-10 uppercase">Distributor Documents</h5>
-                <div class="h-0.5 w-full bg-white my-4"></div>
-                {#each header.distributor_documents as doc}
-                  {#if isFilled.link(doc)}
-                  <a class="flex flex-row gap-3 items-center mt-4 hover:opacity-80 active:opacity-100 transition-opacity active:transition-none" href={doc.url} target="_blank">
-                    <svg class="h-3 translate-y-[1px]" viewBox="0 0 11 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M0.464777 0.807787H10.5359C10.7223 0.807787 10.8728 0.958372 10.8728 1.1447V14.8556C10.8728 15.0419 10.7223 15.1925 10.5359 15.1925H4.49318C4.39884 15.1925 4.3133 15.1533 4.25177 15.0906L0.226367 11.0652C0.160742 10.9995 0.12793 10.9128 0.12793 10.8267V1.14404C0.12793 0.957714 0.278515 0.807129 0.464845 0.807129L0.464777 0.807787ZM2.54363 6.71929C2.3573 6.71929 2.20671 6.5687 2.20671 6.38237C2.20671 6.19604 2.3573 6.04546 2.54363 6.04546H6.71603C6.90236 6.04546 7.05294 6.19604 7.05294 6.38237C7.05294 6.5687 6.90236 6.71929 6.71603 6.71929H2.54363ZM2.54363 4.25899C2.3573 4.25899 2.20671 4.1084 2.20671 3.92207C2.20671 3.73574 2.3573 3.58516 2.54363 3.58516H8.45693C8.64326 3.58516 8.79384 3.73574 8.79384 3.92207C8.79384 4.1084 8.64326 4.25899 8.45693 4.25899H2.54363ZM0.801677 10.4904H4.49303C4.67936 10.4904 4.82994 10.641 4.82994 10.8274V14.5181H10.1983V1.4816H0.801092V10.4905L0.801677 10.4904ZM4.15613 14.0424V11.1648H1.27853L4.15613 14.0424Z" fill="white"/>
-                    </svg>
-                    <p class="underline">{doc.text}</p>
-                  </a>
-                  {/if}
-                {/each}
+            {@render hubDocs(header.general ,"General")}
 
-              {/if}
+            {@render hubDocs(header.distributor_documents ,"Documents")}
 
-              {#if header.white_papers.length!==0}
-                <h5 class="mt-10 uppercase">White paper / case studies</h5>
-                <div class="h-0.5 w-full bg-white my-4"></div>
-                {#each header.white_papers as doc}
-                  {#if isFilled.link(doc)}
-                  <a class="flex flex-row gap-3 items-center mt-4 hover:opacity-80 active:opacity-100 transition-opacity active:transition-none" href={doc.url} target="_blank">
-                    <svg class="h-3 translate-y-[1px]" viewBox="0 0 11 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M0.464777 0.807787H10.5359C10.7223 0.807787 10.8728 0.958372 10.8728 1.1447V14.8556C10.8728 15.0419 10.7223 15.1925 10.5359 15.1925H4.49318C4.39884 15.1925 4.3133 15.1533 4.25177 15.0906L0.226367 11.0652C0.160742 10.9995 0.12793 10.9128 0.12793 10.8267V1.14404C0.12793 0.957714 0.278515 0.807129 0.464845 0.807129L0.464777 0.807787ZM2.54363 6.71929C2.3573 6.71929 2.20671 6.5687 2.20671 6.38237C2.20671 6.19604 2.3573 6.04546 2.54363 6.04546H6.71603C6.90236 6.04546 7.05294 6.19604 7.05294 6.38237C7.05294 6.5687 6.90236 6.71929 6.71603 6.71929H2.54363ZM2.54363 4.25899C2.3573 4.25899 2.20671 4.1084 2.20671 3.92207C2.20671 3.73574 2.3573 3.58516 2.54363 3.58516H8.45693C8.64326 3.58516 8.79384 3.73574 8.79384 3.92207C8.79384 4.1084 8.64326 4.25899 8.45693 4.25899H2.54363ZM0.801677 10.4904H4.49303C4.67936 10.4904 4.82994 10.641 4.82994 10.8274V14.5181H10.1983V1.4816H0.801092V10.4905L0.801677 10.4904ZM4.15613 14.0424V11.1648H1.27853L4.15613 14.0424Z" fill="white"/>
-                    </svg>
-                    <p class="underline">{doc.text}</p>
-                  </a>
-                  {/if}
-                {/each}
+            {@render hubDocs(header.white_papers, "Papers")}
 
-              {/if}
+            {@render hubDocs(header.videos, "Videos")}
+
+              
             </div>
               
             {/each}

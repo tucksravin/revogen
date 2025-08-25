@@ -40,10 +40,21 @@
                 "placeholder": ""
               }
             },
+            "general": {
+              "type": "Link",
+              "config": {
+                "label": "general",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": true
+              }
+            },
             "distributor_documents": {
               "type": "Link",
               "config": {
-                "label": "Distributor documents",
+                "label": "documents",
                 "placeholder": "",
                 "select": null,
                 "allowTargetBlank": true,
@@ -54,7 +65,18 @@
             "white_papers": {
               "type": "Link",
               "config": {
-                "label": "white papers & case studies",
+                "label": "papers ",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": true
+              }
+            },
+            "videos": {
+              "type": "Link",
+              "config": {
+                "label": "videos",
                 "placeholder": "",
                 "select": null,
                 "allowTargetBlank": true,

@@ -166,7 +166,19 @@ export interface ResourceHubCategoryDocumentDataHeadersItem {
   name: prismic.KeyTextField;
 
   /**
-   * Distributor documents field in *resourceHubCategory → headers*
+   * general field in *resourceHubCategory → headers*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: resource_hub_category.headers[].general
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  general: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+
+  /**
+   * documents field in *resourceHubCategory → headers*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
@@ -178,7 +190,7 @@ export interface ResourceHubCategoryDocumentDataHeadersItem {
   >;
 
   /**
-   * white papers & case studies field in *resourceHubCategory → headers*
+   * papers  field in *resourceHubCategory → headers*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
@@ -186,6 +198,18 @@ export interface ResourceHubCategoryDocumentDataHeadersItem {
    * - **Documentation**: https://prismic.io/docs/fields/link
    */
   white_papers: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+
+  /**
+   * videos field in *resourceHubCategory → headers*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: resource_hub_category.headers[].videos
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  videos: prismic.Repeatable<
     prismic.LinkField<string, string, unknown, prismic.FieldState, never>
   >;
 }
