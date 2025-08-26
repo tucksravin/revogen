@@ -51,6 +51,7 @@ body, main{
     scrollbar-width: none !important;
     overflow-y: auto;
     margin:0;
+	font-variant-numeric: proportional-nums;
 }
 
 body::-webkit-scrollbar, main::-webkit-scrollbar { 
