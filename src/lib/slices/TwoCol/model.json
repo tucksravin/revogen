@@ -259,6 +259,34 @@
             "default_value": "0"
           }
         },
+        "col_one_label": {
+          "type": "Text",
+          "config": {
+            "label": "col one label",
+            "placeholder": "default is description"
+          }
+        },
+        "col_two_label": {
+          "type": "Text",
+          "config": {
+            "label": "col two label",
+            "placeholder": "if present: default is size"
+          }
+        },
+        "col_three_label": {
+          "type": "Text",
+          "config": {
+            "label": "col three label",
+            "placeholder": "if present: default is size"
+          }
+        },
+        "last_col_label": {
+          "type": "Text",
+          "config": {
+            "label": "last col label",
+            "placeholder": "default is part number"
+          }
+        },
         "table_column": {
           "type": "Select",
           "config": {
@@ -377,13 +405,6 @@
             "default_value": false
           }
         },
-        "vimeo_id": {
-          "type": "Text",
-          "config": {
-            "label": "vimeo Id",
-            "placeholder": ""
-          }
-        },
         "vertical_padding": {
           "type": "Select",
           "config": {
@@ -409,6 +430,34 @@
               "desc and two sizes and #"
             ],
             "default_value": "desc & #, no sizes"
+          }
+        },
+        "col_one_label": {
+          "type": "Text",
+          "config": {
+            "label": "col one label",
+            "placeholder": "default is description"
+          }
+        },
+        "col_two_label": {
+          "type": "Text",
+          "config": {
+            "label": "col two label",
+            "placeholder": "if present: default is size"
+          }
+        },
+        "col_three_label": {
+          "type": "Text",
+          "config": {
+            "label": "col three label",
+            "placeholder": "if present: default is size"
+          }
+        },
+        "last_col_label": {
+          "type": "Text",
+          "config": {
+            "label": "last col label",
+            "placeholder": "default is part number"
           }
         },
         "products": {

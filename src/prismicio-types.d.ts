@@ -1163,6 +1163,46 @@ export interface TwoColSliceImageTableTextPrimary {
   vertical_padding: prismic.SelectField<"0" | "5" | "10" | "20", "filled">;
 
   /**
+   * col one label field in *TwoCol → imageTableText → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: default is description
+   * - **API ID Path**: two_col.imageTableText.primary.col_one_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  col_one_label: prismic.KeyTextField;
+
+  /**
+   * col two label field in *TwoCol → imageTableText → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: if present: default is size
+   * - **API ID Path**: two_col.imageTableText.primary.col_two_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  col_two_label: prismic.KeyTextField;
+
+  /**
+   * col three label field in *TwoCol → imageTableText → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: if present: default is size
+   * - **API ID Path**: two_col.imageTableText.primary.col_three_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  col_three_label: prismic.KeyTextField;
+
+  /**
+   * last col label field in *TwoCol → imageTableText → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: default is part number
+   * - **API ID Path**: two_col.imageTableText.primary.last_col_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  last_col_label: prismic.KeyTextField;
+
+  /**
    * table column field in *TwoCol → imageTableText → Primary*
    *
    * - **Field Type**: Select
@@ -1273,16 +1313,6 @@ export interface TwoColSliceTableTextPrimary {
   showTopBorder: prismic.BooleanField;
 
   /**
-   * vimeo Id field in *TwoCol → tableText → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: two_col.tableText.primary.vimeo_id
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  vimeo_id: prismic.KeyTextField;
-
-  /**
    * vertical padding field in *TwoCol → tableText → Primary*
    *
    * - **Field Type**: Select
@@ -1308,6 +1338,46 @@ export interface TwoColSliceTableTextPrimary {
     | "desc and two sizes and #",
     "filled"
   >;
+
+  /**
+   * col one label field in *TwoCol → tableText → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: default is description
+   * - **API ID Path**: two_col.tableText.primary.col_one_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  col_one_label: prismic.KeyTextField;
+
+  /**
+   * col two label field in *TwoCol → tableText → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: if present: default is size
+   * - **API ID Path**: two_col.tableText.primary.col_two_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  col_two_label: prismic.KeyTextField;
+
+  /**
+   * col three label field in *TwoCol → tableText → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: if present: default is size
+   * - **API ID Path**: two_col.tableText.primary.col_three_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  col_three_label: prismic.KeyTextField;
+
+  /**
+   * last col label field in *TwoCol → tableText → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: default is part number
+   * - **API ID Path**: two_col.tableText.primary.last_col_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  last_col_label: prismic.KeyTextField;
 
   /**
    * products field in *TwoCol → tableText → Primary*

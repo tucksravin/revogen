@@ -238,6 +238,26 @@
 						]
 					}
 				]
+			},
+			"col_one_label": {
+				"__TYPE__": "FieldContent",
+				"value": "mile",
+				"type": "Text"
+			},
+			"last_col_label": {
+				"__TYPE__": "FieldContent",
+				"value": "behind",
+				"type": "Text"
+			},
+			"col_two_label": {
+				"__TYPE__": "FieldContent",
+				"value": "especially",
+				"type": "Text"
+			},
+			"col_three_label": {
+				"__TYPE__": "FieldContent",
+				"value": "pencil",
+				"type": "Text"
 			}
 		},
 		"items": [
@@ -285,11 +305,6 @@
 			"showTopBorder": {
 				"__TYPE__": "BooleanContent",
 				"value": true
-			},
-			"vimeo_id": {
-				"__TYPE__": "FieldContent",
-				"value": "shop",
-				"type": "Text"
 			},
 			"vertical_padding": {
 				"__TYPE__": "FieldContent",
@@ -346,6 +361,26 @@
 			"isTableFirst": {
 				"__TYPE__": "BooleanContent",
 				"value": false
+			},
+			"col_one_label": {
+				"__TYPE__": "FieldContent",
+				"value": "glass",
+				"type": "Text"
+			},
+			"col_two_label": {
+				"__TYPE__": "FieldContent",
+				"value": "studied",
+				"type": "Text"
+			},
+			"col_three_label": {
+				"__TYPE__": "FieldContent",
+				"value": "plural",
+				"type": "Text"
+			},
+			"last_col_label": {
+				"__TYPE__": "FieldContent",
+				"value": "harder",
+				"type": "Text"
 			}
 		},
 		"items": [
