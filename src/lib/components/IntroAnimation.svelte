@@ -24,6 +24,7 @@ $effect(() => {
       document.body.style.width = "";
       document.body.style.height = "";
       document.documentElement.style.overflow = "";
+      document.body.style.pointerEvents = "";
       
       // Remove event listeners
       window.removeEventListener('wheel', preventScroll, { passive: false } as any);
@@ -33,6 +34,7 @@ $effect(() => {
     } else {
       // Disable scrolling completely
       document.body.style.overflow = "hidden";
+      document.body.style.pointerEvents = "none";
       document.body.style.position = "fixed";
       document.body.style.width = "100%";
       document.body.style.height = "100%";
