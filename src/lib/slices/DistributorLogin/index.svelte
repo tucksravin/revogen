@@ -11,14 +11,14 @@ import type { SliceComponentProps } from "@prismicio/svelte";
 interface Props extends SliceComponentProps<Content.DistributorLoginSlice> {}
 const { slice }: Props = $props();
 
-let isAuthenticated = $state(false);
+let isAuthenticated = $state(true);
 let password = $state("");
 let showError = $state(false);
 let shakeButton = $state(false);
 let activeCategory = $state(0)
 
 // Mobile slider state
-let sliderContainer: HTMLElement;
+let sliderContainer =$state<HTMLElement>();
 let isDragging = $state(false);
 let startX = $state(0);
 let scrollLeft = $state(0);
@@ -198,8 +198,8 @@ onMount(() => {
     {:else}
  
       <div class="w-full border-t-2 border-white text-white flex flex-col items-center" in:fly={{delay:400, x:"-100%"}}>
-        <p class="mt-32 text-center max-w-lg">At RevoGen Biologics, we are deeply committed to supporting the success of our partners/distributors. Use the links below to access important resources and download collateral designed to help you service your existing clients and win new business!</p>
-        <h5 class="my-16">Select a Topic to View Resources</h5>
+        <p class=" mt-12 md:mt-32 text-center max-w-lg">At RevoGen Biologics, we are deeply committed to supporting the success of our partners/distributors. Use the links below to access important resources and download collateral designed to help you service your existing clients and win new business!</p>
+        <h5 class=" mt-12 mb-4 md:my-16">Select a Topic to View Resources</h5>
         
         <!-- Desktop Layout (unchanged) -->
         <div class="w-full justify-center flex-wrap gap-12 hidden md:flex">
@@ -219,7 +219,7 @@ onMount(() => {
         </div>
 
         <!-- Mobile Slider Layout -->
-        <div class="w-full md:hidden">
+        <div class="w-screen md:hidden">
           <div 
             bind:this={sliderContainer}
             class="mobile-slider flex gap-6 overflow-x-auto pb-4 px-4 cursor-grab active:cursor-grabbing"
@@ -267,34 +267,14 @@ onMount(() => {
             {/if}
           </div>
           
-          <!-- Mobile scroll indicators -->
-          <div class="flex justify-center gap-2 mt-4">
-            {#if $distributorData}
-              {#each $distributorData as _, i}
-                <button 
-                  class="w-2 h-2 rounded-full transition-all {activeCategory === i ? 'bg-white' : 'bg-white/40'}"
-                  aria-label="slide to {i}"
-                  onclick={() => {
-                    activeCategory = i;
-                    // Scroll to center the selected item
-                    if (sliderContainer) {
-                      const itemWidth = 144; // 128px + 16px gap
-                      const containerWidth = sliderContainer.offsetWidth;
-                      const scrollPosition = (i * itemWidth) - (containerWidth / 2) + (itemWidth / 2);
-                      sliderContainer.scrollTo({ left: scrollPosition, behavior: 'smooth' });
-                    }
-                  }}
-                ></button>
-              {/each}
-            {/if}
-          </div>
+          
         </div>
         
       </div>
 
       {#snippet hubDocs(docs:Repeatable<LinkField<string, string, unknown, FieldState, never>>, title:string)}
          {#if docs.length>0&&isFilled.link(docs[0])}
-                <h5 class="mt-10 uppercase">{title}</h5>
+                <h5 class="mt-6 md:mt-10 uppercase">{title}</h5>
                 <div class="h-0.5 w-full bg-white my-4"></div>
                 {#each docs as doc}
                   {#if isFilled.link(doc)}
@@ -311,7 +291,7 @@ onMount(() => {
       
       {#if activeCategory>-1}
       <!-- Updated container with dynamic height -->
-      <div class="w-full mt-32 relative transition-all duration-300 ease-in-out mb-32" style="height: {containerHeight}px" in:slide>
+      <div class="w-full mt-6 md:mt-32 relative transition-all duration-300 ease-in-out mb-32" style="height: {containerHeight}px" in:slide>
         {#key activeCategory}
            <div class="absolute top-0 left-0 w-full flex flex-col gap-16" in:fade={{delay:700}} out:fade>
             {#each $distributorData[activeCategory].data.headers as header }
