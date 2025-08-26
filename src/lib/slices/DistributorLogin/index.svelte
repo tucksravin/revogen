@@ -15,7 +15,13 @@ let isAuthenticated = $state(false);
 let password = $state("");
 let showError = $state(false);
 let shakeButton = $state(false);
-let activeCategory = $state(-1)
+let activeCategory = $state(0)
+
+// Mobile slider state
+let sliderContainer: HTMLElement;
+let isDragging = $state(false);
+let startX = $state(0);
+let scrollLeft = $state(0);
 
 // New state variables for height management
 let categoryRefs: HTMLElement[] = $state([]);
@@ -47,6 +53,44 @@ function handleKeyPress(event: KeyboardEvent) {
   if (event.key === 'Enter') {
     handleSubmit();
   }
+}
+
+// Mobile slider functions
+function handleMouseDown(e: MouseEvent) {
+  if (!sliderContainer) return;
+  isDragging = true;
+  startX = e.pageX - sliderContainer.offsetLeft;
+  scrollLeft = sliderContainer.scrollLeft;
+}
+
+function handleMouseUp() {
+  isDragging = false;
+}
+
+function handleMouseMove(e: MouseEvent) {
+  if (!isDragging || !sliderContainer) return;
+  e.preventDefault();
+  const x = e.pageX - sliderContainer.offsetLeft;
+  const walk = (x - startX) * 2;
+  sliderContainer.scrollLeft = scrollLeft - walk;
+}
+
+function handleTouchStart(e: TouchEvent) {
+  if (!sliderContainer) return;
+  isDragging = true;
+  startX = e.touches[0].pageX - sliderContainer.offsetLeft;
+  scrollLeft = sliderContainer.scrollLeft;
+}
+
+function handleTouchMove(e: TouchEvent) {
+  if (!isDragging || !sliderContainer) return;
+  const x = e.touches[0].pageX - sliderContainer.offsetLeft;
+  const walk = (x - startX) * 2;
+  sliderContainer.scrollLeft = scrollLeft - walk;
+}
+
+function handleTouchEnd() {
+  isDragging = false;
 }
 
 // Function to calculate the tallest category height
@@ -103,6 +147,16 @@ onMount(() => {
   .animate-shake {
     animation: shake 0.4s ease-in-out;
   }
+
+  .mobile-slider {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .mobile-slider::-webkit-scrollbar {
+    display: none;
+  }
 </style>
 
 <section
@@ -120,7 +174,7 @@ onMount(() => {
         <p>PASSWORD</p>
         <input 
           type="password" 
-          class="h-10 w-128 max-w-sm rounded-sm bg-white/30 text-black px-2 placeholder-black/40 text-center"
+          class="h-10 md:w-128 max-w-sm rounded-sm bg-white/30 text-black px-2 placeholder-black/40 text-center"
           bind:value={password}
           onkeypress={handleKeyPress}
         />
@@ -147,7 +201,8 @@ onMount(() => {
         <p class="mt-32 text-center max-w-lg">At RevoGen Biologics, we are deeply committed to supporting the success of our partners/distributors. Use the links below to access important resources and download collateral designed to help you service your existing clients and win new business!</p>
         <h5 class="my-16">Select a Topic to View Resources</h5>
         
-        <div class="w-full flex justify-center flex-wrap gap-12">
+        <!-- Desktop Layout (unchanged) -->
+        <div class="w-full justify-center flex-wrap gap-12 hidden md:flex">
           {#if $distributorData}
             {#each $distributorData as category, i}
             <div class="flex flex-col gap-2 items-center justify-center">
@@ -161,6 +216,78 @@ onMount(() => {
            
             {/each}
           {/if}
+        </div>
+
+        <!-- Mobile Slider Layout -->
+        <div class="w-full md:hidden">
+          <div 
+            bind:this={sliderContainer}
+            class="mobile-slider flex gap-6 overflow-x-auto pb-4 px-4 cursor-grab active:cursor-grabbing"
+            style="scroll-snap-type: x mandatory;"
+            onmousedown={handleMouseDown}
+            onmouseup={handleMouseUp}
+            onmousemove={handleMouseMove}
+            onmouseleave={handleMouseUp}
+            ontouchstart={handleTouchStart}
+            ontouchmove={handleTouchMove}
+            ontouchend={handleTouchEnd}
+            role="slider"
+            tabindex="0"
+            aria-valuenow={activeCategory}
+          >
+            {#if $distributorData}
+              {#each $distributorData as category, i}
+                <div class="flex flex-col gap-2 items-center justify-center flex-shrink-0" style="scroll-snap-align: center;">
+                  <button 
+                    class="w-32 h-32 border-[1px] rounded-full border-white drop-shadow-sm hover:grayscale-0 hover:opacity-100 transition {activeCategory===i?"pointer-events-none cursor-regular":"opacity-80 grayscale"}" 
+                    onclick={()=>{activeCategory=i; if (sliderContainer) {
+                      const itemWidth = 144; // 128px + 16px gap
+                      const containerWidth = sliderContainer.offsetWidth;
+                      const scrollPosition = (i * itemWidth) - (containerWidth / 2) + (itemWidth / 2);
+                      sliderContainer.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+                    }
+                  }}
+                  >
+                    <PrismicImage field={category.data.image} class="w-full h-full rounded-full scale-[92%] object-cover" />
+                  </button>
+                  <button 
+                    onclick={()=>{activeCategory=i; if (sliderContainer) {
+                      const itemWidth = 144; // 128px + 16px gap
+                      const containerWidth = sliderContainer.offsetWidth;
+                      const scrollPosition = (i * itemWidth) - (containerWidth / 2) + (itemWidth / 2);
+                      sliderContainer.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+                    }
+                  }}
+                    class="w-32 {activeCategory===i?"pointer-events-none cursor-regular":""}"
+                  >
+                    <p class="body-3 text-center drop-shadow-sm text-sm leading-tight">{category.data.name}</p>
+                  </button>
+                </div>
+              {/each}
+            {/if}
+          </div>
+          
+          <!-- Mobile scroll indicators -->
+          <div class="flex justify-center gap-2 mt-4">
+            {#if $distributorData}
+              {#each $distributorData as _, i}
+                <button 
+                  class="w-2 h-2 rounded-full transition-all {activeCategory === i ? 'bg-white' : 'bg-white/40'}"
+                  aria-label="slide to {i}"
+                  onclick={() => {
+                    activeCategory = i;
+                    // Scroll to center the selected item
+                    if (sliderContainer) {
+                      const itemWidth = 144; // 128px + 16px gap
+                      const containerWidth = sliderContainer.offsetWidth;
+                      const scrollPosition = (i * itemWidth) - (containerWidth / 2) + (itemWidth / 2);
+                      sliderContainer.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+                    }
+                  }}
+                ></button>
+              {/each}
+            {/if}
+          </div>
         </div>
         
       </div>

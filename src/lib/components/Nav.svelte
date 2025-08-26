@@ -70,13 +70,13 @@
             class="bump w-fit ml-8 md:ml-0"
             onclick={() => (isNavModalOpen = false)}
           >
-            <h2 class="hover:text-white/80 transition duration-300 ease-out">
+            <h2 class="hover:text-white/80 transition duration-300 ease-out opacity-75">
               Allografts
             </h2>
           </DelayedLink>
           <DelayedLink
             href="/surgical-grafts/sports-medicine"
-            class="bump w-fit ml-8 md:ml-0"
+            class="bump w-fit ml-8 md:ml-0 opacity-75"
             onclick={() => (isNavModalOpen = false)}
           >
             <h2 class="hover:text-white/80 transition duration-300 ease-out">
@@ -85,7 +85,7 @@
           </DelayedLink>
           <DelayedLink
             href="/surgical-grafts/amnion-patches"
-            class="bump w-fit ml-8 md:ml-0"
+            class="bump w-fit ml-8 md:ml-0 opacity-75"
             onclick={() => (isNavModalOpen = false)}
           >
             <h2 class="hover:text-white/80 transition duration-300 ease-out">
@@ -94,7 +94,7 @@
           </DelayedLink>
           <DelayedLink
             href="/surgical-grafts/synthetics"
-            class="bump w-fit ml-8 md:ml-0"
+            class="bump w-fit ml-8 md:ml-0 opacity-75"
             onclick={() => (isNavModalOpen = false)}
           >
             <h2 class="hover:text-white/80 transition duration-300 ease-out">

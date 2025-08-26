@@ -4,7 +4,7 @@
 </script>
 
 <ContentWidth
-  class="flex flex-col md:flex-row justify-between text-white footer relative border-t-[2px] border-white mt-20"
+  class="flex flex-col md:flex-row justify-between text-white footer relative border-t-[2px] border-white mt-20 mb-5"
 >
   <div class="flex flex-col justify-stretch mt-4 pb-4">
     <h4 class="drop-shadow-md drop-shadow-black/20">Revolutionizing Bioregeneration</h4>
