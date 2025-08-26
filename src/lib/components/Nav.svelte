@@ -23,7 +23,7 @@
     <div
       class="w-full h-full absolute -z-10 menu-background will-change-transform"
     ></div>
-    <ContentWidth class="my-20 md:my-48 md:px-24 drop-shadow-sm">
+    <ContentWidth class="my-20 md:my-48 md:px-24 drop-shadow-sm drop-shadow-black/30">
       <div class="h-0.5 bg-white w-full"></div>
       <div class="flex flex-col md:flex-row gap-6 md:gap-10 mt-10 text-white">
         <div class="w-full md:w-1/2 flex flex-col gap-6 md:gap-10 nav">
@@ -51,7 +51,7 @@
             onclick={() => (isNavModalOpen = false)}
           >
             <h2 class="hover:text-white/80 transition duration-300 ease-out">
-              Distributor resource hub
+              Distributor Resource Hub
             </h2>
           </DelayedLink>
         </div>
