@@ -11,7 +11,7 @@ import type { SliceComponentProps } from "@prismicio/svelte";
 interface Props extends SliceComponentProps<Content.DistributorLoginSlice> {}
 const { slice }: Props = $props();
 
-let isAuthenticated = $state(true);
+let isAuthenticated = $state(false);
 let password = $state("");
 let showError = $state(false);
 let shakeButton = $state(false);
