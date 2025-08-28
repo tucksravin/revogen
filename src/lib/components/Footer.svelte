@@ -7,8 +7,8 @@
   class="flex flex-col md:flex-row justify-between text-white footer relative border-t-[2px] border-white mt-20 mb-5"
 >
   <div class="flex flex-col justify-stretch mt-4 pb-4">
-    <h4 class="drop-shadow-md drop-shadow-black/20">Revolutionizing Bioregeneration</h4>
-    <div class="hidden md:block copywright drop-shadow-md drop-shadow-black/20 mt-auto">
+    <h4 class="drop-shadow-xs drop-shadow-black/10">Revolutionizing Bioregeneration</h4>
+    <div class="hidden md:block copywright drop-shadow-xs drop-shadow-black/10 mt-auto">
       {"© " +
         new Date().getFullYear() +
         " RevoGen Biologics®. All Rights Reserved."}
@@ -17,56 +17,56 @@
   <div class="flex flex-col gap-6 my-6 footer">
     <DelayedLink
       href="/about"
-      class="hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-md drop-shadow-black/20"
+      class="hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-xs drop-shadow-black/10"
       >About</DelayedLink
     >
     <DelayedLink
       href="/distribution-opportunities"
-      class="hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-md drop-shadow-black/20"
+      class="hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-xs drop-shadow-black/10"
       >distribution<br />opportunities</DelayedLink
     >
     <DelayedLink
       href="/distributor-resource-hub"
-      class="hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-md drop-shadow-black/20"
+      class="hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-xs drop-shadow-black/10"
       >distributor resource hub</DelayedLink
     >
     <DelayedLink
       href="/ocular"
-      class="hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-md drop-shadow-black/20"
+      class="hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-xs drop-shadow-black/10"
       >ocular grafts</DelayedLink
     >
     <DelayedLink
       href="/wound-care"
-      class="hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-md drop-shadow-black/20"
+      class="hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-xs drop-shadow-black/10"
       >wound care grafts</DelayedLink
     >
     <DelayedLink
       href="/surgical-grafts/"
-      class="hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-md drop-shadow-black/20"
+      class="hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-xs drop-shadow-black/10"
       >surgical grafts</DelayedLink
     >
     <DelayedLink
       href="/surgical-grafts/allografts"
-      class="ml-5 hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-md drop-shadow-black/20"
+      class="ml-5 hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-xs drop-shadow-black/10"
       >allografts</DelayedLink
     >
     <DelayedLink
       href="/surgical-grafts/sports-medicine"
-      class="ml-5 hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-md drop-shadow-black/20"
+      class="ml-5 hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-xs drop-shadow-black/10"
       >sports medicine grafts</DelayedLink
     >
     <DelayedLink
       href="/surgical-grafts/amnion-patches"
-      class="ml-5 hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-md drop-shadow-black/20"
+      class="ml-5 hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-xs drop-shadow-black/10"
       >amnion patches</DelayedLink
     >
     <DelayedLink
       href="/surgical-grafts/synthetics"
-      class="ml-5 hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-md drop-shadow-black/20"
+      class="ml-5 hover:opacity-85 transition-opacity duration-300 uppercase drop-shadow-xs drop-shadow-black/10"
       >synthetics</DelayedLink
     >
     <div class="h-0.5 w-full bg-white rounded-full"></div>
-    <div class="leading-normal drop-shadow-md drop-shadow-black/20">
+    <div class="leading-normal drop-shadow-xs drop-shadow-black/10">
       4903 Golden Quail,<br />
       Suite 120<br />
       San Antonio, TX 78240 <br />
@@ -87,7 +87,7 @@
       >
     </div>
   </div>
-  <div class="md:hidden block copywright drop-shadow-md drop-shadow-black/20 mt-6">
+  <div class="md:hidden block copywright drop-shadow-xs drop-shadow-black/10 mt-6">
     {"© " + new Date().getFullYear() + " RevoGen Biologics®."}<br />All Rights
     Reserved.
   </div>
