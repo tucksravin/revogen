@@ -1,73 +1,56 @@
 <script lang="ts">
-  import ContentWidth from "$lib/components/ContentWidth/ContentWidth.svelte";
-import type { Content } from "@prismicio/client";
-import type { SliceComponentProps } from "@prismicio/svelte";
-import { gradientTheme, defaultGradientTheme } from "$lib/stores/gradientTheme";
+	import ContentWidth from "$lib/components/ContentWidth/ContentWidth.svelte";
+	import type { Content } from "@prismicio/client";
+	import type { SliceComponentProps } from "@prismicio/svelte";
+	import { gradientTheme, defaultGradientTheme } from "$lib/stores/gradientTheme";
+	import Img from "@zerodevx/svelte-img";
+	import surgical from "$lib/assets/images/surgical.png?as=run"
+	import ocular from "$lib/assets/images/ocular.png?as=run"
+	import woundCare from "$lib/assets/images/woundCare.png?as=run"
 
-type Props = SliceComponentProps<Content.HomePageAnimSlice>
+	type Props = SliceComponentProps<Content.HomePageAnimSlice>
 
-const { slice }: Props = $props();
+	const { slice }: Props = $props();
 </script>
 
-<style>
-
-	.interactive-button {
-		width: 10rem;
-		height: 10rem;
-		border: 2px solid;
-		border-color: white;
-		background-color: rgba(255, 255, 255, 0.3);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		cursor: pointer;
-		transition: background-color 0.3s ease, transform 0.2s ease;
-		will-change: background-color, transform;
-		user-select: none;
-		-webkit-tap-highlight-color: transparent;
-	}
-
-	.interactive-button:hover {
-		background-color: rgba(255, 255, 255, 0.6);
-	}
-
-
-
-</style>
 
 <section
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
-	class="h-screen w-screen"
+	class="min-h-screen w-screen py-8 md:py-0 relative"
 >
 
-<ContentWidth class="h-full flex flex-col md:flex-row items-center justify-evenly">
+<ContentWidth class="h-full w-full min-h-screen flex flex-col md:flex-row items-center justify-evenly text-white">
 		<div 
-			class='interactive-button' 
+			class='hover:cursor-pointer w-1/4 flex flex-col items-center justify-center gap-4' 
 			onmouseenter={()=>gradientTheme.set(1)} 
 			onmouseleave={()=>gradientTheme.set($defaultGradientTheme)}
 			role="button"
 			tabindex="0"
 		>
-			surgical
+			<Img src={surgical} alt="surgical" />
+			Surgical
 		</div>
 		<div 
-			class='interactive-button' 
+			class='hover:cursor-pointer w-1/4 flex flex-col items-center justify-center gap-4'  
 			onmouseenter={()=>gradientTheme.set(2)} 
 			onmouseleave={()=>gradientTheme.set($defaultGradientTheme)}
 			role="button"
 			tabindex="0"
 		>
-			wound care
+			<Img src={woundCare} alt="wound care" />
+			Wound Care
+		
 		</div>
 		<div 
-			class='interactive-button' 
+			class='hover:cursor-pointer w-1/4 flex flex-col items-center justify-center gap-4'  
 			onmouseenter={()=>gradientTheme.set(3)} 
 			onmouseleave={()=>gradientTheme.set($defaultGradientTheme)}
 			role="button"
 			tabindex="0"
 		>
-			ocular
+			<Img src={ocular} alt="ocular" />
+			Ocular
 		</div>
 </ContentWidth>
 

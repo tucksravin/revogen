@@ -36,6 +36,7 @@ let originalBodyStyles: {
 
 const enableScrollPrevention = () => {
   if (!browser) return;
+
   
   // Store original styles only once
   if (!originalBodyStyles) {
@@ -104,6 +105,9 @@ onMount(() => {
     }
     return;
   }
+
+
+  window.scrollTo(0, 0);
   
   // Set flag to prevent re-execution
   isIntroRunning = true;
