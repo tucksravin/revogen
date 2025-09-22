@@ -4,9 +4,9 @@
 	import type { SliceComponentProps } from "@prismicio/svelte";
 	import { gradientTheme, defaultGradientTheme } from "$lib/stores/gradientTheme";
 	import Img from "@zerodevx/svelte-img";
-	import surgical from "$lib/assets/images/surgical.png?as=run"
-	import ocular from "$lib/assets/images/ocular.png?as=run"
-	import woundCare from "$lib/assets/images/woundCare.png?as=run"
+	import surgical from "$lib/assets/images/surgical.png"
+	import ocular from "$lib/assets/images/ocular.png"
+	import woundCare from "$lib/assets/images/woundCare.png"
 
 	type Props = SliceComponentProps<Content.HomePageAnimSlice>
 
@@ -28,7 +28,7 @@
 			role="button"
 			tabindex="0"
 		>
-			<Img src={surgical} alt="surgical" />
+			<img src={surgical} alt="surgical" />
 			Surgical
 		</div>
 		<div 
@@ -38,7 +38,7 @@
 			role="button"
 			tabindex="0"
 		>
-			<Img src={woundCare} alt="wound care" />
+			<img src={woundCare} alt="wound care" />
 			Wound Care
 		
 		</div>
@@ -49,7 +49,7 @@
 			role="button"
 			tabindex="0"
 		>
-			<Img src={ocular} alt="ocular" />
+			<img src={ocular} alt="ocular" />
 			Ocular
 		</div>
 </ContentWidth>
