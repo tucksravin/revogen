@@ -29,7 +29,7 @@
 			href="/surgical-grafts"
 			tabindex="0"
 		>
-			<img src={surgical} alt="surgical" class="{$gradientTheme===1?"":"brightness-0 invert opacity-10"} transition duration-700" />
+			<img src={surgical} alt="surgical" class="{$gradientTheme===1?"":"brightness-0 invert opacity-5"} transition duration-700 ease-out" />
 			<h4>Surgical Grafts</h4>
 			{#if $gradientTheme===1}
 				<p transition:slide class="text-center mt-4">Our Amniotic Discs have a number of applications, including use in repair and reconstructive procedures to treat ocular diseases, abnormalities, and post-op care.</p>
@@ -49,7 +49,7 @@
 			href="/wound-care"
 			tabindex="0"
 		>
-			<img src={woundCare} alt="wound care" class="{$gradientTheme===2?"":"brightness-0 invert opacity-10"} transition duration-700" />
+			<img src={woundCare} alt="wound care" class="{$gradientTheme===2?"":"brightness-0 invert opacity-5"} transition duration-700 ease-out" />
 			<h4>Wound Care Grafts</h4>
 			{#if $gradientTheme===2}
 				<p transition:slide class="text-center mt-4">Our Amniotic Discs have a number of applications, including use in repair and reconstructive procedures to treat ocular diseases, abnormalities, and post-op care.</p>
@@ -70,7 +70,7 @@
 			href="/ocular"
 			tabindex="0"
 		>
-			<img src={ocular} alt="ocular" class="{$gradientTheme===3?"":"brightness-0 invert opacity-10"} transition duration-700" />
+			<img src={ocular} alt="ocular" class="{$gradientTheme===3?"":"brightness-0 invert opacity-5"} transition duration-700 ease-out" />
 			<h4>Ocular Grafts</h4>
 			{#if $gradientTheme===3}
 				<p transition:slide class="text-center mt-4">Our Amniotic Discs have a number of applications, including use in repair and reconstructive procedures to treat ocular diseases, abnormalities, and post-op care.</p>
