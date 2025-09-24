@@ -7,6 +7,9 @@
 	import surgical from "$lib/assets/images/surgical.png"
 	import ocular from "$lib/assets/images/ocular.png"
 	import woundCare from "$lib/assets/images/woundCare.png"
+	import surgicalBefore from "$lib/assets/images/surgical-before.png"
+	import ocularBefore from "$lib/assets/images/ocular-before.png"
+	import woundCareBefore from "$lib/assets/images/wound-before.png"
   import { fade, slide } from "svelte/transition";
   import DelayedLink from "$lib/components/DelayedLink.svelte";
 
@@ -29,8 +32,13 @@
 			onmouseleave={()=>gradientTheme.set($defaultGradientTheme)}
 			href="/surgical-grafts"
 		
-		>
-			<img src={surgical} alt="surgical" class="{$gradientTheme===1?"":"brightness-0 invert opacity-5"} transition duration-700 ease-out" />
+		>	<div class="relative w-full aspect-square">
+				{#if $gradientTheme===1}
+					<img transition:fade src={surgical} alt="surgical" class="{$gradientTheme===1?"":"brightness-0 invert opacity-5"} transition duration-700 ease-out absolute top-1/2 left-1/2 -translate-1/2" />
+				{:else}
+					<img transition:fade src={surgicalBefore} alt="surgical" class="{$gradientTheme===1?"":"brightness-0 invert opacity-5"} transition duration-700 ease-out absolute top-1/2 left-1/2 -translate-1/2" />
+				{/if}
+			</div>
 			<h4>Surgical Grafts</h4>
 			{#if $gradientTheme===1}
 				<p transition:slide class="text-center mt-4">Our Amniotic Discs have a number of applications, including use in repair and reconstructive procedures to treat ocular diseases, abnormalities, and post-op care.</p>
@@ -50,7 +58,13 @@
 			href="/wound-care"
 			
 		>
-			<img src={woundCare} alt="wound care" class="{$gradientTheme===2?"":"brightness-0 invert opacity-5"} transition duration-700 ease-out" />
+			<div class="relative w-full aspect-square">
+				{#if $gradientTheme===2}
+					<img transition:fade src={woundCare} alt="wound care" class="{$gradientTheme===2?"":"brightness-0 invert opacity-5"} transition duration-700 ease-out absolute top-1/2 left-1/2 -translate-1/2" />
+				{:else}
+					<img transition:fade src={woundCareBefore} alt="wound care" class="{$gradientTheme===2?"":"brightness-0 invert opacity-5"} transition duration-700 ease-out absolute top-1/2 left-1/2 -translate-1/2" />
+				{/if}
+			</div>
 			<h4>Wound Care Grafts</h4>
 			{#if $gradientTheme===2}
 				<p transition:slide class="text-center mt-4">Our Amniotic Discs have a number of applications, including use in repair and reconstructive procedures to treat ocular diseases, abnormalities, and post-op care.</p>
@@ -71,7 +85,13 @@
 			href="/ocular"
 			
 		>
-			<img src={ocular} alt="ocular" class="{$gradientTheme===3?"":"brightness-0 invert opacity-5"} transition duration-700 ease-out" />
+			<div class="relative w-full aspect-square">
+				{#if $gradientTheme===3}
+					<img transition:fade src={ocular} alt="ocular" class="{$gradientTheme===3?"":"brightness-0 invert opacity-5"} transition duration-700 ease-out absolute top-1/2 left-1/2 -translate-1/2" />
+				{:else}
+					<img transition:fade src={ocularBefore} alt="ocular" class="{$gradientTheme===3?"":"brightness-0 invert opacity-5"} transition duration-700 ease-out absolute top-1/2 left-1/2 -translate-1/2" />
+				{/if}
+			</div>
 			<h4>Ocular Grafts</h4>
 			{#if $gradientTheme===3}
 				<p transition:slide class="text-center mt-4">Our Amniotic Discs have a number of applications, including use in repair and reconstructive procedures to treat ocular diseases, abnormalities, and post-op care.</p>
