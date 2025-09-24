@@ -178,12 +178,12 @@ let showIPO = $state(false);
 <svelte:window on:resize={handleResize} />
 
 <div class="h-screen w-screen absolute top-0 left-0 z-10 pointer-events-none"> 
-  <!-- Background gradient - always visible, no fade -->
-  <div class='gradient-layer-container add-noise {showBackground && !$hasIntroRun ? "opacity-100" : "opacity-0"}'>
-    <div class='gradient-layer option-0-layer1'></div>
-    <div class='gradient-layer option-0-layer2'></div>
-    <div class='gradient-layer option-0-layer3'></div>
-  </div>
+  
+<div class='absolute w-[125vw] h-[125vh] -top-[10vh] -left-[10vw] add-noise transition-opacity duration-300 delay-300 {showBackground && !$hasIntroRun ? "opacity-100":"opacity-0"}'>
+		<div class='absolute w-full h-full top-0 left-0 option-0-layer1 will-change-transform'></div>
+		<div class='absolute w-full h-full top-0 left-0 option-0-layer2 will-change-transform'></div>
+		<div class='absolute w-full h-full top-0 left-0 option-0-layer3 will-change-transform'></div>
+	</div>
   
   <!-- Shape with fade-in -->
   <img 
