@@ -8,6 +8,7 @@
 	import ocular from "$lib/assets/images/ocular.png"
 	import woundCare from "$lib/assets/images/woundCare.png"
   import { fade, slide } from "svelte/transition";
+  import DelayedLink from "$lib/components/DelayedLink.svelte";
 
 	type Props = SliceComponentProps<Content.HomePageAnimSlice>
 
@@ -22,12 +23,12 @@
 >
 
 <ContentWidth class="h-full w-full min-h-screen flex flex-col md:flex-row items-center justify-evenly text-white">
-		<a 
+		<DelayedLink 
 			class='hover:cursor-pointer w-1/4 flex flex-col items-center justify-center' 
 			onmouseenter={()=>gradientTheme.set(1)} 
 			onmouseleave={()=>gradientTheme.set($defaultGradientTheme)}
 			href="/surgical-grafts"
-			tabindex="0"
+		
 		>
 			<img src={surgical} alt="surgical" class="{$gradientTheme===1?"":"brightness-0 invert opacity-5"} transition duration-700 ease-out" />
 			<h4>Surgical Grafts</h4>
@@ -41,13 +42,13 @@
 					<i in:fade={{delay:400}} out:fade class=" absolute left-1/2 top-1/2 -translate-1/2 fa-sharp fa-light fa-plus fa-lg"></i>
 				{/if}
 			</div>
-		</a>
-		<a 
+		</DelayedLink>
+		<DelayedLink 
 			class='hover:cursor-pointer w-1/4 flex flex-col items-center justify-center'  
 			onmouseenter={()=>gradientTheme.set(2)} 
 			onmouseleave={()=>gradientTheme.set($defaultGradientTheme)}
 			href="/wound-care"
-			tabindex="0"
+			
 		>
 			<img src={woundCare} alt="wound care" class="{$gradientTheme===2?"":"brightness-0 invert opacity-5"} transition duration-700 ease-out" />
 			<h4>Wound Care Grafts</h4>
@@ -62,13 +63,13 @@
 				{/if}
 			</div>
 		
-		</a>
-		<a 
+		</DelayedLink>
+		<DelayedLink 
 			class='hover:cursor-pointer w-1/4 flex flex-col items-center justify-center'  
 			onmouseenter={()=>gradientTheme.set(3)} 
 			onmouseleave={()=>gradientTheme.set($defaultGradientTheme)}
 			href="/ocular"
-			tabindex="0"
+			
 		>
 			<img src={ocular} alt="ocular" class="{$gradientTheme===3?"":"brightness-0 invert opacity-5"} transition duration-700 ease-out" />
 			<h4>Ocular Grafts</h4>
@@ -82,7 +83,7 @@
 					<i in:fade={{delay:400}} out:fade class=" absolute left-1/2 top-1/2 -translate-1/2 fa-sharp fa-light fa-plus fa-lg"></i>
 				{/if}
 			</div>
-		</a>
+		</DelayedLink>
 </ContentWidth>
 
 </section>
