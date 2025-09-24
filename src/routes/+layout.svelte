@@ -53,36 +53,34 @@
 
 </style>
 
-<div class='gradient-container'>
-	<!-- Base background color -->
-	<div class="bg-base option-{$gradientTheme}"></div>
+<div class='fixed w-screen h-screen top-0 left-0'>
 	
 	<!-- Option 0 - Blue -->
-	<div class='gradient-layer-container add-noise {$gradientTheme===0?"opacity-100":"opacity-0"}'>
-		<div class='gradient-layer option-0-layer1'></div>
-		<div class='gradient-layer option-0-layer2'></div>
-		<div class='gradient-layer option-0-layer3'></div>
+	<div class='absolute w-[120vw] h-[120vh] -top-[10vh] -left-[10vw] add-noise transition-opacity duration-300 {$gradientTheme===0?"opacity-100":"opacity-0"}'>
+		<div class='absolute w-full h-full top-0 left-0 option-0-layer1 will-change-transform'></div>
+		<div class='absolute w-full h-full top-0 left-0 option-0-layer2 will-change-transform'></div>
+		<div class='absolute w-full h-full top-0 left-0 option-0-layer3 will-change-transform'></div>
 	</div>
 	
 	<!-- Option 1 - Pink -->
-	<div class='gradient-layer-container add-noise {$gradientTheme===1?"opacity-100":"opacity-0"}'>
-		<div class='gradient-layer option-1-layer1'></div>
-		<div class='gradient-layer option-1-layer2'></div>
-		<div class='gradient-layer option-1-layer3'></div>
+	<div class='absolute w-[120vw] h-[120vh] -top-[10vh] -left-[10vw] transition-opacity add-noise  duration-300 {$gradientTheme===1?"opacity-100":"opacity-0"}'>
+		<div class='absolute w-full h-full top-0 left-0  option-1-layer1 will-change-transform'></div>
+		<div class='absolute w-full h-full top-0 left-0  option-1-layer2 will-change-transform'></div>
+		<div class='absolute w-full h-full top-0 left-0  option-1-layer3 will-change-transform'></div>
 	</div>
 	
 	<!-- Option 2 - Deep Blue -->
-	<div class='gradient-layer-container add-noise {$gradientTheme===2?"opacity-100":"opacity-0"}'>
-		<div class='gradient-layer option-2-layer1'></div>
-		<div class='gradient-layer option-2-layer2'></div>
-		<div class='gradient-layer option-2-layer3'></div>
+	<div class='absolute w-[120vw] h-[120vh] -top-[10vh] -left-[10vw] add-noise transition-opacity duration-300 {$gradientTheme===2?"opacity-100":"opacity-0"}'>
+		<div class='absolute w-full h-full top-0 left-0  option-2-layer1 will-change-transform'></div>
+		<div class='absolute w-full h-full top-0 left-0  option-2-layer2 will-change-transform'></div>
+		<div class='absolute w-full h-full top-0 left-0  option-2-layer3 will-change-transform'></div>
 	</div>
 	
 	<!-- Option 3 - Teal -->
-	<div class='gradient-layer-container add-noise {$gradientTheme===3?"opacity-100":"opacity-0"}'>
-		<div class='gradient-layer option-3-layer1'></div>
-		<div class='gradient-layer option-3-layer2'></div>
-		<div class='gradient-layer option-3-layer3'></div>
+	<div class='absolute w-[120vw] h-[120vh] -top-[10vh] -left-[10vw] add-noise transition-opacity duration-300 {$gradientTheme===3?"opacity-100":"opacity-0"}'>
+		<div class='absolute w-full h-full top-0 left-0  option-3-layer1 will-change-transform'></div>
+		<div class='absolute w-full h-full top-0 left-0  option-3-layer2 will-change-transform'></div>
+		<div class='absolute w-full h-full top-0 left-0  option-3-layer3 will-change-transform'></div>
 	</div>
 	
 </div>
