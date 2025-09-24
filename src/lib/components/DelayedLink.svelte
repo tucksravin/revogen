@@ -1,7 +1,8 @@
 <script lang="ts">
 import { goto } from '$app/navigation';
 import { isTransitioning } from '$lib/stores/isTransitioning';
-import type { Snippet } from 'svelte';
+  import { isFilled, type LinkField } from '@prismicio/client';
+import { onMount, type Snippet } from 'svelte';
 import type { HTMLAnchorAttributes, MouseEventHandler } from 'svelte/elements';
 
 interface DelayedLinkProps extends Omit<HTMLAnchorAttributes, 'onclick'> {
@@ -10,10 +11,12 @@ interface DelayedLinkProps extends Omit<HTMLAnchorAttributes, 'onclick'> {
 	children: Snippet;
 	beforeNavigate?: (event: MouseEvent) => void | Promise<void>;
 	onclick?: MouseEventHandler<HTMLAnchorElement>;
+	field?:LinkField;
 }
 
 let {
 	href,
+	field,
 	delay = 400,
 	children,
 	beforeNavigate,
@@ -67,6 +70,11 @@ const handleClick: MouseEventHandler<HTMLAnchorElement> = async (event) => {
 		}
 	}
 };
+
+onMount(()=>{
+	if(isFilled.link(field)&&field.url)
+		href=field.url
+})
 </script>
 
 <a {href} onclick={handleClick} {...props}>
