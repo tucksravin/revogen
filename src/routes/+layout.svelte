@@ -57,28 +57,28 @@
 
 	
 	<!-- Option 0 - Blue -->
-	<div class='absolute w-[125vw] h-[125vh] -top-[10vh] -left-[10vw] add-noise transition-opacity duration-300 {$gradientTheme===0?"opacity-100":"opacity-0"}'>
+	<div class='absolute w-[125vw] h-[125vh] -top-[10vh] -left-[10vw] add-noise transition-opacity duration-1200 ease-out {$gradientTheme===0?"opacity-100":"opacity-0"}'>
 		<div class='absolute w-full h-full top-0 left-0 option-0-layer1 will-change-transform'></div>
 		<div class='absolute w-full h-full top-0 left-0 option-0-layer2 will-change-transform'></div>
 		<div class='absolute w-full h-full top-0 left-0 option-0-layer3 will-change-transform'></div>
 	</div>
 	
 	<!-- Option 1 - Pink -->
-	<div class='absolute w-[125vw] h-[125vh] -top-[10vh] -left-[10vw] transition-opacity add-noise  duration-300 {$gradientTheme===1?"opacity-100":"opacity-0"}'>
+	<div class='absolute w-[125vw] h-[125vh] -top-[10vh] -left-[10vw] transition-opacity add-noise  duration-1200 ease-out {$gradientTheme===1?"opacity-100":"opacity-0"}'>
 		<div class='absolute w-full h-full top-0 left-0  option-1-layer1 will-change-transform'></div>
 		<div class='absolute w-full h-full top-0 left-0  option-1-layer2 will-change-transform'></div>
 		<div class='absolute w-full h-full top-0 left-0  option-1-layer3 will-change-transform'></div>
 	</div>
 	
 	<!-- Option 2 - Deep Blue -->
-	<div class='absolute w-[125vw] h-[125vh] -top-[10vh] -left-[10vw] add-noise transition-opacity duration-300 {$gradientTheme===2?"opacity-100":"opacity-0"}'>
+	<div class='absolute w-[125vw] h-[125vh] -top-[10vh] -left-[10vw] add-noise transition-opacity duration-1200 ease-out {$gradientTheme===2?"opacity-100":"opacity-0"}'>
 		<div class='absolute w-full h-full top-0 left-0  option-2-layer1 will-change-transform'></div>
 		<div class='absolute w-full h-full top-0 left-0  option-2-layer2 will-change-transform'></div>
 		<div class='absolute w-full h-full top-0 left-0  option-2-layer3 will-change-transform'></div>
 	</div>
 	
 	<!-- Option 3 - Teal -->
-	<div class='absolute w-[125vw] h-[125vh] -top-[10vh] -left-[10vw] add-noise transition-opacity duration-300 {$gradientTheme===3?"opacity-100":"opacity-0"}'>
+	<div class='absolute w-[125vw] h-[125vh] -top-[10vh] -left-[10vw] add-noise transition-opacity duration-1200 ease-out {$gradientTheme===3?"opacity-100":"opacity-0"}'>
 		<div class='absolute w-full h-full top-0 left-0  option-3-layer1 will-change-transform'></div>
 		<div class='absolute w-full h-full top-0 left-0  option-3-layer2 will-change-transform'></div>
 		<div class='absolute w-full h-full top-0 left-0  option-3-layer3 will-change-transform'></div>

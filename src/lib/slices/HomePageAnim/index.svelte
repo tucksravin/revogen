@@ -7,6 +7,7 @@
 	import surgical from "$lib/assets/images/surgical.png"
 	import ocular from "$lib/assets/images/ocular.png"
 	import woundCare from "$lib/assets/images/woundCare.png"
+  import { fade, slide } from "svelte/transition";
 
 	type Props = SliceComponentProps<Content.HomePageAnimSlice>
 
@@ -21,37 +22,67 @@
 >
 
 <ContentWidth class="h-full w-full min-h-screen flex flex-col md:flex-row items-center justify-evenly text-white">
-		<div 
-			class='hover:cursor-pointer w-1/4 flex flex-col items-center justify-center gap-4' 
+		<a 
+			class='hover:cursor-pointer w-1/4 flex flex-col items-center justify-center' 
 			onmouseenter={()=>gradientTheme.set(1)} 
 			onmouseleave={()=>gradientTheme.set($defaultGradientTheme)}
-			role="button"
+			href="/surgical-grafts"
 			tabindex="0"
 		>
-			<img src={surgical} alt="surgical" />
-			Surgical
-		</div>
-		<div 
-			class='hover:cursor-pointer w-1/4 flex flex-col items-center justify-center gap-4'  
+			<img src={surgical} alt="surgical" class="{$gradientTheme===1?"":"brightness-0 invert opacity-10"} transition duration-700" />
+			<h4>Surgical Grafts</h4>
+			{#if $gradientTheme===1}
+				<p transition:slide class="text-center mt-4">Our Amniotic Discs have a number of applications, including use in repair and reconstructive procedures to treat ocular diseases, abnormalities, and post-op care.</p>
+			{/if}
+			<div class="w-8 h-8  border-[1.5px] border-white rounded-full relative mt-4 hover:opacity-80 bump">
+				{#if $gradientTheme===1}
+					<i in:fade={{delay:400}} out:fade class=" absolute left-1/2 top-1/2 -translate-1/2 fa-sharp fa-light fa-chevron-right fa-lg"></i>
+				{:else}
+					<i in:fade={{delay:400}} out:fade class=" absolute left-1/2 top-1/2 -translate-1/2 fa-sharp fa-light fa-plus fa-lg"></i>
+				{/if}
+			</div>
+		</a>
+		<a 
+			class='hover:cursor-pointer w-1/4 flex flex-col items-center justify-center'  
 			onmouseenter={()=>gradientTheme.set(2)} 
 			onmouseleave={()=>gradientTheme.set($defaultGradientTheme)}
-			role="button"
+			href="/wound-care"
 			tabindex="0"
 		>
-			<img src={woundCare} alt="wound care" />
-			Wound Care
+			<img src={woundCare} alt="wound care" class="{$gradientTheme===2?"":"brightness-0 invert opacity-10"} transition duration-700" />
+			<h4>Wound Care Grafts</h4>
+			{#if $gradientTheme===2}
+				<p transition:slide class="text-center mt-4">Our Amniotic Discs have a number of applications, including use in repair and reconstructive procedures to treat ocular diseases, abnormalities, and post-op care.</p>
+			{/if}
+			<div class="w-8 h-8  border-[1.5px] border-white rounded-full relative mt-4 hover:opacity-80 bump">
+				{#if $gradientTheme===2}
+					<i in:fade={{delay:400}} out:fade class=" absolute left-1/2 top-1/2 -translate-1/2 fa-sharp fa-light fa-chevron-right fa-lg"></i>
+				{:else}
+					<i in:fade={{delay:400}} out:fade class=" absolute left-1/2 top-1/2 -translate-1/2 fa-sharp fa-light fa-plus fa-lg"></i>
+				{/if}
+			</div>
 		
-		</div>
-		<div 
-			class='hover:cursor-pointer w-1/4 flex flex-col items-center justify-center gap-4'  
+		</a>
+		<a 
+			class='hover:cursor-pointer w-1/4 flex flex-col items-center justify-center'  
 			onmouseenter={()=>gradientTheme.set(3)} 
 			onmouseleave={()=>gradientTheme.set($defaultGradientTheme)}
-			role="button"
+			href="/ocular"
 			tabindex="0"
 		>
-			<img src={ocular} alt="ocular" />
-			Ocular
-		</div>
+			<img src={ocular} alt="ocular" class="{$gradientTheme===3?"":"brightness-0 invert opacity-10"} transition duration-700" />
+			<h4>Ocular Grafts</h4>
+			{#if $gradientTheme===3}
+				<p transition:slide class="text-center mt-4">Our Amniotic Discs have a number of applications, including use in repair and reconstructive procedures to treat ocular diseases, abnormalities, and post-op care.</p>
+			{/if}
+			<div class="w-8 h-8  border-[1.5px] border-white rounded-full relative mt-4 hover:opacity-80 bump">
+				{#if $gradientTheme===3}
+					<i in:fade={{delay:400}} out:fade class=" absolute left-1/2 top-1/2 -translate-1/2 fa-sharp fa-light fa-chevron-right fa-lg"></i>
+				{:else}
+					<i in:fade={{delay:400}} out:fade class=" absolute left-1/2 top-1/2 -translate-1/2 fa-sharp fa-light fa-plus fa-lg"></i>
+				{/if}
+			</div>
+		</a>
 </ContentWidth>
 
 </section>
