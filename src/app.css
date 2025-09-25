@@ -326,10 +326,10 @@ span{
 			radial-gradient(ellipse 100% 100% at 85% 85%, 
 				hsla(210, 100%, 95%, 0.4) 0%, 
 				hsla(210, 100%, 80%, 0.3) 25%, 
-				hsla(210, 100%, 24%, 0.3) 50%, 
+				hsla(209, 28%, 67%, 0.3) 50%, 
 				transparent 100%);
 		animation: circlingOpposite 8s linear infinite;
-		opacity: 0.7;
+		opacity: 0.4;
 	}
 
 	/* Option 1 - Pink Theme - HSL Colors for smoother gradients */

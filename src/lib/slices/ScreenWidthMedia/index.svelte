@@ -8,6 +8,14 @@
 
   type Props = SliceComponentProps<Content.ScreenWidthVideoSlice>;
 
+	let section:HTMLElement;
+
+	const scrollToNext = () => {
+		document.getElementsByTagName('main')[0].scrollBy({left:0, top:section.getBoundingClientRect().bottom, behavior:'smooth'})
+
+		console.log(section.getBoundingClientRect().bottom)
+	}
+
   const { slice }: Props = $props();
 </script>
 
@@ -15,6 +23,7 @@
   data-slice-type={slice.slice_type}
   data-slice-variation={slice.variation}
   class='text-white'
+  bind:this={section}
 >
   <ScreenWidthMedia 
   	field={isFilled.image(slice.primary.placeholder_image)?slice.primary.placeholder_image:null} 
@@ -51,7 +60,9 @@
 	</div>
 
 		{#if slice.primary.show_scroll_arrow}
-			<img src={downArrow} alt="down" class="absolute bottom-4 h-16 left-1/2 -translate-x-1/2"/>
+		<button class="absolute bottom-4 left-1/2 -translate-x-1/2" onclick={()=>scrollToNext()}>
+			<img src={downArrow} alt="down" class="h-16 negative-bump"/>
+		</button>
 		{/if}
 
   </ScreenWidthMedia>

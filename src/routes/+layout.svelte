@@ -10,6 +10,7 @@
   import { fade } from 'svelte/transition';
   import TransitionOverlay from '$lib/components/TransitionOverlay.svelte';
   import { onNavigate } from '$app/navigation';
+  import { onMount } from 'svelte';
 
 
 	let { children } = $props();
@@ -29,6 +30,7 @@
 };
 
 	onNavigate(scrollAllToTop);
+	onMount(scrollAllToTop);
 	
 </script>
 
@@ -86,7 +88,7 @@
 	
 </div>
 
-<main class="-translate-y-[1px]">
+<main class="-translate-y-[0.5px]">
 	<Nav />
 	{#key children}
 	<div transition:fade>
