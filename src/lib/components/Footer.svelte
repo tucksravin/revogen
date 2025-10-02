@@ -19,7 +19,7 @@ let footerElement: HTMLElement;
 
     console.log(rect.bottom)
     
-    showScript = rect.bottom < window.innerHeight;
+    showScript = rect.bottom < window.innerHeight*1.2;
   };
 
 onMount(() => {
