@@ -78,7 +78,7 @@
       <a
         href="tel:833-781-7597"
         class="underline hover:opacity-85 transition-opacity duration-300"
-        >833-781-7597</a
+        >833.781.7597</a
       ><br />
       <a
         href="https://www.linkedin.com/company/revogen-biologics"
@@ -88,7 +88,7 @@
     </div>
   </div>
   <div class="md:hidden block copywright  mt-6">
-    {"© " + new Date().getFullYear() + " RevoGen Biologics®."}<br />All Rights
-    Reserved.
+    {"© " + new Date().getFullYear() + " RevoGen Biologics®"}<br />All Rights
+    Reserved
   </div>
 </ContentWidth>
