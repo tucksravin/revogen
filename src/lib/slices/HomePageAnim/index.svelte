@@ -19,7 +19,7 @@
 	type Props = SliceComponentProps<Content.HomePageAnimSlice>
 
 	let viewportWidth=$state(1024);
-	let puttyCanvas:HTMLCanvasElement;
+	let puttyCanvas:HTMLCanvasElement|undefined= $state();
 	let riveInstance: rive.Rive | null = null;
 	let isInViewport = $state(false);
 
@@ -27,15 +27,17 @@
 
 	// Preload images on mount
 	onMount(() => {
-		riveInstance = new rive.Rive({
-        src: puttyRive,
-        canvas: puttyCanvas,
-        autoplay: false,
-        stateMachines: "State Machine 1",
-        onLoad: () => {
-          riveInstance?.resizeDrawingSurfaceToCanvas();
-        },
-    });
+
+		if(puttyCanvas)
+			riveInstance = new rive.Rive({
+				src: puttyRive,
+				canvas: puttyCanvas||document.getElementById('puttycanvas'),
+				autoplay: false,
+				stateMachines: "State Machine 1",
+				onLoad: () => {
+					riveInstance?.resizeDrawingSurfaceToCanvas();
+				},
+			});
 
 	const handleResize = () => {
 		riveInstance?.resizeDrawingSurfaceToCanvas();
@@ -117,7 +119,7 @@
 		>	
 
 		{#if viewportWidth>768}
-		<canvas bind:this={puttyCanvas} class="relative w-full aspect-square z-50"></canvas>
+			<canvas bind:this={puttyCanvas} id='puttyCanvas' class="relative w-full aspect-square z-50"></canvas>
 		{:else}
 		    <div class="relative w-full aspect-square">
 				{#if viewportWidth<768||$gradientTheme===1}
