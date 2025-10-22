@@ -12,6 +12,7 @@ export default defineConfig({
 		tailwindcss()
 		
 	],
+	assetsInclude: "**/*.riv",
 	server: {
 		fs: {
 			// Allow access to files from the project root.

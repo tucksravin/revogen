@@ -13,15 +13,60 @@
   import { fade, slide } from "svelte/transition";
   import DelayedLink from "$lib/components/DelayedLink.svelte";
 	import { onMount } from "svelte";
+	import * as rive from '@rive-app/canvas'
+	import puttyRive from '$lib/assets/rive/RevgroPutty.riv'
 
 	type Props = SliceComponentProps<Content.HomePageAnimSlice>
 
 	let viewportWidth=$state(1024);
+	let puttyCanvas:HTMLCanvasElement;
+	let riveInstance: rive.Rive | null = null;
+	let isInViewport = $state(false);
 
 	const { slice }: Props = $props();
 
 	// Preload images on mount
 	onMount(() => {
+		riveInstance = new rive.Rive({
+        src: puttyRive,
+        canvas: puttyCanvas,
+        autoplay: false,
+        stateMachines: "State Machine 1",
+        onLoad: () => {
+          riveInstance?.resizeDrawingSurfaceToCanvas();
+        },
+    });
+
+	const handleResize = () => {
+		riveInstance?.resizeDrawingSurfaceToCanvas();
+	};
+
+	window.addEventListener("resize", handleResize);
+
+	// Intersection Observer to detect when canvas is fully in viewport
+	const observer = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting && entry.intersectionRatio >= 1) {
+					// Fully in viewport
+					isInViewport = true;
+					riveInstance?.play();
+				} else {
+					// Not fully in viewport
+					isInViewport = false;
+					riveInstance?.pause();
+				}
+			});
+		},
+		{
+			threshold: 1.0 // Trigger when 100% of the element is visible
+		}
+	);
+
+	if (puttyCanvas) {
+		observer.observe(puttyCanvas);
+	}
+
 		const imagesToPreload = [
 			surgical,
 			ocular,
@@ -35,7 +80,13 @@
 			const img = new Image();
 			img.src = src;
 		});
-	});
+
+		return () => {
+        window.removeEventListener("resize", handleResize);
+        observer.disconnect();
+        riveInstance?.cleanup();
+	}
+});
 </script>
 
 <svelte:window bind:innerWidth={viewportWidth}/>
@@ -63,13 +114,15 @@
 			onmouseleave={()=>gradientTheme.set($defaultGradientTheme)}
 			href="/surgical-grafts"
 		
-		>	<div class="relative w-full aspect-square">
+		>	
+		<canvas bind:this={puttyCanvas} class="relative w-full aspect-square z-50"></canvas>
+			<!-- <div class="relative w-full aspect-square">
 				{#if viewportWidth<768||$gradientTheme===1}
 					<img transition:fade src={surgical} alt="surgical" class="{viewportWidth<768||$gradientTheme===1?"":"brightness-0 invert opacity-5"} transition duration-700 ease-out absolute top-1/2 left-1/2 -translate-1/2" />
 				{:else}
 					<img transition:fade src={surgicalBefore} alt="surgical" class=" transition duration-700 ease-out absolute top-1/2 left-1/2 -translate-1/2" />
 				{/if}
-			</div>
+			</div> -->
 			<h4>Surgical Grafts</h4>
 			{#if viewportWidth<768||$gradientTheme===1}
 				<p transition:slide class="text-center mt-4">Surgical allografts, derived from human donor tissue or synthetic sources, are used to repair, replace, or protect damaged tissues and organs such as bone, skin, tendons, ligaments, and cartilage.</p>

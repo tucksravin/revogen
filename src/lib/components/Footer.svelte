@@ -4,7 +4,7 @@ import DelayedLink from "./DelayedLink.svelte";
 import { fly } from "svelte/transition";
 import { onMount } from "svelte";
 import script from "$lib/assets/icons/logos/Revogen Script-w.svg";
-  import { quadInOut, quadOut } from "svelte/easing";
+  import { quadOut } from "svelte/easing";
 
 let showScript = $state(false);
 let footerElement: HTMLElement;
@@ -15,9 +15,7 @@ let footerElement: HTMLElement;
        return;}
     
     const rect = footerElement.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
 
-    console.log(rect.bottom)
     
     showScript = rect.bottom < window.innerHeight*1.2;
   };
