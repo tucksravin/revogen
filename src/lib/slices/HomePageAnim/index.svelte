@@ -122,11 +122,11 @@
 			<canvas bind:this={puttyCanvas} id='puttyCanvas' class="relative w-full aspect-square z-50"></canvas>
 		{:else}
 		    <div class="relative w-full aspect-square">
-				{#if viewportWidth<768||$gradientTheme===1}
+				
 					<img transition:fade src={surgical} alt="surgical" class="{viewportWidth<768||$gradientTheme===1?"":"brightness-0 invert opacity-5"} transition duration-700 ease-out absolute top-1/2 left-1/2 -translate-1/2" />
-				{:else}
+			
 					<img transition:fade src={surgicalBefore} alt="surgical" class=" transition duration-700 ease-out absolute top-1/2 left-1/2 -translate-1/2" />
-				{/if}
+			
 			</div>
 		{/if}
 			<h4>Surgical Grafts</h4>
@@ -134,10 +134,11 @@
 				<p transition:slide class="text-center mt-4">Surgical allografts, derived from human donor tissue or synthetic sources, are used to repair, replace, or protect damaged tissues and organs such as bone, skin, tendons, ligaments, and cartilage.</p>
 			{/if}
 			<div class="w-8 h-8  border-[1.5px] border-white rounded-full relative mt-4 hover:opacity-80 bump">
-					<i class=" absolute left-1/2 top-1/2 -translate-1/2 fa-sharp fa-light fa-chevron-right fa-lg"></i>
-
-					<i class=" absolute left-1/2 top-1/2 -translate-1/2 fa-sharp fa-light fa-plus fa-lg"></i>
-
+				{#if viewportWidth<768||$gradientTheme===1}
+					<i in:fade={{delay:400}} out:fade class=" absolute left-1/2 top-1/2 -translate-1/2 fa-sharp fa-light fa-chevron-right fa-lg"></i>
+				{:else}
+					<i in:fade={{delay:400}} out:fade class=" absolute left-1/2 top-1/2 -translate-1/2 fa-sharp fa-light fa-plus fa-lg"></i>
+				{/if}
 			</div>
 		</DelayedLink>
 		<DelayedLink 
