@@ -70,6 +70,7 @@ type ContentRelationshipFieldWithData<
 }[Exclude<TCustomType[number], string>["id"]];
 
 type PageDocumentDataSlicesSlice =
+  | HomeHeroSlice
   | DistributorLoginSlice
   | ScreenWidthVideoSlice
   | TwoColSlice
@@ -404,6 +405,92 @@ type DistributorLoginSliceVariation = DistributorLoginSliceDefault;
 export type DistributorLoginSlice = prismic.SharedSlice<
   "distributor_login",
   DistributorLoginSliceVariation
+>;
+
+/**
+ * Primary content in *HomeHero → Default → Primary*
+ */
+export interface HomeHeroSliceDefaultPrimary {
+  /**
+   * placeholder Image field in *HomeHero → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_hero.default.primary.placeholder_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  placeholder_image: prismic.ImageField<never>;
+
+  /**
+   * vimeo Id field in *HomeHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_hero.default.primary.vimeo_id
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  vimeo_id: prismic.KeyTextField;
+
+  /**
+   * show scroll arrow field in *HomeHero → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: home_hero.default.primary.show_scroll_arrow
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  show_scroll_arrow: prismic.BooleanField;
+
+  /**
+   * text field in *HomeHero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_hero.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  text: prismic.RichTextField;
+
+  /**
+   * button field in *HomeHero → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_hero.default.primary.button
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Default variation for HomeHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type HomeHeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HomeHeroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HomeHero*
+ */
+type HomeHeroSliceVariation = HomeHeroSliceDefault;
+
+/**
+ * HomeHero Shared Slice
+ *
+ * - **API ID**: `home_hero`
+ * - **Description**: HomeHero
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type HomeHeroSlice = prismic.SharedSlice<
+  "home_hero",
+  HomeHeroSliceVariation
 >;
 
 /**
@@ -1458,6 +1545,10 @@ declare module "@prismicio/client" {
       DistributorLoginSliceDefaultPrimary,
       DistributorLoginSliceVariation,
       DistributorLoginSliceDefault,
+      HomeHeroSlice,
+      HomeHeroSliceDefaultPrimary,
+      HomeHeroSliceVariation,
+      HomeHeroSliceDefault,
       HomePageAnimSlice,
       HomePageAnimSliceVariation,
       HomePageAnimSliceDefault,

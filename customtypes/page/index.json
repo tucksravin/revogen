@@ -27,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "home_hero": {
+              "type": "SharedSlice"
+            },
             "distributor_login": {
               "type": "SharedSlice"
             },

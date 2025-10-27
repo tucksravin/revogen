@@ -117,18 +117,21 @@
 			href="/surgical-grafts"
 		
 		>	
+		<div class="relative w-full aspect-square">
+			<img transition:fade src={surgical} alt="surgical" class="brightness-0 invert opacity-5 transition duration-700 ease-out absolute top-1/2 left-1/2 -translate-1/2" />
+			
 
 		{#if viewportWidth>768}
-			<canvas bind:this={puttyCanvas} id='puttyCanvas' class="relative w-full aspect-square z-50"></canvas>
+			<canvas bind:this={puttyCanvas} id='puttyCanvas' class="{$gradientTheme===1?"":"opacity-0"} transition-opacity duration-700 ease-fast-slow relative w-full aspect-square z-50"></canvas>
 		{:else}
-		    <div class="relative w-full aspect-square">
+		    
 				
-					<img transition:fade src={surgical} alt="surgical" class="{viewportWidth<768||$gradientTheme===1?"":"brightness-0 invert opacity-5"} transition duration-700 ease-out absolute top-1/2 left-1/2 -translate-1/2" />
+					
+				<img transition:fade src={surgicalBefore} alt="surgical" class=" transition duration-700 ease-out absolute top-1/2 left-1/2 -translate-1/2" />
 			
-					<img transition:fade src={surgicalBefore} alt="surgical" class=" transition duration-700 ease-out absolute top-1/2 left-1/2 -translate-1/2" />
-			
-			</div>
+		
 		{/if}
+			</div>
 			<h4>Surgical Grafts</h4>
 			{#if viewportWidth<768||$gradientTheme===1}
 				<p transition:slide class="text-center mt-4">Surgical allografts, derived from human donor tissue or synthetic sources, are used to repair, replace, or protect damaged tissues and organs such as bone, skin, tendons, ligaments, and cartilage.</p>

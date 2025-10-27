@@ -46,6 +46,6 @@ declare module "$app/types" {
 		};
 		Pathname(): "/" | "/api" | "/api/" | "/api/preview" | "/api/preview/" | "/slice-simulator" | "/slice-simulator/" | `${string}/surgical-grafts` & {} | `${string}/surgical-grafts/` & {} | `${string}/surgical-grafts/${string}` & {} | `${string}/surgical-grafts/${string}/` & {} | `${string}` & {} | `${string}/` & {} | `${string}/${string}` & {} | `${string}/${string}/` & {};
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
-		Asset(): "/apple-touch-icon.png" | "/favicon-96x96.png" | "/favicon.ico" | "/favicon.svg" | "/robots.txt" | "/site.webmanifest" | "/web-app-manifest-192x192.png" | "/web-app-manifest-512x512.png" | string & {};
+		Asset(): "/RevgroPutty.riv" | "/apple-touch-icon.png" | "/favicon-96x96.png" | "/favicon.ico" | "/favicon.svg" | "/robots.txt" | "/site.webmanifest" | "/web-app-manifest-192x192.png" | "/web-app-manifest-512x512.png" | string & {};
 	}
 }
