@@ -112,6 +112,15 @@
             ],
             "default_value": "0"
           }
+        },
+        "rive": {
+          "type": "Link",
+          "config": {
+            "label": "rive",
+            "placeholder": "",
+            "select": "media",
+            "allowText": true
+          }
         }
       },
       "items": {}
@@ -335,6 +344,15 @@
                 }
               }
             }
+          }
+        },
+        "rive": {
+          "type": "Link",
+          "config": {
+            "label": "rive",
+            "placeholder": "",
+            "select": "media",
+            "allowText": true
           }
         }
       },

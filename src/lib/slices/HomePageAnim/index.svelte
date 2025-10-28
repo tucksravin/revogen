@@ -3,7 +3,6 @@
 	import type { Content } from "@prismicio/client";
 	import type { SliceComponentProps } from "@prismicio/svelte";
 	import { gradientTheme, defaultGradientTheme } from "$lib/stores/gradientTheme";
-	import Img from "@zerodevx/svelte-img";
 	import surgical from "$lib/assets/images/surgical.png"
 	import ocular from "$lib/assets/images/ocular.png"
 	import woundCare from "$lib/assets/images/woundCare.png"

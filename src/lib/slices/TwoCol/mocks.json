@@ -79,6 +79,19 @@
 					"text": "treated",
 					"variant": "Secondary"
 				}
+			},
+			"rive": {
+				"__TYPE__": "LinkContent",
+				"key": "9dbc697b-77f9-4818-9894-32873c54edde",
+				"value": {
+					"__TYPE__": "FileLink",
+					"id": "mock_Media_link",
+					"kind": "file",
+					"name": "mock_name",
+					"url": "https://source.unsplash.com/daily",
+					"size": "0",
+					"text": "mile"
+				}
 			}
 		},
 		"items": []
@@ -258,6 +271,19 @@
 				"__TYPE__": "FieldContent",
 				"value": "pencil",
 				"type": "Text"
+			},
+			"rive": {
+				"key": "9c285004-44c8-4756-84aa-5fa01d7379c9",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "FileLink",
+					"id": "mock_Media_link",
+					"kind": "file",
+					"name": "mock_name",
+					"url": "https://source.unsplash.com/daily",
+					"size": "0",
+					"text": "thirty"
+				}
 			}
 		},
 		"items": [

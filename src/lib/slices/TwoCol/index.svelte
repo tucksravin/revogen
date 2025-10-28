@@ -8,7 +8,9 @@
   } from "@prismicio/svelte";
   import { isFilled } from "@prismicio/client";
   import DefaultButton from "$lib/components/Buttons/DefaultButton.svelte";
-
+  import * as rive from '@rive-app/canvas';
+  import { onMount } from "svelte";
+  
   type Props = SliceComponentProps<Content.TwoColSlice>;
 
   let formFirstName = $state("");
@@ -19,6 +21,12 @@
   let formEmail = $state("");
   let formDistributorship = $state("");
   let formMessage = $state("");
+
+  // State for Rive
+  let riveCanvas: HTMLCanvasElement | undefined = $state();
+  let riveInstance: rive.Rive | null = null;
+  let isInViewport = $state(false);
+  let isRiveLoaded = $state(false);
 
   const triggerSubmitButton = () => {
     const hiddenForm = document.getElementById(
@@ -62,11 +70,78 @@
       if (hiddenMessage) hiddenMessage.value = formMessage;
 
       hiddenForm.submit();
-      console.log("submitted");
     }
   };
 
   const { slice }: Props = $props();
+
+  onMount(() => {
+    let observer: IntersectionObserver | null = null;
+
+    // Initialize Rive if attachment exists (works for both 'default' and 'imageTableText' variations)
+    if (riveCanvas && (slice.variation === 'imageTableText' || slice.variation === 'default') && isFilled.linkToMedia(slice.primary.rive)) {
+
+      riveInstance = new rive.Rive({
+        src: slice.primary.rive.url,
+        canvas: riveCanvas,
+        autoplay: false,
+        stateMachines: "State Machine 1",
+        onLoad: () => {
+          isRiveLoaded = true;
+          riveInstance?.resizeDrawingSurfaceToCanvas();
+          
+          // If already in viewport when loaded, play immediately
+          if (isInViewport) {
+            riveInstance?.play();
+          }
+        },
+        onLoadError: (error) => {
+          console.error('Failed to load Rive file:', error);
+        }
+      });
+
+      // Setup intersection observer
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.intersectionRatio >= 1) {
+              isInViewport = true;
+              // Only play if Rive file is loaded
+              if (isRiveLoaded && riveInstance) {
+                riveInstance.play();
+              }
+            } else {
+              isInViewport = false;
+              if (riveInstance) {
+                riveInstance.pause();
+              }
+            }
+          });
+        },
+        {
+          threshold: 1.0
+        }
+      );
+
+      observer.observe(riveCanvas);
+    }
+
+    // Handle resize
+    const handleResize = () => {
+      if (riveInstance && isRiveLoaded) {
+        riveInstance.resizeDrawingSurfaceToCanvas();
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      observer?.disconnect();
+      riveInstance?.cleanup();
+    };
+  });
 </script>
 
 <section
@@ -84,22 +159,41 @@
       {#if slice.primary.showTopBorder}
         <div class="absolute w-full h-0.5 top-0 left-0 bg-white"></div>
       {/if}
+      
       <div class="w-full my-6 md:w-1/2">
-        <PrismicImage
-          field={slice.primary.image}
-          class="w-full object-cover {slice.primary.image_aspect === '4:3'
-            ? 'aspect-[4/3]'
-            : slice.primary.image_aspect === '3:4'
-              ? 'aspect-[3/4]'
-              : slice.primary.image_aspect === '16:9'
-                ? 'aspect-video'
-                : slice.primary.image_aspect === '9:16'
-                  ? 'aspect-[9/16]'
-                  : slice.primary.image_aspect === 'square'
-                    ? 'aspect-square'
-                    : ''}"
-        />
+        {#if isFilled.linkToMedia(slice.primary.rive)}
+          <canvas 
+            bind:this={riveCanvas} 
+            class="w-full object-cover {slice.primary.image_aspect === '4:3'
+              ? 'aspect-4/3'
+              : slice.primary.image_aspect === '3:4'
+                ? 'aspect-3/4'
+                : slice.primary.image_aspect === '16:9'
+                  ? 'aspect-video'
+                  : slice.primary.image_aspect === '9:16'
+                    ? 'aspect-9/16'
+                    : slice.primary.image_aspect === 'square'
+                      ? 'aspect-square'
+                      : ''}"
+          />
+        {:else}
+          <PrismicImage
+            field={slice.primary.image}
+            class="w-full object-cover {slice.primary.image_aspect === '4:3'
+              ? 'aspect-4/3'
+              : slice.primary.image_aspect === '3:4'
+                ? 'aspect-3/4'
+                : slice.primary.image_aspect === '16:9'
+                  ? 'aspect-video'
+                  : slice.primary.image_aspect === '9:16'
+                    ? 'aspect-9/16'
+                    : slice.primary.image_aspect === 'square'
+                      ? 'aspect-square'
+                      : ''}"
+          />
+        {/if}
       </div>
+      
       <div
         class="w-full md:w-1/2 flex flex-col gap-6 my-6 md:mt-0 {slice.primary
           .isMediaFirst
@@ -151,69 +245,13 @@
     </ContentWidth>
   {/if}
 
-  {#if slice.variation === "tableText"}
-    <ContentWidth
-      class="flex relative pt-16 {!slice.primary.isTableFirst
-        ? 'flex-col md:flex-row'
-        : 'flex-col-reverse md:flex-row-reverse'}"
-    >
-      {#if slice.primary.showTopBorder}
-        <div class="absolute w-full h-0.5 top-0 left-0 bg-white"></div>
-      {/if}
-      <div class="w-full md:w-1/2 flex flex-col gap-6 mt-6 md:mt-0">
-        <PrismicRichText field={slice.primary.text} />
-        <div class="flex gap-5">
-          {#if isFilled.link(slice.primary.button)}
-            <DefaultButton href={slice.primary.button.url}
-              >{slice.primary.button.text}</DefaultButton
-            >
-          {/if}
-          {#if isFilled.link(slice.primary.button_two)}
-            <DefaultButton href={slice.primary.button_two.url}
-              >{slice.primary.button_two.text}</DefaultButton
-            >
-          {/if}
-        </div>
-      </div>
-      <div class="w-full md:w-1/2 flex flex-col gap-6 mt-6 md:mt-0">
-        <div class="w-full flex flex-col gap-2">
-          <div class="w-full flex flex-row">
-            <p class="uppercase {slice.primary.table_column === "desc & #, no sizes"?"w-2/3":"w-1/3"}">{slice.primary.col_one_label||"description"}</p>
-            {#if slice.primary.table_column !== "desc & #, no sizes"}
-              <p class="uppercase w-1/6 ">{slice.primary.col_two_label||"size"}</p>
-            {/if}
-            {#if slice.primary.table_column === "desc and two sizes and #"}
-              <p class="uppercase w-1/6 ">{slice.primary.col_three_label||"size"}</p>
-            {/if}
-            <p class="uppercase w-1/3 ml-auto">{slice.primary.last_col_label||"part number"}</p>
-          </div>
-          <div class="h-[1px] w-full bg-white"></div>
-          {#each slice.primary.products as product}
-            <div class="w-full flex flex-row">
-              <p class=" {slice.primary.table_column === "desc & #, no sizes"?"w-2/3":"w-1/3"} pr-4">{product.description}</p>
-              {#if slice.primary.table_column !== "desc & #, no sizes"}
-                <p class="w-1/6 pr-4">{product.size_one}</p>
-              {/if}
-              {#if slice.primary.table_column === "desc and two sizes and #"}
-                <p class="w-1/6 pr-4">{product.size_two}</p>
-              {/if}
-              <p class="w-1/3 ml-auto">{product.product_number}</p>
-            </div>
-          {/each}
-        </div>
-      </div>
-    </ContentWidth>
-  {/if}
-
   {#if slice.variation === "contactForm"}
-    <ContentWidth class="flex flex-col md:flex-row">
-      <div class="w-full md:w-1/2 flex flex-col">
+    <ContentWidth class="flex relative pt-16 flex-col">
+
+      <div class="w-full my-6">
         <PrismicRichText field={slice.primary.text} />
-      </div>
-      <div class="w-full md:w-1/2 flex flex-col">
-        <div
-          class="h-full w-full my-12 md:mt-0 flex flex-col gap-4 items-start"
-        >
+
+        <div class="mt-12 flex flex-col gap-6">
           <!-- First row - First Name and Last Name -->
           <div class="w-full flex flex-col md:flex-row gap-4">
             <div class="w-full md:w-1/2">
@@ -248,27 +286,29 @@
           <div class="w-full flex flex-col md:flex-row gap-4">
             <div class="w-full md:w-1/2">
               <p class="text-white mb-2 text-sm uppercase tracking-wide">
-                CITY
+                CITY*
               </p>
               <input
                 type="text"
                 name="city"
                 bind:value={formCity}
+                required
                 placeholder=""
                 class="w-full bg-white/20 border border-white/30 p-3 text-white placeholder-white/60"
               />
             </div>
             <div class="w-full md:w-1/2">
               <p class="text-white mb-2 text-sm uppercase tracking-wide">
-                STATE
+                STATE*
               </p>
               <select
                 name="state"
                 bind:value={formState}
-                class="w-full bg-white/20 border border-white/30 p-3 text-white appearance-none cursor-pointer"
+                required
+                class="w-full bg-white/20 border border-white/30 p-3 text-white"
               >
                 <option value="" class="bg-gray-800 text-white"
-                  >Select State</option
+                  >Select a state</option
                 >
                 <option value="AL" class="bg-gray-800 text-white"
                   >Alabama</option
@@ -473,10 +513,7 @@
           </p>
 
           <!-- Submit button -->
-          <DefaultButton
-            
-            onclick={triggerSubmitButton}
-           >
+          <DefaultButton onclick={triggerSubmitButton}>
             SUBMIT
           </DefaultButton>
         </div>

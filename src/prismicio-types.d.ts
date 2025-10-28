@@ -1082,6 +1082,16 @@ export interface TwoColSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
   vertical_padding: prismic.SelectField<"0" | "5" | "10" | "20", "filled">;
+
+  /**
+   * rive field in *TwoCol → media text → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.default.primary.rive
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  rive: prismic.LinkToMediaField<prismic.FieldState, never>;
 }
 
 /**
@@ -1316,6 +1326,16 @@ export interface TwoColSliceImageTableTextPrimary {
   products: prismic.GroupField<
     Simplify<TwoColSliceImageTableTextPrimaryProductsItem>
   >;
+
+  /**
+   * rive field in *TwoCol → imageTableText → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.imageTableText.primary.rive
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  rive: prismic.LinkToMediaField<prismic.FieldState, never>;
 }
 
 /**
