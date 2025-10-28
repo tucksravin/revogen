@@ -17,7 +17,7 @@
       const checkViewport = () => {
           if(window&&el){
                   let rect = el.getBoundingClientRect();
-                  isInView = rect.bottom <= window.innerHeight + rect.height
+                  isInView = rect.top <= window.innerHeight + rect.height
                   transitionDelay= transitionDelayMax * (rect.left/window.innerWidth)
               }
       }

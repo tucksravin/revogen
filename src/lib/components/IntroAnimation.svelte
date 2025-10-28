@@ -4,7 +4,7 @@ import { gradientTheme } from "$lib/stores/gradientTheme";
 import { browser } from "$app/environment";
 import { onMount, onDestroy } from "svelte";
 import shape from "$lib/assets/icons/shape.png"
-import grid from "$lib/assets/icons/grid.png"
+import grid from "$lib/assets/icons/grid.svg"
 
 import ContentWidth from "./ContentWidth/ContentWidth.svelte";
 
@@ -113,19 +113,19 @@ onMount(() => {
   const timeouts: NodeJS.Timeout[] = [];
   
   timeouts.push(setTimeout(() => showShape = true, 700));
-  timeouts.push(setTimeout(() => showGrid = true, 1300));
-  timeouts.push(setTimeout(() => showIH = true, 1900));
-  timeouts.push(setTimeout(() => showIPO = true, 2500));
-  timeouts.push(setTimeout(() => showGrid = false, 3000));
-  timeouts.push(setTimeout(() => scaleUp = true, 3600));
-  timeouts.push(setTimeout(() => showBackground = false, 4200));
-  timeouts.push(setTimeout(() => showShape = false, 4400));
+  timeouts.push(setTimeout(() => showGrid = true, 900));
+  timeouts.push(setTimeout(() => showIH = true, 900));
+  timeouts.push(setTimeout(() => showIPO = true, 1100));
+  timeouts.push(setTimeout(() => showGrid = false, 1500));
+  timeouts.push(setTimeout(() => scaleUp = true, 1800));
+  timeouts.push(setTimeout(() => showBackground = false, 2200));
+  timeouts.push(setTimeout(() => showShape = false, 2200));
   
   // Complete the intro after all animations finish
   timeouts.push(setTimeout(() => {
     hasIntroRun.set(true);
     isIntroRunning = false;
-  }, 5100));
+  }, 2300));
   
   // Store timeouts for cleanup
   return () => {
@@ -190,7 +190,7 @@ let showIPO = $state(false);
 
   <img 
     src={grid} 
-    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-full object-cover transition-opacity duration-700 ease-out {showGrid && !$hasIntroRun ? 'opacity-100' : 'opacity-0'}" 
+    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-full object-cover transition-opacity duration-700 ease-out {showGrid && !$hasIntroRun ? 'opacity-70' : 'opacity-0'}" 
     alt='grid'
   />
   
