@@ -32,7 +32,11 @@
   const handleScroll = () => {
     if (!section) return;
     const rect = section.getBoundingClientRect();
-    if (rect.bottom < (rect.height * 3) / 4) showSecondSection = true;
+    if (rect.bottom < (rect.height * 3) / 4){ 
+		showSecondSection = true;
+	} else{
+		showSecondSection=false;
+	}
     console.log(showSecondSection);
   };
 
