@@ -96,14 +96,14 @@
       {/if}
     </ContentWidth>
   </div>
-  <div class="absolute top-5/6 -left-8 w-screen origin-top-left transition-transform duration-2000 delay-700 {showSecondSection?"":"rotate-90"}">
+  <div class="absolute top-5/6 -left-8 w-screen origin-top-left transition-transform duration-2000 delay-100 {showSecondSection?"":"rotate-90"}">
     <img
       src={gridlines}
       class="rotate-270 w-full"
       alt="decorative gridlines"
     />
   </div>
-  <div class="absolute top-5/6 -right-8 w-screen origin-top-right transition-transform duration-2000 delay-700 {showSecondSection?"":"-rotate-90"}">
+  <div class="absolute top-5/6 -right-8 w-screen origin-top-right transition-transform duration-2000 delay-100 {showSecondSection?"":"-rotate-90"}">
     <img
       src={gridlines}
       class="w-full"

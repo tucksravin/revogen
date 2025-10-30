@@ -117,19 +117,14 @@
 		
 		>	
 		<div class="relative w-full aspect-square">
-			<img transition:fade src={surgical} alt="surgical" class="{$gradientTheme===1?"":"opacity-5 brightness-0 invert"} transition duration-700 ease-out absolute top-1/2 left-1/2 -translate-1/2" />
+			<img src={surgical} alt="surgical" class="{viewportWidth<768||$gradientTheme===1?"":"opacity-10 brightness-0 invert"} transition duration-700 ease-out absolute top-1/2 left-1/2 -translate-1/2" />
 			
-<!-- 
-		{#if viewportWidth>768}
-			<canvas bind:this={puttyCanvas} id='puttyCanvas' class="{$gradientTheme===1?"":"opacity-0"} transition-opacity duration-700 ease-fast-slow relative w-full aspect-square z-50"></canvas>
-		{:else} -->
-		    
+
 				
 					
-				<img transition:fade src={surgicalBefore} alt="surgical" class=" transition duration-700 ease-out absolute top-1/2 left-1/2 -translate-1/2" />
+				<img src={surgicalBefore} alt="surgical" class=" transition duration-700 ease-out absolute top-1/2 left-1/2 -translate-1/2" />
 			
-<!-- 		
-		{/if} -->
+
 			</div>
 			<h4>Surgical Grafts</h4>
 			{#if viewportWidth<768||$gradientTheme===1}
@@ -152,7 +147,7 @@
 		>
 			<div class="relative w-full aspect-square">
 
-					<img transition:fade src={woundCare} alt="wound care" class="{viewportWidth<768||$gradientTheme===2?"":"brightness-0 invert opacity-1"} transition duration-700 ease-fast-slow absolute top-1/2 left-1/2 -translate-1/2" />
+					<img transition:fade src={woundCare} alt="wound care" class="{viewportWidth<768||$gradientTheme===2?"":"brightness-0 invert opacity-10"} transition duration-700 ease-fast-slow absolute top-1/2 left-1/2 -translate-1/2" />
 
 					<img transition:fade src={woundCareBefore} alt="wound care" class="absolute top-1/2 left-1/2 -translate-1/2" />
 
@@ -179,7 +174,7 @@
 		>
 			<div class="relative w-full aspect-square">
 				
-					<img src={ocular} alt="ocular" class="{viewportWidth<768||$gradientTheme===3?"":"brightness-0 invert opacity-1"} transition duration-700 ease-fast-slow absolute top-1/2 left-1/2 -translate-1/2" />				
+					<img src={ocular} alt="ocular" class="{viewportWidth<768||$gradientTheme===3?"":"brightness-0 invert opacity-10"} transition duration-700 ease-fast-slow absolute top-1/2 left-1/2 -translate-1/2" />				
 					<img src={ocularBefore} alt="ocular" class="absolute top-1/2 left-1/2 -translate-1/2" />
 				
 			</div>

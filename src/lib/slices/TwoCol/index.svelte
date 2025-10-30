@@ -520,4 +520,58 @@
       </div>
     </ContentWidth>
   {/if}
+
+  {#if slice.variation === "tableText"}
+    <ContentWidth
+      class="flex relative pt-16 {!slice.primary.isTableFirst
+        ? 'flex-col md:flex-row'
+        : 'flex-col-reverse md:flex-row-reverse'}"
+    >
+      {#if slice.primary.showTopBorder}
+        <div class="absolute w-full h-0.5 top-0 left-0 bg-white"></div>
+      {/if}
+      <div class="w-full md:w-1/2 flex flex-col gap-6 mt-6 md:mt-0">
+        <PrismicRichText field={slice.primary.text} />
+        <div class="flex gap-5">
+          {#if isFilled.link(slice.primary.button)}
+            <DefaultButton href={slice.primary.button.url}
+              >{slice.primary.button.text}</DefaultButton
+            >
+          {/if}
+          {#if isFilled.link(slice.primary.button_two)}
+            <DefaultButton href={slice.primary.button_two.url}
+              >{slice.primary.button_two.text}</DefaultButton
+            >
+          {/if}
+        </div>
+      </div>
+      <div class="w-full md:w-1/2 flex flex-col gap-6 mt-6 md:mt-0">
+        <div class="w-full flex flex-col gap-2">
+          <div class="w-full flex flex-row">
+            <p class="uppercase {slice.primary.table_column === "desc & #, no sizes"?"w-2/3":"w-1/3"}">{slice.primary.col_one_label||"description"}</p>
+            {#if slice.primary.table_column !== "desc & #, no sizes"}
+              <p class="uppercase w-1/6 ">{slice.primary.col_two_label||"size"}</p>
+            {/if}
+            {#if slice.primary.table_column === "desc and two sizes and #"}
+              <p class="uppercase w-1/6 ">{slice.primary.col_three_label||"size"}</p>
+            {/if}
+            <p class="uppercase w-1/3 ml-auto">{slice.primary.last_col_label||"part number"}</p>
+          </div>
+          <div class="h-[1px] w-full bg-white"></div>
+          {#each slice.primary.products as product}
+            <div class="w-full flex flex-row">
+              <p class=" {slice.primary.table_column === "desc & #, no sizes"?"w-2/3":"w-1/3"} pr-4">{product.description}</p>
+              {#if slice.primary.table_column !== "desc & #, no sizes"}
+                <p class="w-1/6 pr-4">{product.size_one}</p>
+              {/if}
+              {#if slice.primary.table_column === "desc and two sizes and #"}
+                <p class="w-1/6 pr-4">{product.size_two}</p>
+              {/if}
+              <p class="w-1/3 ml-auto">{product.product_number}</p>
+            </div>
+          {/each}
+        </div>
+      </div>
+    </ContentWidth>
+  {/if}
 </section>

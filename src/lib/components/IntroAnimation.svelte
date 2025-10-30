@@ -195,7 +195,7 @@ let showIPO = $state(false);
   />
   
 
-  <ContentWidth class="h-full flex flex-col gap-6 py-12 justify-center text-center items-center text-white z-10 relative">
+  <ContentWidth class="h-full flex flex-col gap-4 py-12 justify-center text-center items-center text-white z-10 relative">
     <h2><br/></h2>
     <h3 class="transition-opacity duration-700 ease-out {showIH ? 'opacity-100' : 'opacity-0'}">
       Innovative Healing

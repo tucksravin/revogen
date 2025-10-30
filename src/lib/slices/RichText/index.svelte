@@ -8,6 +8,18 @@
 	
 	type Props = SliceComponentProps<Content.RichTextSlice>;
 	const { slice }: Props = $props();
+	let section: HTMLElement;
+
+	const scrollToNext = () => {
+    document
+      .getElementsByTagName("main")[0]
+      .scrollTo({
+        left: 0,
+        top: section.offsetTop+section.offsetHeight,
+        behavior: "smooth",
+      });
+   
+  };
 </script>
 
 <section
@@ -15,6 +27,7 @@
 	data-slice-variation={slice.variation}
 	style="padding-top:{parseInt(slice.primary.vertical_padding)*4}px;padding-bottom:{parseInt(slice.primary.vertical_padding)*4}px;"
 	class="text-white"
+	bind:this={section}
 >
 {#if slice.primary.max_width!=="limited"}
 	<ContentWidth class="flex flex-col gap-6 {slice.primary.floatCenter?"text-center items-center justify-center":""} ">
@@ -44,7 +57,9 @@
 				{/if}
 			</div>
 		{#if slice.primary.show_scroll_arrow}
-			<img src={downArrow} alt="down" class="mt-10 h-20"/>
+			<button onclick={scrollToNext} class="mt-10 h-20">
+				<img src={downArrow} alt="down" />
+			</button>
 		{/if}
 	</div>
 </ContentWidth>
