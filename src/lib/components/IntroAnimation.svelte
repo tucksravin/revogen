@@ -167,7 +167,7 @@ let showLogo= $state(false);
 }
 </style>
 
-<div class="h-screen w-screen absolute top-0 left-0 z-50 pointer-events-none"> 
+<div class="h-screen w-screen absolute top-0 left-0 z-50 overflow-hidden pointer-events-none"> 
   
 <div class='absolute w-[125vw] h-[125vh] -top-[10vh] -left-[10vw] add-noise transition-opacity duration-800 delay-300 {showBackground && !$hasIntroRun ? "opacity-100":"opacity-0"}'>
 		<div class='absolute w-full h-full top-0 left-0 option-0-layer1 will-change-transform'></div>
@@ -199,7 +199,10 @@ let showLogo= $state(false);
 </div>
 
 
-  <ContentWidth class="h-full flex flex-col gap-4 py-12 justify-center text-center items-center text-white z-30 relative {showBackground && !$hasIntroRun ? "opacity-100":"opacity-0"}">
+</div>
+<div class="h-screen w-screen absolute top-0 left-0 z-30 overflow-hidden pointer-events-none"> 
+
+  <ContentWidth class="h-full flex flex-col gap-4 py-12 justify-center text-center items-center text-white relative">
     <h2><br/></h2>
     <h3 class="transition-opacity duration-700 ease-out {showIH ? 'opacity-100' : 'opacity-0'}">
       Innovative Healing
