@@ -105,17 +105,16 @@ onMount(() => {
   
   timeouts.push(setTimeout(() => showLogo = true, 300));  // Logo appears first
   timeouts.push(setTimeout(() => fillLogo = true, 500)); // Then fills in after a pause
-  timeouts.push(setTimeout(() => pulseLogo = true, 900));
-  timeouts.push(setTimeout(() => showIH = true, 5000));
-  timeouts.push(setTimeout(() => showIPO = true, 5200));
-  timeouts.push(setTimeout(() => pulseLogo = false, 4850));
-  timeouts.push(setTimeout(() => fillLogo = false, 4950));
-  timeouts.push(setTimeout(() => showBackground = false, 5000));
+  timeouts.push(setTimeout(() => pulseLogo = true, 1000));
+  timeouts.push(setTimeout(() => showIH = true, 6500));
+  timeouts.push(setTimeout(() => showIPO = true, 7000));
+  timeouts.push(setTimeout(() => showLogo = false, 5500));
+  timeouts.push(setTimeout(() => showBackground = false, 6000));
 
   timeouts.push(setTimeout(() => {
     hasIntroRun.set(true);
     isIntroRunning = false;
-  }, 2500));
+  }, 6500));
   
   return () => {
     timeouts.forEach(timeout => clearTimeout(timeout));
@@ -200,7 +199,7 @@ let showLogo= $state(false);
 </div>
 
 
-  <ContentWidth class="h-full flex flex-col gap-4 py-12 justify-center text-center items-center text-white z-10 relative">
+  <ContentWidth class="h-full flex flex-col gap-4 py-12 justify-center text-center items-center text-white z-30 relative">
     <h2><br/></h2>
     <h3 class="transition-opacity duration-700 ease-out {showIH ? 'opacity-100' : 'opacity-0'}">
       Innovative Healing
