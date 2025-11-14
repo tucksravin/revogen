@@ -199,7 +199,7 @@ let showLogo= $state(false);
 </div>
 
 
-  <ContentWidth class="h-full flex flex-col gap-4 py-12 justify-center text-center items-center text-white z-30 relative">
+  <ContentWidth class="h-full flex flex-col gap-4 py-12 justify-center text-center items-center text-white z-30 relative {showBackground && !$hasIntroRun ? "opacity-100":"opacity-0"}">
     <h2><br/></h2>
     <h3 class="transition-opacity duration-700 ease-out {showIH ? 'opacity-100' : 'opacity-0'}">
       Innovative Healing
