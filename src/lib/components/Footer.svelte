@@ -106,9 +106,9 @@ onMount(() => {
           >sales@revogen.com</a
         ><br />
          <a
-          href="tel:833-781-7597"
+          href="tel:210.607.4037"
           class="underline hover:opacity-85 transition-opacity duration-300"
-          >833.781.7597</a
+          >210.607.4037</a
         ><br />
         <a
           href="https://www.linkedin.com/company/revogen-biologics"
