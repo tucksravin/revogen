@@ -161,7 +161,33 @@
       {/if}
       
       <div class="w-full my-6 md:w-1/2">
-        {#if isFilled.linkToMedia(slice.primary.rive)}
+        {#if slice.primary.vimeo_id}
+          <div class="relative w-full overflow-clip {slice.primary.image_aspect === '4:3'
+              ? 'aspect-4/3'
+              : slice.primary.image_aspect === '3:4'
+                ? 'aspect-3/4'
+                : slice.primary.image_aspect === '16:9'
+                  ? 'aspect-video'
+                  : slice.primary.image_aspect === '9:16'
+                    ? 'aspect-9/16'
+                    : slice.primary.image_aspect === 'square'
+                      ? 'aspect-square'
+                      : ''}">
+            {#if isFilled.image(slice.primary.image)}
+              <PrismicImage
+                field={slice.primary.image}
+                class="absolute w-full h-full object-cover"
+              />
+            {/if}
+            <iframe
+              title="video"
+              src={`https://player.vimeo.com/video/${slice.primary.vimeo_id}?background=1&muted=1&loop=1&autoplay=1`}
+              class="absolute w-full h-full contrast-[1.15]"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
+        {:else if isFilled.linkToMedia(slice.primary.rive)}
           <canvas 
             bind:this={riveCanvas} 
             class="w-full object-cover {slice.primary.image_aspect === '4:3'
