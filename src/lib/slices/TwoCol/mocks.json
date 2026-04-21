@@ -81,8 +81,8 @@
 				}
 			},
 			"rive": {
-				"__TYPE__": "LinkContent",
 				"key": "9dbc697b-77f9-4818-9894-32873c54edde",
+				"__TYPE__": "LinkContent",
 				"value": {
 					"__TYPE__": "FileLink",
 					"id": "mock_Media_link",
@@ -92,6 +92,24 @@
 					"size": "0",
 					"text": "mile"
 				}
+			},
+			"rive_overrides": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"top_right_corner_text",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "strong",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
 			}
 		},
 		"items": []

@@ -881,6 +881,21 @@ export type ScreenWidthVideoSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *TwoCol → media text → Primary → rive overrides*
+ */
+export interface TwoColSliceDefaultPrimaryRiveOverridesItem {
+  /**
+   * top right corner text field in *TwoCol → media text → Primary → rive overrides*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.default.primary.rive_overrides[].top_right_corner_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  top_right_corner_text: prismic.KeyTextField;
+}
+
+/**
  * Item in *TwoCol → imageTableText → Primary → products*
  */
 export interface TwoColSliceImageTableTextPrimaryProductsItem {
@@ -1092,6 +1107,18 @@ export interface TwoColSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/link-to-media
    */
   rive: prismic.LinkToMediaField<prismic.FieldState, never>;
+
+  /**
+   * rive overrides field in *TwoCol → media text → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.default.primary.rive_overrides[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  rive_overrides: prismic.GroupField<
+    Simplify<TwoColSliceDefaultPrimaryRiveOverridesItem>
+  >;
 }
 
 /**
@@ -1586,6 +1613,7 @@ declare module "@prismicio/client" {
       ScreenWidthVideoSliceVariation,
       ScreenWidthVideoSliceDefault,
       TwoColSlice,
+      TwoColSliceDefaultPrimaryRiveOverridesItem,
       TwoColSliceDefaultPrimary,
       TwoColSliceContactFormPrimary,
       TwoColSliceImageTableTextPrimaryProductsItem,

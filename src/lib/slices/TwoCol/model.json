@@ -121,6 +121,64 @@
             "select": "media",
             "allowText": true
           }
+        },
+        "rive_overrides": {
+          "type": "Group",
+          "config": {
+            "label": "rive overrides",
+            "repeat": false,
+            "fields": {
+              "top_left_corner_text": {
+                "type": "Text",
+                "config": {
+                  "label": "top left corner text",
+                  "placeholder": ""
+                }
+              },
+              "top_right_corner_text": {
+                "type": "Text",
+                "config": {
+                  "label": "top right corner text",
+                  "placeholder": ""
+                }
+              },
+              "bottom_left_corner_text": {
+                "type": "Text",
+                "config": {
+                  "label": "bottom left corner text",
+                  "placeholder": ""
+                }
+              },
+              "bottom_right_corner_text": {
+                "type": "Text",
+                "config": {
+                  "label": "bottom right corner text",
+                  "placeholder": ""
+                }
+              },
+              "text_hover_top": {
+                "type": "Text",
+                "config": {
+                  "label": "text hover top",
+                  "placeholder": ""
+                }
+              },
+              "text_hover_right": {
+                "type": "Text",
+                "config": {
+                  "label": "text hover right",
+                  "placeholder": ""
+                }
+              },
+              "text_hover_left": {
+                "type": "Text",
+                "config": {
+                  "label": "text hover left",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
         }
       },
       "items": {}
@@ -353,6 +411,64 @@
             "placeholder": "",
             "select": "media",
             "allowText": true
+          }
+        },
+        "rive_overrides": {
+          "type": "Group",
+          "config": {
+            "label": "rive overrides",
+            "repeat": false,
+            "fields": {
+              "top_left_corner_text": {
+                "type": "Text",
+                "config": {
+                  "label": "top left corner text",
+                  "placeholder": ""
+                }
+              },
+              "top_right_corner_text": {
+                "type": "Text",
+                "config": {
+                  "label": "top right corner text",
+                  "placeholder": ""
+                }
+              },
+              "bottom_left_corner_text": {
+                "type": "Text",
+                "config": {
+                  "label": "bottom left corner text",
+                  "placeholder": ""
+                }
+              },
+              "bottom_right_corner_text": {
+                "type": "Text",
+                "config": {
+                  "label": "bottom right corner text",
+                  "placeholder": ""
+                }
+              },
+              "text_hover_top": {
+                "type": "Text",
+                "config": {
+                  "label": "text hover top",
+                  "placeholder": ""
+                }
+              },
+              "text_hover_right": {
+                "type": "Text",
+                "config": {
+                  "label": "text hover right",
+                  "placeholder": ""
+                }
+              },
+              "text_hover_left": {
+                "type": "Text",
+                "config": {
+                  "label": "text hover left",
+                  "placeholder": ""
+                }
+              }
+            }
           }
         }
       },

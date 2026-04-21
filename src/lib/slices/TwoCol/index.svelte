@@ -91,6 +91,32 @@
         }),
         onLoad: () => {
           riveInstance?.resizeDrawingSurfaceToCanvas();
+
+          const vmi = riveInstance?.viewModelInstance;
+          if (vmi) {
+            const overridesRaw = (slice.primary as any).rive_overrides;
+            const overrides = ((Array.isArray(overridesRaw) ? overridesRaw[0] : overridesRaw) ?? {}) as {
+              top_left_corner_text?: string | null;
+              top_right_corner_text?: string | null;
+              bottom_left_corner_text?: string | null;
+              bottom_right_corner_text?: string | null;
+              text_hover_top?: string | null;
+              text_hover_right?: string | null;
+              text_hover_left?: string | null;
+            };
+            const setText = (prop: string, value: string | null | undefined) => {
+              if (!value) return;
+              const p = vmi.string(prop);
+              if (p) p.value = value;
+            };
+            setText('textTopLeft', overrides.top_left_corner_text);
+            setText('textTopRight', overrides.top_right_corner_text);
+            setText('textBottomLeft', overrides.bottom_left_corner_text);
+            setText('textBottomRight', overrides.bottom_right_corner_text);
+            setText('textLeft', overrides.text_hover_left);
+            setText('textRight', overrides.text_hover_right);
+            setText('textUp', overrides.text_hover_top);
+          }
         },
         onLoadError: (error) => {
           console.error('Failed to load Rive file:', error);
@@ -168,7 +194,7 @@
                       : ''}">
             <canvas
               bind:this={riveCanvas}
-              class="absolute top-0 left-0 w-full h-[calc(100%+7px)]"
+              class="absolute top-0 left-0 w-full h-[calc(100%+12px)]"
             ></canvas>
           </div>
         {:else}
