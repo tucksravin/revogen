@@ -25,8 +25,6 @@
   // State for Rive
   let riveCanvas: HTMLCanvasElement | undefined = $state();
   let riveInstance: rive.Rive | null = null;
-  let isInViewport = $state(false);
-  let isRiveLoaded = $state(false);
 
   const triggerSubmitButton = () => {
     const hiddenForm = document.getElementById(
@@ -76,7 +74,7 @@
   const { slice }: Props = $props();
 
   onMount(() => {
-    let observer: IntersectionObserver | null = null;
+    let resizeObserver: ResizeObserver | null = null;
 
     // Initialize Rive if attachment exists (works for both 'default' and 'imageTableText' variations)
     if (riveCanvas && (slice.variation === 'imageTableText' || slice.variation === 'default') && isFilled.linkToMedia(slice.primary.rive)) {
@@ -84,61 +82,30 @@
       riveInstance = new rive.Rive({
         src: slice.primary.rive.url,
         canvas: riveCanvas,
-        autoplay: false,
+        autoplay: true,
         stateMachines: "State Machine 1",
+        autoBind: true,
+        layout: new rive.Layout({
+          fit: rive.Fit.Contain,
+          alignment: rive.Alignment.Center,
+        }),
         onLoad: () => {
-          isRiveLoaded = true;
           riveInstance?.resizeDrawingSurfaceToCanvas();
-          
-          // If already in viewport when loaded, play immediately
-          if (isInViewport) {
-            riveInstance?.play();
-          }
         },
         onLoadError: (error) => {
           console.error('Failed to load Rive file:', error);
         }
       });
 
-      // Setup intersection observer
-      observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && entry.intersectionRatio >= 1) {
-              isInViewport = true;
-              // Only play if Rive file is loaded
-              if (isRiveLoaded && riveInstance) {
-                riveInstance.play();
-              }
-            } else {
-              isInViewport = false;
-              if (riveInstance) {
-                riveInstance.pause();
-              }
-            }
-          });
-        },
-        {
-          threshold: 1.0
-        }
-      );
-
-      observer.observe(riveCanvas);
+      resizeObserver = new ResizeObserver(() => {
+        riveInstance?.resizeDrawingSurfaceToCanvas();
+      });
+      resizeObserver.observe(riveCanvas);
     }
-
-    // Handle resize
-    const handleResize = () => {
-      if (riveInstance && isRiveLoaded) {
-        riveInstance.resizeDrawingSurfaceToCanvas();
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
 
     // Cleanup
     return () => {
-      window.removeEventListener("resize", handleResize);
-      observer?.disconnect();
+      resizeObserver?.disconnect();
       riveInstance?.cleanup();
     };
   });
@@ -188,9 +155,7 @@
             ></iframe>
           </div>
         {:else if isFilled.linkToMedia(slice.primary.rive)}
-          <canvas 
-            bind:this={riveCanvas} 
-            class="w-full object-cover {slice.primary.image_aspect === '4:3'
+          <div class="relative w-full {slice.primary.image_aspect === '4:3'
               ? 'aspect-4/3'
               : slice.primary.image_aspect === '3:4'
                 ? 'aspect-3/4'
@@ -200,8 +165,12 @@
                     ? 'aspect-9/16'
                     : slice.primary.image_aspect === 'square'
                       ? 'aspect-square'
-                      : ''}"
-          />
+                      : ''}">
+            <canvas
+              bind:this={riveCanvas}
+              class="absolute top-0 left-0 w-full h-[calc(100%+7px)]"
+            ></canvas>
+          </div>
         {:else}
           <PrismicImage
             field={slice.primary.image}
