@@ -1,5 +1,6 @@
 import { asText } from '@prismicio/client';
 import { distributorData } from '$lib/stores/distributorData';
+import { error } from '@sveltejs/kit';
 
 import { createClient } from '$lib/prismicio';
 import { get } from 'svelte/store';
@@ -7,7 +8,12 @@ import { get } from 'svelte/store';
 export async function load({ params, fetch, cookies }) {
 	const client = createClient({ fetch, cookies });
 
-	const page = await client.getByUID('page', params.uid);
+	let page;
+	try {
+		page = await client.getByUID('page', params.uid);
+	} catch (e) {
+		throw error(404, `Page "${params.uid}" not found`);
+	}
 
  const distributorCategories = await client.getAllByType('resource_hub_category');
 
