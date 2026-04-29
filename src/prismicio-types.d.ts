@@ -106,7 +106,7 @@ interface PageDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/slices
    */
-  slices: prismic.SliceZone<PageDocumentDataSlicesSlice> /**
+  slices: prismic.SliceZone<PageDocumentDataSlicesSlice>; /**
    * Meta Title field in *Page*
    *
    * - **Field Type**: Text
@@ -114,7 +114,7 @@ interface PageDocumentData {
    * - **API ID Path**: page.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/fields/text
-   */;
+   */
   meta_title: prismic.KeyTextField;
 
   /**
@@ -306,7 +306,7 @@ interface SurgicalGraftsDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/slices
    */
-  slices: prismic.SliceZone<SurgicalGraftsDocumentDataSlicesSlice> /**
+  slices: prismic.SliceZone<SurgicalGraftsDocumentDataSlicesSlice>; /**
    * Meta Title field in *surgical grafts*
    *
    * - **Field Type**: Text
@@ -314,7 +314,7 @@ interface SurgicalGraftsDocumentData {
    * - **API ID Path**: surgical_grafts.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/fields/text
-   */;
+   */
   meta_title: prismic.KeyTextField;
 
   /**
@@ -412,7 +412,7 @@ export type DistributorLoginSlice = prismic.SharedSlice<
  */
 export interface HomeHeroSliceDefaultPrimary {
   /**
-   * placeholder Image field in *HomeHero → Default → Primary*
+   * placeholder image field in *HomeHero → Default → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -885,6 +885,16 @@ export type ScreenWidthVideoSlice = prismic.SharedSlice<
  */
 export interface TwoColSliceDefaultPrimaryRiveOverridesItem {
   /**
+   * top left corner text field in *TwoCol → media text → Primary → rive overrides*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.default.primary.rive_overrides[].top_left_corner_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  top_left_corner_text: prismic.KeyTextField;
+
+  /**
    * top right corner text field in *TwoCol → media text → Primary → rive overrides*
    *
    * - **Field Type**: Text
@@ -893,6 +903,56 @@ export interface TwoColSliceDefaultPrimaryRiveOverridesItem {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   top_right_corner_text: prismic.KeyTextField;
+
+  /**
+   * bottom left corner text field in *TwoCol → media text → Primary → rive overrides*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.default.primary.rive_overrides[].bottom_left_corner_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  bottom_left_corner_text: prismic.KeyTextField;
+
+  /**
+   * bottom right corner text field in *TwoCol → media text → Primary → rive overrides*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.default.primary.rive_overrides[].bottom_right_corner_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  bottom_right_corner_text: prismic.KeyTextField;
+
+  /**
+   * text hover top field in *TwoCol → media text → Primary → rive overrides*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.default.primary.rive_overrides[].text_hover_top
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  text_hover_top: prismic.KeyTextField;
+
+  /**
+   * text hover right field in *TwoCol → media text → Primary → rive overrides*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.default.primary.rive_overrides[].text_hover_right
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  text_hover_right: prismic.KeyTextField;
+
+  /**
+   * text hover left field in *TwoCol → media text → Primary → rive overrides*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.default.primary.rive_overrides[].text_hover_left
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  text_hover_left: prismic.KeyTextField;
 }
 
 /**
@@ -938,6 +998,81 @@ export interface TwoColSliceImageTableTextPrimaryProductsItem {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   product_number: prismic.KeyTextField;
+}
+
+/**
+ * Item in *TwoCol → imageTableText → Primary → rive overrides*
+ */
+export interface TwoColSliceImageTableTextPrimaryRiveOverridesItem {
+  /**
+   * top left corner text field in *TwoCol → imageTableText → Primary → rive overrides*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.imageTableText.primary.rive_overrides[].top_left_corner_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  top_left_corner_text: prismic.KeyTextField;
+
+  /**
+   * top right corner text field in *TwoCol → imageTableText → Primary → rive overrides*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.imageTableText.primary.rive_overrides[].top_right_corner_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  top_right_corner_text: prismic.KeyTextField;
+
+  /**
+   * bottom left corner text field in *TwoCol → imageTableText → Primary → rive overrides*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.imageTableText.primary.rive_overrides[].bottom_left_corner_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  bottom_left_corner_text: prismic.KeyTextField;
+
+  /**
+   * bottom right corner text field in *TwoCol → imageTableText → Primary → rive overrides*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.imageTableText.primary.rive_overrides[].bottom_right_corner_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  bottom_right_corner_text: prismic.KeyTextField;
+
+  /**
+   * text hover top field in *TwoCol → imageTableText → Primary → rive overrides*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.imageTableText.primary.rive_overrides[].text_hover_top
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  text_hover_top: prismic.KeyTextField;
+
+  /**
+   * text hover right field in *TwoCol → imageTableText → Primary → rive overrides*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.imageTableText.primary.rive_overrides[].text_hover_right
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  text_hover_right: prismic.KeyTextField;
+
+  /**
+   * text hover left field in *TwoCol → imageTableText → Primary → rive overrides*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.imageTableText.primary.rive_overrides[].text_hover_left
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  text_hover_left: prismic.KeyTextField;
 }
 
 /**
@@ -1363,6 +1498,18 @@ export interface TwoColSliceImageTableTextPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/link-to-media
    */
   rive: prismic.LinkToMediaField<prismic.FieldState, never>;
+
+  /**
+   * rive overrides field in *TwoCol → imageTableText → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col.imageTableText.primary.rive_overrides[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  rive_overrides: prismic.GroupField<
+    Simplify<TwoColSliceImageTableTextPrimaryRiveOverridesItem>
+  >;
 }
 
 /**
@@ -1617,6 +1764,7 @@ declare module "@prismicio/client" {
       TwoColSliceDefaultPrimary,
       TwoColSliceContactFormPrimary,
       TwoColSliceImageTableTextPrimaryProductsItem,
+      TwoColSliceImageTableTextPrimaryRiveOverridesItem,
       TwoColSliceImageTableTextPrimary,
       TwoColSliceTableTextPrimaryProductsItem,
       TwoColSliceTableTextPrimary,
