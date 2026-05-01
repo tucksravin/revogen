@@ -107,7 +107,8 @@
             const setText = (prop: string, value: string | null | undefined) => {
               if (!value) return;
               const p = vmi.string(prop);
-              if (p) p.value = value;
+              if (!p) return;
+              p.value = value.trim().toLowerCase() === 'hide' ? '' : value;
             };
             setText('textTopLeft', overrides.top_left_corner_text);
             setText('textTopRight', overrides.top_right_corner_text);
